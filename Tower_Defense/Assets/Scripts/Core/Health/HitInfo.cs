@@ -37,6 +37,7 @@ namespace Core.Health
 		{
 			m_DamagePoint = damageLocation;
 			m_HealthChangeInfo = info;
+						
 		}
 	}
 }

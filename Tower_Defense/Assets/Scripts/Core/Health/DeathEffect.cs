@@ -1,6 +1,8 @@
 ﻿using Core.Utilities;
 using UnityEngine;
-
+using SocketIO;
+using System.Collections;
+using System.Collections.Generic;
 namespace Core.Health
 {
 	/// <summary>
@@ -43,15 +45,18 @@ namespace Core.Health
 			m_Damageable.died += OnDied;
 		}
 
-		/// <summary>
-		/// If damageableBehaviour is populated, assigns the damageable
-		/// </summary>
+        /// <summary>
+        /// If damageableBehaviour is populated, assigns the damageable
+        /// </summary>
+        /// 
+		SocketIO.SocketMessage sm;
 		protected virtual void Awake () 
 		{
 			if (damageableBehaviour != null)
 			{
 				AssignDamageable(damageableBehaviour.configuration);
 			}
+			
 		}
 
 		/// <summary>
@@ -63,10 +68,12 @@ namespace Core.Health
 			{
 				return;
 			}
-
+			/*
 			var pfx = Poolable.TryGetPoolable<ParticleSystem>(deathParticleSystemPrefab.gameObject);
 			pfx.transform.position = transform.position + deathEffectOffset;
 			pfx.Play();
+			*/
+			sm.Message("Death", "totod");
 		}
 	}
 }

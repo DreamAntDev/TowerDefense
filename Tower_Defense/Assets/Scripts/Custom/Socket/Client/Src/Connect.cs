@@ -39,7 +39,7 @@ namespace SocketIO
            
         }
 
-        private string serverUrl = "http://192.168.33.222:7777";
+        private string serverUrl = "http://localhost:3000";
         Socket socket;
         private bool isPlay;
 
@@ -127,6 +127,7 @@ namespace SocketIO
             });
             isConnect = true;
         }
+        
         private void OnApplicationQuit()
         {
             isConnect = false;
@@ -134,6 +135,13 @@ namespace SocketIO
             socket.Off(SystemEvents.reconnect);
             socket.Off(SystemEvents.disconnect);
         }
-    }
+        
+        public Socket GetSocket(){
+            return socket;
+        }
 
+         public void Message(String key, String msg){
+            socket.Emit(key, msg);
+        }
+    }
 }
