@@ -28,7 +28,7 @@ io.on('connection', function(socket) {
   });
 
 
-  // 클라이언트로부터의 메시지가 수신되면
+  // Sample
   socket.on('Play', function(data) {
     console.log('Message from %s: %s', socket.name, data);
 
@@ -63,6 +63,45 @@ io.on('connection', function(socket) {
     socket.emit('Death', {
       id: socket.name,
       msg: "OK"
+    });
+  });
+
+  socket.on('Hit', function(data) {
+    console.log('TowerDefence %s: %s', socket.name, data);
+
+    //if(Checking) Gold Up
+    socket.emit('Hit', {
+      id: socket.name,
+      msg: "Hit OK"
+    });
+  });
+
+  socket.on('Tower', function(data) {
+    console.log('TowerDefence %s: %s', socket.name, data);
+
+    //if(Checking) Gold Up
+    socket.emit('Tower', {
+      id: socket.name,
+      msg: "Tower OK"
+    });
+  });
+
+  socket.on('Coin', function(data) {
+    console.log('TowerDefence %s: %s', socket.name, data);
+
+    //if(Checking) Gold Up
+    socket.emit('Coin', {
+      id: socket.name,
+      msg: "Coin OK"
+    });
+  });
+  socket.on('Stage', function(data) {
+    console.log('TowerDefence %s: %s', socket.name, data);
+
+    //if(Checking) Gold Up
+    socket.emit('Stage', {
+      id: socket.name,
+      msg: "Stage OK"
     });
   });
   
