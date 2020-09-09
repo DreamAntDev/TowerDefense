@@ -49,14 +49,13 @@ namespace Core.Health
         /// If damageableBehaviour is populated, assigns the damageable
         /// </summary>
         /// 
-		SocketIO.SocketMessage sm;
+//		SocketIO.SocketMessage sm = GameObject.Find("GameManager").GetComponent<SocketMessage>();
 		protected virtual void Awake () 
 		{
 			if (damageableBehaviour != null)
 			{
 				AssignDamageable(damageableBehaviour.configuration);
 			}
-			
 		}
 
 		/// <summary>
@@ -72,8 +71,10 @@ namespace Core.Health
 			var pfx = Poolable.TryGetPoolable<ParticleSystem>(deathParticleSystemPrefab.gameObject);
 			pfx.transform.position = transform.position + deathEffectOffset;
 			pfx.Play();
-			
-			sm.Message("Death", 1);
+			/*if(sm == null){
+				sm = GameObject.Find("GameManager").GetComponent<SocketMessage>();
+			}
+			sm.Message("Death", 1);*/
 		}
 	}
 }
