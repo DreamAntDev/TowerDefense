@@ -64,11 +64,14 @@ namespace TowerDefense.Level
 		/// </summary>
 		public event Action spawningCompleted;
 
+		public event Action initMonsterData;
+
 		/// <summary>
 		/// Starts the waves
 		/// </summary>
 		public virtual void StartWaves()
 		{
+			Debug.Log("WM->StartWaves() : " + waves.Count);
 			if (waves.Count > 0)
 			{
 				InitCurrentWave();
@@ -88,6 +91,11 @@ namespace TowerDefense.Level
 			if (startWavesOnAwake)
 			{
 				StartWaves();
+			}
+
+			//NAMMU
+			if(initMonsterData != null){
+				initMonsterData();
 			}
 		}
 

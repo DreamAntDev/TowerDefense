@@ -173,7 +173,6 @@ namespace TowerDefense.Agents
 
 			m_NavMeshAgent.enabled = true;
 			m_NavMeshAgent.isStopped = false;
-			
 			m_LevelManager.IncrementNumberOfEnemies();
 		}
 

@@ -260,6 +260,7 @@ namespace TowerDefense.Level
 		/// <param name="newState">The new state to transitioned to</param>
 		protected virtual void ChangeLevelState(LevelState newState)
 		{
+			Debug.Log(String.Format("LM->ChangeLevelState() : {0}", newState));
 			// If the state hasn't changed then return
 			if (levelState == newState)
 			{
@@ -277,9 +278,11 @@ namespace TowerDefense.Level
 			{
 				case LevelState.SpawningEnemies:
 					waveManager.StartWaves();
+					Debug.Log("LM->ChangeLevelState() : StartWave");
 					break;
 				case LevelState.AllEnemiesSpawned:
 					// Win immediately if all enemies are already dead
+					Debug.Log("LM->ChangeLevelState() :" + numberOfEnemies);
 					if (numberOfEnemies == 0)
 					{
 						ChangeLevelState(LevelState.Win);
@@ -287,9 +290,11 @@ namespace TowerDefense.Level
 					break;
 				case LevelState.Lose:
 					SafelyCallLevelFailed();
+					Debug.Log("LM->ChangeLevelState() : Lose");
 					break;
 				case LevelState.Win:
 					SafelyCallLevelCompleted();
+					Debug.Log("LM->ChangeLevelState() : Win");
 					break;
 			}
 		}

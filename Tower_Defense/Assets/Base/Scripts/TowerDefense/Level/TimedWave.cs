@@ -12,7 +12,7 @@ namespace TowerDefense.Level
 		/// The time until the next wave is started
 		/// </summary>
 		[Tooltip("The time until the next wave is started")]
-		public float timeToNextWave = 10f;
+		public float timeToNextWave = 60f;
 
 		/// <summary>
 		/// The timer used to start the next wave
@@ -31,13 +31,14 @@ namespace TowerDefense.Level
 		{
 			base.Init();
 
-			if (spawnInstructions.Count == 0)
+			if (spawnInstructions.Count > 0)
 			{
 				m_WaveTimer = new Timer(timeToNextWave, SafelyBroadcastWaveCompletedEvent);
 				StartTimer(m_WaveTimer);
 			}
 		}
 
+	
 		/// <summary>
 		/// Handles spawning the current agent and sets up the next agent for spawning
 		/// </summary>

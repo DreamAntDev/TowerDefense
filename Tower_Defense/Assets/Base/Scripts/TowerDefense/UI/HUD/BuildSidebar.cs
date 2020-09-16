@@ -77,6 +77,7 @@ namespace TowerDefense.UI.HUD
 		/// </summary>
 		public void StartWaveButtonPressed()
 		{
+			
 			if (LevelManager.instanceExists)
 			{
 				LevelManager.instance.BuildingCompleted();

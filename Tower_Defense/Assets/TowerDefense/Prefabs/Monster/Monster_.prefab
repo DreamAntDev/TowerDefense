@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5653319146470381569}
   - component: {fileID: 5653319146470381568}
   - component: {fileID: 5653319146470381571}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Monster_
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5653319146470381570}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 645.7782, y: 418.3971, z: 266.70398}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 1.74, z: 0}
+  m_LocalScale: {x: 5.5, y: 4, z: 5.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0

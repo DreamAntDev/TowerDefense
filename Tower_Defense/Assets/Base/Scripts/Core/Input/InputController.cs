@@ -344,7 +344,7 @@ namespace Core.Input
 					m_Touches.Add(existingTouch);
 
 					// Sanity check
-					Debug.Assert(touch.phase == TouchPhase.Began);
+					//Debug.Assert(touch.phase == TouchPhase.Began);
 				}
 				switch (touch.phase)
 				{
