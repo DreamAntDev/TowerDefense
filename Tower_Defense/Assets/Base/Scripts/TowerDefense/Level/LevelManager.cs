@@ -260,7 +260,7 @@ namespace TowerDefense.Level
 		/// <param name="newState">The new state to transitioned to</param>
 		protected virtual void ChangeLevelState(LevelState newState)
 		{
-			Debug.Log(String.Format("LM->ChangeLevelState() : {0}", newState));
+			Debug.Log(String.Format("LM->ChangeLevelState() : {0} 1", newState));
 			// If the state hasn't changed then return
 			if (levelState == newState)
 			{

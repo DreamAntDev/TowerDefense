@@ -33,7 +33,7 @@ namespace TowerDefense.Level
 		/// The event that is fired when a Wave is completed
 		/// </summary>
 		public event Action waveCompleted;
-
+		public Node startingNode;
 		public virtual float progress
 		{
 			get { return (float) (m_CurrentIndex) / spawnInstructions.Count; }
@@ -51,7 +51,7 @@ namespace TowerDefense.Level
 				SafelyBroadcastWaveCompletedEvent();
 				return;
 			}
-
+			Debug.Log(spawnInstructions[0].delayToSpawn);
 			m_SpawnTimer = new RepeatingTimer(spawnInstructions[0].delayToSpawn, SpawnCurrent);
 			StartTimer(m_SpawnTimer);
 		}
@@ -77,7 +77,7 @@ namespace TowerDefense.Level
 		protected void Spawn()
 		{
 			SpawnInstruction spawnInstruction = spawnInstructions[m_CurrentIndex];
-			SpawnAgent(spawnInstruction.agentConfiguration, spawnInstruction.startingNode);
+			SpawnAgent(spawnInstruction.agentConfiguration, startingNode);
 		}
 
 		/// <summary>
@@ -111,7 +111,8 @@ namespace TowerDefense.Level
 		protected virtual void SpawnAgent(AgentConfiguration agentConfig, Node node)
 		{
 			Vector3 spawnPosition = node.GetRandomPointInNodeArea();
-
+			
+			Debug.Log(agentConfig.agentPrefab.gameObject.name);
 			var poolable = Poolable.TryGetPoolable<Poolable>(agentConfig.agentPrefab.gameObject);
 			if (poolable == null)
 			{

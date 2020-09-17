@@ -44,6 +44,7 @@ namespace TowerDefense.Level
 		/// </summary>
 		protected override void SpawnCurrent()
 		{
+			Debug.Log("Spawn ");
 			Spawn();
 			if (!TrySetupNextSpawn())
 			{

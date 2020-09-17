@@ -22,9 +22,9 @@ namespace TowerDefense.Level
 		[Tooltip("The delay from the previous spawn until when this agent is spawned")]
 		public float delayToSpawn;
 
-		/// <summary>
+		/*/// <summary>
 		/// The starting node, where the agent is spawned
 		/// </summary>
-		public Node startingNode;
+		public Node startingNode;*/
 	}
 }
