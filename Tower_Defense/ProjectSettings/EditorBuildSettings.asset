@@ -5,10 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/TowerDefense/Scenes/MainMenu.unity
-    guid: 9da02b93d44831f4c8da160b67c59c45
+    path: Assets/TowerDefense/Scenes/LoginScene.unity
+    guid: d1c6c2255ed85ee488ef392b2fcbbf4a
+  - enabled: 1
+    path: Assets/TowerDefense/Scenes/MenuScene.unity
+    guid: ee0e7e25c9879cb45854350b7e058ab6
   - enabled: 1
     path: Assets/TowerDefense/Scenes/GameScene.unity
-    guid: 4a6019217848fb44293732d43fbfebb7
+    guid: d3bef1b451f1ad943b6c82fde3e1b4ba
   m_configObjects: {}
