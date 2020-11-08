@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Monster{
-    public class TypeMonster : MonsterConfiguration
+    public class TypeMonster : MonoBehaviour
     {
-        
+        private MonsterConfiguration monsterinfo;
     }
 }
