@@ -1,17 +1,53 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace Monster
+﻿namespace Monster
 {  
-    abstract public class MonsterConfiguration
+    public class MonsterConfiguration
     {
-        private MonsterType _Type ;
+        private int _id;
+        private int _Type;
+        
+        private int _HP;
 
-        private int _HP { get; set; }
+        private double _MoveSpeed;
 
-        private double _MoveSpeed { get; set; } 
+        private int _Coin;
 
-        private int _Coin { get; set; } 
+        public MonsterConfiguration(int id, int type, double moveSpeed, int hp, int coin){
+            this._id = id;
+            this._Type = type;
+            this._MoveSpeed = moveSpeed;
+            this._HP = hp;
+            this._Coin = coin;
+        }
+
+        public int ID{
+            get{
+                return _id;
+            }
+        }
+
+        public int Type{
+            get{
+                return _Type;
+            }
+        }
+
+        public int HP{
+            get{
+                return HP;
+            }
+        }
+        
+        public double Speed{
+            get{
+                return _MoveSpeed;
+            }
+        }
+
+        public int Coin{
+            get{
+                return _Coin;
+            }
+        }
+
     }
 }

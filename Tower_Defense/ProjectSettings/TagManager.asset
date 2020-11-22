@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Socket
   - Path
+  - Monster
   layers:
   - Default
   - TransparentFX

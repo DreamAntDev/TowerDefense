@@ -3,8 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Monster{
+
     public class TypeMonster : MonoBehaviour
     {
         private MonsterConfiguration monsterinfo;
+        
+        public void SetMonsterInfo(MonsterConfiguration mf){
+            monsterinfo = mf;
+        }
+
+        public MonsterConfiguration GetMonsterInfo(){
+            return monsterinfo;
+        }
+
+        public int GetMonsterType(){
+            return monsterinfo.Type;
+        }
+        public int GetHP(){
+            return monsterinfo.HP;
+        }
+
+        public double GetSpeed(){
+            return monsterinfo.Speed;
+        }
+
+        public int GetCoin(){
+            return monsterinfo.Coin;
+        }
     }
 }
