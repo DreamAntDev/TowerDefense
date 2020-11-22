@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using PathCreation.Examples;
+using PathCreation;
+s
 namespace Monster{
     public class MonsterManager : MonoBehaviour
     {
@@ -13,21 +15,27 @@ namespace Monster{
         [SerializeField] private GameObject[] monsters;
         [SerializeField] private PathFollower pathFollower;
 
+        private List<List<GameObject>> monsterList;
+
         private List<Dictionary<string, object>> dataList;
+
+        private int level = 0;
 
         private void Awake() {
             dataList = CSVReader.Read("Data_Monster");
+            monsterList = new List<List<GameObject>>();
+            monsterList.Add(new List<GameObject>());
             Read();
         }
 
         private void Start() {
             //List Add Fool
-            MonsterSpawn();
+            MonsterFoolReady();
+            
         }
 
-        public void MonsterSpawn(){
+        public void MonsterFoolReady(){
             for(int i = 1; i <= maxLevel; i++){
-                Debug.Log(i % bossIndex);
                 if(i % bossIndex == 0){
                     MonsterFoolSpawn(i, 2);
                 }else{
@@ -45,13 +53,18 @@ namespace Monster{
         }
 
         private void MonsterFoolSpawn(int monsterId, int cnt){
+            monsterList.Add(new List<GameObject>());
+            
             for(int i = 1; i < cnt; i++){
+                //MonsterObject 인스턴스 생성
                 
                 //생성
                 GameObject monsterObject = Instantiate(monsters[(int)dataList[monsterId]["prefab"]]).gameObject;
                 //위치 monsterfool
                 monsterObject.transform.parent = this.transform;
                 monsterObject.SetActive(false);
+
+                monsterList[monsterId].Add(monsterObject);
 
                 //DataInfo
                 int id = Convert.ToInt32(dataList[monsterId]["id"]);
@@ -70,13 +83,34 @@ namespace Monster{
                 new MonsterConfiguration(id, monsterTypeNumber, speed, hp, coin);
 
                 PathFollower pf = monsterObject.AddComponent<PathFollower>();
+                pf.endOfPathInstruction = EndOfPathInstruction.Stop;
                 pf = pathFollower;
 
                 TypeMonster monsterData = monsterObject.AddComponent<TypeMonster>();
                 monsterData.SetMonsterInfo(mf);
             }
         }
-        
+
+        public void Spawn(){
+            Debug.Log("Game Start ReSpawn");
+            StartCoroutine(StartSpawn());
+        }
+
+        IEnumerator StartSpawn(){ 
+            level++;
+            for(int i = 0; i < monsterList[level].Count; i++){
+                monsterList[level][i].SetActive(true);
+                yield return new WaitForSeconds(1f);
+            }
+
+            yield return new WaitForSeconds(30f);
+            Debug.Log(monsterList.Count);
+            if(monsterList.Count == level){
+                yield return null;
+            }else{
+                Spawn();
+            }
+        }
     }
 }
 
