@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using PathCreation.Examples;
 using PathCreation;
-s
+using PathCreation.Examples;
+
 namespace Monster{
     public class MonsterManager : MonoBehaviour
     {
