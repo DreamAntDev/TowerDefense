@@ -15,7 +15,7 @@ public class Shotter : MonoBehaviour
     {
 
     }
-    public void Shot(MonsterType target) // Default Hit-Scan
+    public void Shot(Monster.TypeMonster target) // Default Hit-Scan
     {
         Debug.Log(damage);
     }
