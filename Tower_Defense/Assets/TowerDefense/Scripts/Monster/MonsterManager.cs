@@ -5,6 +5,7 @@ using System;
 using PathCreation;
 using PathCreation.Examples;
 
+
 namespace Monster{
     public class MonsterManager : MonoBehaviour
     {
@@ -12,8 +13,8 @@ namespace Monster{
         private int bossIndex = 5;
         [SerializeField] private int maxLevel = 10;
 
-        [SerializeField] private GameObject[] monsters;
-        [SerializeField] private PathFollower pathFollower;
+        [SerializeField] private GameObject[] monsters  = null;
+        [SerializeField] private PathCreator pathCreator;
 
         private List<List<GameObject>> monsterList;
 
@@ -84,7 +85,7 @@ namespace Monster{
 
                 PathFollower pf = monsterObject.AddComponent<PathFollower>();
                 pf.endOfPathInstruction = EndOfPathInstruction.Stop;
-                pf = pathFollower;
+                pf.pathCreator = pathCreator;
 
                 TypeMonster monsterData = monsterObject.AddComponent<TypeMonster>();
                 monsterData.SetMonsterInfo(mf);

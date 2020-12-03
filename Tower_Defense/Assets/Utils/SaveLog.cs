@@ -90,7 +90,7 @@ public class SaveLog : MonoBehaviour
 
         catch (Exception e)
         {
-
+            Debug.Log(e);
         }
     }
 }
