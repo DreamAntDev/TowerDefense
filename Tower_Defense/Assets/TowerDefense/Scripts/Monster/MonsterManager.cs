@@ -105,7 +105,7 @@ namespace Monster{
                 yield return new WaitForSeconds(1f);
             }
 
-            yield return new WaitForSeconds(30f);
+            yield return new WaitForSeconds(50f);
             
             if(monsterList.Count == level){
                 yield return null;

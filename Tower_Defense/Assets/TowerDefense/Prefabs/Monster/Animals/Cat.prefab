@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4566070813197822}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_JawEnd_M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4961988682798972}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_joint2_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4737788350469260}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_backToes4_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4496847860234470}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_backHip_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ Transform:
   - {fileID: 4137064390890458}
   m_Father: {fileID: 4080794540380606}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -14.239993, y: -166.17955, z: 7.3004827}
 --- !u!1 &1060860504863834
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,7 +130,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4207850226823670}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_backHip_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ Transform:
   - {fileID: 4371097265916664}
   m_Father: {fileID: 4080794540380606}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 20.601007, y: 175.94443, z: -151.06212}
 --- !u!1 &1098955829169284
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,7 +161,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4271183220878032}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_Spine1Part1_M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ Transform:
   - {fileID: 4727870037430378}
   m_Father: {fileID: 4180416365765830}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.24407575, y: 0.85512793, z: -4.5821824}
 --- !u!1 &1110842726717004
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,7 +192,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4310112826757188}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_frontToes4_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,7 +222,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4515886581576810}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_Eye_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,7 +252,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4794464606815044}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_backToes3_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -273,7 +273,7 @@ Transform:
   - {fileID: 4737788350469260}
   m_Father: {fileID: 4531704037306364}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 12.543336, y: -3.7349997, z: 40.049946}
 --- !u!1 &1132290239751434
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,7 +283,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4727870037430378}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_Spine1Part2_M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -304,7 +304,7 @@ Transform:
   - {fileID: 4225884711513572}
   m_Father: {fileID: 4271183220878032}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.18711701, y: 0.5352006, z: 0.41377532}
 --- !u!1 &1164145538748076
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,7 +314,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4964560787897816}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_backToes4_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +344,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4531704037306364}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_backToes2_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -365,7 +365,7 @@ Transform:
   - {fileID: 4794464606815044}
   m_Father: {fileID: 4211133604077800}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -3.526721, y: -8.608962, z: -45.052166}
 --- !u!1 &1212068838828752
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,7 +375,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4371097265916664}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_backKnee_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -396,7 +396,7 @@ Transform:
   - {fileID: 4181375992242208}
   m_Father: {fileID: 4207850226823670}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 7.337182e-15, y: -180, z: 9.5886}
 --- !u!1 &1218473282780112
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,7 +406,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4404625716693734}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_Tail0_M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,7 +427,7 @@ Transform:
   - {fileID: 4012458749330768}
   m_Father: {fileID: 4080794540380606}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 7.0223986e-15, y: -180, z: 2.7875423}
 --- !u!1 &1245747884397766
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,7 +437,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4857017681132456}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_Tail2_M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -458,7 +458,7 @@ Transform:
   - {fileID: 4582526496388018}
   m_Father: {fileID: 4012458749330768}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 18.509012}
 --- !u!1 &1265965336954426
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,7 +468,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4699576773661860}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_Neck2_M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -489,7 +489,7 @@ Transform:
   - {fileID: 4037403935859504}
   m_Father: {fileID: 4485084083637814}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 7.1767635, y: 1.4082056, z: -2.1389017}
 --- !u!1 &1274612039772472
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,7 +499,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4608763089830684}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_joint1_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -520,7 +520,7 @@ Transform:
   - {fileID: 4435814546184612}
   m_Father: {fileID: 4544253345107934}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -34.52692, y: 90.10804, z: 98.63918}
 --- !u!1 &1283143849700840
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,7 +530,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4006703564163002}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_frontKnee_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -551,7 +551,7 @@ Transform:
   - {fileID: 4065742512742834}
   m_Father: {fileID: 4102288281050568}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -76.447136}
 --- !u!1 &1298573101515520
 GameObject:
   m_ObjectHideFlags: 0
@@ -561,7 +561,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4862478665022802}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_RootPart2_M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -582,7 +582,7 @@ Transform:
   - {fileID: 4180416365765830}
   m_Father: {fileID: 4724810715478434}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.14088415, y: -0.35081947, z: -10.331742}
 --- !u!1 &1365681516000924
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,7 +592,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4235373611337710}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_Jaw_M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -613,7 +613,7 @@ Transform:
   - {fileID: 4566070813197822}
   m_Father: {fileID: 4544253345107934}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -134.56143}
 --- !u!1 &1366622282935866
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,7 +623,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4211133604077800}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_backToes1_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -644,7 +644,7 @@ Transform:
   - {fileID: 4531704037306364}
   m_Father: {fileID: 4181375992242208}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.5047816, y: 2.59346, z: -4.4266357}
 --- !u!1 &1390287227092542
 GameObject:
   m_ObjectHideFlags: 0
@@ -654,7 +654,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4799998577159292}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_frontToes3_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -675,7 +675,7 @@ Transform:
   - {fileID: 4310112826757188}
   m_Father: {fileID: 4340816452102434}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.1391015, y: -0.40200967, z: -3.467824}
 --- !u!1 &1392375005757536
 GameObject:
   m_ObjectHideFlags: 0
@@ -685,7 +685,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4102288281050568}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_frontHip_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -706,7 +706,7 @@ Transform:
   - {fileID: 4006703564163002}
   m_Father: {fileID: 4363186976721808}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -1.3117572, y: 2.5866206, z: 110.88237}
 --- !u!1 &1427087947298282
 GameObject:
   m_ObjectHideFlags: 0
@@ -716,7 +716,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4839628223819836}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_frontHip_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -737,7 +737,7 @@ Transform:
   - {fileID: 4700781811626970}
   m_Father: {fileID: 4571895248337064}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -3.5591345, y: 0.3433807, z: 110.189026}
 --- !u!1 &1467017975610906
 GameObject:
   m_ObjectHideFlags: 0
@@ -747,7 +747,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4056782387661488}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_backToes3_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -768,7 +768,7 @@ Transform:
   - {fileID: 4964560787897816}
   m_Father: {fileID: 4876802686942730}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 2.4514232, y: -7.5720963, z: 52.414753}
 --- !u!1 &1473659149559340
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,7 +778,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4080794540380606}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_Root_M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -802,7 +802,7 @@ Transform:
   - {fileID: 4404625716693734}
   m_Father: {fileID: 4336554176863652}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: -135.44179}
 --- !u!1 &1474893244625642
 GameObject:
   m_ObjectHideFlags: 0
@@ -812,7 +812,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4956438883150322}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_backToes1_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -833,7 +833,7 @@ Transform:
   - {fileID: 4876802686942730}
   m_Father: {fileID: 4600862474197748}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.5047816, y: 2.59346, z: -4.4266357}
 --- !u!1 &1505403039979726
 GameObject:
   m_ObjectHideFlags: 0
@@ -843,7 +843,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4682836113627788}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_frontToes1_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -864,7 +864,7 @@ Transform:
   - {fileID: 4158786097744156}
   m_Father: {fileID: 4065742512742834}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -12.599857}
 --- !u!1 &1521757653765238
 GameObject:
   m_ObjectHideFlags: 0
@@ -874,7 +874,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4501219624979750}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_frontAnkle_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -895,7 +895,7 @@ Transform:
   - {fileID: 4377031744075548}
   m_Father: {fileID: 4700781811626970}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -1.6867495, y: -0.7452179, z: -6.111584}
 --- !u!1 &1530777829330148
 GameObject:
   m_ObjectHideFlags: 0
@@ -905,7 +905,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4459555001931780}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:geo_grp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -936,7 +936,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4571895248337064}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_frontRump_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -957,7 +957,7 @@ Transform:
   - {fileID: 4839628223819836}
   m_Father: {fileID: 4225884711513572}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 2.0684125, y: -174.2863, z: 54.704304}
 --- !u!1 &1566344301417324
 GameObject:
   m_ObjectHideFlags: 0
@@ -967,7 +967,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4225884711513572}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_Chest_M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -990,7 +990,7 @@ Transform:
   - {fileID: 4817879393708308}
   m_Father: {fileID: 4727870037430378}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.6047363, y: 0.26679182, z: -23.975832}
 --- !u!1 &1570891575401152
 GameObject:
   m_ObjectHideFlags: 0
@@ -1000,7 +1000,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4037403935859504}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_Neck3_M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1021,7 +1021,7 @@ Transform:
   - {fileID: 4450321597434254}
   m_Father: {fileID: 4699576773661860}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -27.469782}
 --- !u!1 &1604900425387618
 GameObject:
   m_ObjectHideFlags: 0
@@ -1031,7 +1031,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4065094307925432}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_Eye_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1061,7 +1061,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4104724370364248}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_joint1_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1082,7 +1082,7 @@ Transform:
   - {fileID: 4961988682798972}
   m_Father: {fileID: 4544253345107934}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 34.52692, y: -90.10804, z: -81.36081}
 --- !u!1 &1610731003114814
 GameObject:
   m_ObjectHideFlags: 0
@@ -1092,7 +1092,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4180416365765830}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_Spine1_M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1113,7 +1113,7 @@ Transform:
   - {fileID: 4271183220878032}
   m_Father: {fileID: 4862478665022802}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.33817172, y: 0.6371963, z: -13.272468}
 --- !u!1 &1628128953118224
 GameObject:
   m_ObjectHideFlags: 0
@@ -1123,7 +1123,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4876802686942730}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_backToes2_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1144,7 +1144,7 @@ Transform:
   - {fileID: 4056782387661488}
   m_Father: {fileID: 4956438883150322}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -3.526721, y: -8.608962, z: -45.052166}
 --- !u!1 &1640905051009080
 GameObject:
   m_ObjectHideFlags: 0
@@ -1154,7 +1154,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4544253345107934}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_Head_M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1180,7 +1180,7 @@ Transform:
   - {fileID: 4104724370364248}
   m_Father: {fileID: 4450321597434254}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 95.14044}
 --- !u!1 &1644911873293542
 GameObject:
   m_ObjectHideFlags: 0
@@ -1190,7 +1190,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4065742512742834}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_frontAnkle_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1211,7 +1211,7 @@ Transform:
   - {fileID: 4682836113627788}
   m_Father: {fileID: 4006703564163002}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -1.6843684, y: -0.75454587, z: -5.921245}
 --- !u!1 &1668360652904270
 GameObject:
   m_ObjectHideFlags: 0
@@ -1221,7 +1221,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4600862474197748}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_backAnkle_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1242,7 +1242,7 @@ Transform:
   - {fileID: 4956438883150322}
   m_Father: {fileID: 4137064390890458}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.06874658, y: -173.53688, z: 70.61983}
 --- !u!1 &1670162456848258
 GameObject:
   m_ObjectHideFlags: 0
@@ -1252,7 +1252,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4579260842736834}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_frontToes3_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1273,7 +1273,7 @@ Transform:
   - {fileID: 4270632390378218}
   m_Father: {fileID: 4158786097744156}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 1.4790698, y: -0.35095224, z: -3.840423}
 --- !u!1 &1674961062081594
 GameObject:
   m_ObjectHideFlags: 0
@@ -1283,7 +1283,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4363186976721808}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_frontRump_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1304,7 +1304,7 @@ Transform:
   - {fileID: 4102288281050568}
   m_Father: {fileID: 4225884711513572}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -1.1816046, y: 174.19579, z: -125.28412}
 --- !u!1 &1683590589947208
 GameObject:
   m_ObjectHideFlags: 0
@@ -1314,7 +1314,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4817879393708308}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_Neck_M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1335,7 +1335,7 @@ Transform:
   - {fileID: 4485084083637814}
   m_Father: {fileID: 4225884711513572}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 55.86372}
 --- !u!1 &1750754371683290
 GameObject:
   m_ObjectHideFlags: 0
@@ -1345,7 +1345,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4012458749330768}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_Tail1_M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1366,7 +1366,7 @@ Transform:
   - {fileID: 4857017681132456}
   m_Father: {fileID: 4404625716693734}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.26467964, y: 0.27522945, z: 28.273449}
 --- !u!1 &1775201086108790
 GameObject:
   m_ObjectHideFlags: 0
@@ -1376,7 +1376,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4377031744075548}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_frontToes1_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1397,7 +1397,7 @@ Transform:
   - {fileID: 4340816452102434}
   m_Father: {fileID: 4501219624979750}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -12.599857}
 --- !u!1 &1775823994481854
 GameObject:
   m_ObjectHideFlags: 0
@@ -1407,7 +1407,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4700781811626970}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_frontKnee_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1428,7 +1428,7 @@ Transform:
   - {fileID: 4501219624979750}
   m_Father: {fileID: 4839628223819836}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -75.601944}
 --- !u!1 &1780339553240130
 GameObject:
   m_ObjectHideFlags: 0
@@ -1438,7 +1438,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4724810715478434}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_RootPart1_M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1459,7 +1459,7 @@ Transform:
   - {fileID: 4862478665022802}
   m_Father: {fileID: 4080794540380606}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.16106686, y: -0.5608741, z: -3.946684}
 --- !u!1 &1800630325879090
 GameObject:
   m_ObjectHideFlags: 0
@@ -1469,7 +1469,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4137064390890458}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_backKnee_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1490,7 +1490,7 @@ Transform:
   - {fileID: 4600862474197748}
   m_Father: {fileID: 4496847860234470}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 3.8676698e-15, y: -180, z: 13.467714}
 --- !u!1 &1816985483288220
 GameObject:
   m_ObjectHideFlags: 0
@@ -1500,7 +1500,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4340816452102434}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_frontToes2_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1521,7 +1521,7 @@ Transform:
   - {fileID: 4799998577159292}
   m_Father: {fileID: 4377031744075548}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -31.75545}
 --- !u!1 &1823696519658702
 GameObject:
   m_ObjectHideFlags: 0
@@ -1531,7 +1531,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4485084083637814}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_Neck1_M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1552,7 +1552,7 @@ Transform:
   - {fileID: 4699576773661860}
   m_Father: {fileID: 4817879393708308}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 17.266851}
 --- !u!1 &1855467059577108
 GameObject:
   m_ObjectHideFlags: 0
@@ -1562,7 +1562,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4435814546184612}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_joint2_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1593,12 +1593,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4735757859571902}
   - component: {fileID: 137202827476521848}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:cat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4735757859571902
 Transform:
@@ -1654,7 +1654,7 @@ SkinnedMeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   serializedVersion: 2
-  m_Quality: 0
+  m_Quality: 2
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
   m_Mesh: {fileID: 4300000, guid: 10c37af58eff3db4986601ce9ca8ee2e, type: 3}
@@ -1731,7 +1731,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4270632390378218}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_frontToes4_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1761,7 +1761,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4523891992935246}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_Tail4_M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1795,12 +1795,12 @@ GameObject:
   - component: {fileID: 143599068570113854}
   - component: {fileID: 82361486870045612}
   - component: {fileID: 114306267886315038}
-  - component: {fileID: 114210507595430992}
   - component: {fileID: 195392007921826444}
-  m_Layer: 0
+  - component: {fileID: 48767158}
+  m_Layer: 17
   m_Name: Cat
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_TagString: Monster
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1972,67 +1972,6 @@ MonoBehaviour:
   attacking: {fileID: 8300000, guid: 13a58eb5deb3e46599037ffb43ae7600, type: 3}
   death: {fileID: 0}
   sleeping: {fileID: 8300000, guid: 7b6b33682babad5438d7b5414f5bcc87, type: 3}
---- !u!114 &114210507595430992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1904107386653458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36003be02bd7fc54db18675085e2ab6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  idleStates:
-  - stateName: Sleeping
-    animationBool: isSleeping
-    minStateTime: 20
-    maxStateTime: 40
-    stateWeight: 3
-  movementStates:
-  - stateName: Walking
-    animationBool: isWalking
-    maxStateTime: 20
-    moveSpeed: 2
-    turnSpeed: 120
-  - stateName: Running
-    animationBool: isRunning
-    maxStateTime: 5
-    moveSpeed: 10
-    turnSpeed: 200
-  attackingStates:
-  - stateName: Attack
-    animationBool: isAttacking
-  deathStates:
-  - stateName: Dead
-    animationBool: isDead
-  species: Cat
-  stats: {fileID: 11400000, guid: dbe9e93337452e549825f00a2450fc95, type: 2}
-  wanderZone: 5
-  awareness: 30
-  scent: 30
-  constainedToWanderZone: 0
-  nonAgressiveTowards: []
-  matchSurfaceRotation: 0
-  surfaceRotationSpeed: 2
-  logChanges: 0
-  showGizmos: 0
-  drawWanderRange: 1
-  drawScentRange: 1
-  drawAwarenessRange: 1
-  deathEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  attackingEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  idleEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  movementEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!195 &195392007921826444
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2055,6 +1994,23 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &48767158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904107386653458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1424151a8048bb34f8c17d3fe4d082cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 95565761437417144}
+  skillName: isRunning
+  skillHoldingTime: 3
+  skillWaitTime: 1.5
+  skillCooldown: 10
 --- !u!1 &1926030801303212
 GameObject:
   m_ObjectHideFlags: 0
@@ -2064,7 +2020,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4181375992242208}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_backAnkle_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2085,7 +2041,7 @@ Transform:
   - {fileID: 4211133604077800}
   m_Father: {fileID: 4371097265916664}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.24294503, y: -173.67464, z: 58.535313}
 --- !u!1 &1929156756160280
 GameObject:
   m_ObjectHideFlags: 0
@@ -2095,7 +2051,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4450321597434254}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_Neck4_M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2116,7 +2072,7 @@ Transform:
   - {fileID: 4544253345107934}
   m_Father: {fileID: 4037403935859504}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 7.2733803, y: -0.7617793, z: -19.267746}
 --- !u!1 &1940919761196754
 GameObject:
   m_ObjectHideFlags: 0
@@ -2126,7 +2082,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4773163472501200}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_HeadEnd_M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2156,7 +2112,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4582526496388018}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_Tail3_M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2177,7 +2133,7 @@ Transform:
   - {fileID: 4523891992935246}
   m_Father: {fileID: 4857017681132456}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 17.183474}
 --- !u!1 &1993583778987496
 GameObject:
   m_ObjectHideFlags: 0
@@ -2187,7 +2143,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4158786097744156}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: actor:skin_frontToes2_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2208,4 +2164,4 @@ Transform:
   - {fileID: 4579260842736834}
   m_Father: {fileID: 4682836113627788}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -31.75545}
