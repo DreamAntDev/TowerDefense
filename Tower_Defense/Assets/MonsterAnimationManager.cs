@@ -41,6 +41,7 @@ public class MonsterAnimationManager : MonoBehaviour
 
     }
 
+    //Skill이 발생 시 데이터화를 받아서 여기서 정리해서 발생하는 것으로
     public void Skill(){
         if(!isColldown){
             isColldown = true;
@@ -49,15 +50,9 @@ public class MonsterAnimationManager : MonoBehaviour
             StartCoroutine(SetupSkill());
         }
     }
-
-    private void Update() {
-        if(Input.GetKeyDown(KeyCode.Space)){
-            Skill();
-        }
-    }
     
     IEnumerator SetupSkill(){
-        
+    
         anim.SetBool(skillName, true);
         pf.speed = 1.2f;
         yield return new WaitForSeconds(skillHoldingTime);

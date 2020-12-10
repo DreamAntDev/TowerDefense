@@ -30,5 +30,6 @@ namespace Monster{
         public int GetCoin(){
             return monsterinfo.Coin;
         }
+       
     }
 }
