@@ -17,7 +17,7 @@ public class CannonBullet : Bullet
             return;
 
         var targetPos = this.target.transform.position;
-        this.transform.position = Vector3.MoveTowards(this.transform.position, targetPos, Time.deltaTime * 1);
+        this.transform.position = Vector3.MoveTowards(this.transform.position, targetPos, Time.deltaTime * 10);
     }
 
     private void FixedUpdate()
@@ -33,6 +33,6 @@ public class CannonBullet : Bullet
         GameObject effect = Instantiate(this.hitEffect, this.transform.position, this.transform.rotation);
         Destroy(effect, 3);
         Destroy(this.gameObject);
-        Debug.Log(damage);
+        other.GetComponent<MonsterState>().TakeDamage(damage);
     }
 }

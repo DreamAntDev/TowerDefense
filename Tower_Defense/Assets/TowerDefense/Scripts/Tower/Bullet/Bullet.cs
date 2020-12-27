@@ -32,7 +32,8 @@ public class Bullet : MonoBehaviour
         GameObject effect = Instantiate(this.hitEffect, this.transform.position, this.transform.rotation);
         Destroy(effect, 3);
         Destroy(this.gameObject);
-        Debug.Log(damage);
+        other.GetComponent<MonsterState>().TakeDamage(damage);
+        //Debug.Log(damage);
     }
 
     public void SetTarget(GameObject target)
