@@ -1797,6 +1797,7 @@ GameObject:
   - component: {fileID: 48767158}
   - component: {fileID: 5717127459338179274}
   - component: {fileID: 6371091720435249502}
+  - component: {fileID: 5628742200210384953}
   m_Layer: 17
   m_Name: Cat
   m_TagString: Monster
@@ -1996,6 +1997,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3521fe8b0fe833742b25c2993de5a210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!143 &5628742200210384953
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904107386653458}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 0.2
+  m_Radius: 0.2
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.2, z: 0}
 --- !u!1 &1926030801303212
 GameObject:
   m_ObjectHideFlags: 0
