@@ -1792,10 +1792,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4336554176863652}
   - component: {fileID: 95565761437417144}
-  - component: {fileID: 143599068570113854}
   - component: {fileID: 82361486870045612}
   - component: {fileID: 114306267886315038}
   - component: {fileID: 48767158}
+  - component: {fileID: 5717127459338179274}
   m_Layer: 17
   m_Name: Cat
   m_TagString: Monster
@@ -1838,24 +1838,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!143 &143599068570113854
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1904107386653458}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 0.2
-  m_Radius: 0.2
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.2, z: 0}
 --- !u!82 &82361486870045612
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1988,6 +1970,19 @@ MonoBehaviour:
   skillHoldingTime: 3
   skillWaitTime: 1.5
   skillCooldown: 10
+--- !u!65 &5717127459338179274
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904107386653458}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1926030801303212
 GameObject:
   m_ObjectHideFlags: 0
