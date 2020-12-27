@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class Sensor : MonoBehaviour
 {
-    List<Monster.TypeMonster> targetList = new List<Monster.TypeMonster>();
+    public List<GameObject> targetList  = new List<GameObject>();
     Tower tower = null;
     // Start is called before the first frame update
     private void Start()
@@ -17,25 +17,29 @@ public class Sensor : MonoBehaviour
         }
     }
 
-    public List<Monster.TypeMonster> GetTarget()
+    public virtual List<GameObject> GetTarget()
     {
         return this.targetList;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        var targetObj = other.gameObject.GetComponent<Monster.TypeMonster>();
-        if (this.targetList.Contains(targetObj) == true)
+        if (other.gameObject.CompareTag("Monster") == false)
             return;
 
-        this.targetList.Add(targetObj);
+        if (this.targetList.Contains(other.gameObject) == true)
+            return;
+
+        this.targetList.Add(other.gameObject);
     }
     private void OnTriggerExit(Collider other)
     {
-        var targetObj = other.gameObject.GetComponent<Monster.TypeMonster>();
-        if (this.targetList.Contains(targetObj) == false)
+        if (other.gameObject.CompareTag("Monster") == false)
             return;
 
-        this.targetList.Remove(targetObj);
+        if (this.targetList.Contains(other.gameObject) == false)
+            return;
+
+        this.targetList.Remove(other.gameObject);
     }
 }
