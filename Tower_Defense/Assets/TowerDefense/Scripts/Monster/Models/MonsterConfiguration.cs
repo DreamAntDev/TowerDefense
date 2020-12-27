@@ -19,34 +19,27 @@
             this._Coin = coin;
         }
 
-        public int ID{
-            get{
-                return _id;
-            }
+        public int ID(){
+            return _id;
         }
 
-        public int Type{
-            get{
-                return _Type;
-            }
+        public int GetType(){
+            return _Type;
+            
         }
 
-        public int HP{
-            get{
-                return HP;
-            }
+
+        public int GetHP(){
+            return _HP;
         }
         
-        public double Speed{
-            get{
-                return _MoveSpeed;
-            }
+        public double GetSpeed(){
+            return _MoveSpeed;
+            
         }
 
-        public int Coin{
-            get{
-                return _Coin;
-            }
+        public int GetCoin(){
+            return _Coin;
         }
 
     }

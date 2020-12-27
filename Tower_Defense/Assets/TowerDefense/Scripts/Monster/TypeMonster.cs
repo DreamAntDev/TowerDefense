@@ -17,18 +17,18 @@ namespace Monster{
         }
 
         public int GetMonsterType(){
-            return monsterinfo.Type;
+            return monsterinfo.GetType();
         }
         public int GetHP(){
-            return monsterinfo.HP;
+            return monsterinfo.GetHP();
         }
 
         public double GetSpeed(){
-            return monsterinfo.Speed;
+            return monsterinfo.GetSpeed();
         }
 
         public int GetCoin(){
-            return monsterinfo.Coin;
+            return monsterinfo.GetCoin();
         }
        
     }

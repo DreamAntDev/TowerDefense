@@ -38,14 +38,14 @@ public class MonsterAnimationManager : MonoBehaviour
     }
 
     public void Death(){
-
+        anim.SetBool("isDead", true);
+        
     }
 
     //Skill이 발생 시 데이터화를 받아서 여기서 정리해서 발생하는 것으로
     public void Skill(){
         if(!isColldown){
             isColldown = true;
-            
             anim.SetTrigger("isSkill");
             StartCoroutine(SetupSkill());
         }

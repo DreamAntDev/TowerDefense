@@ -99,7 +99,6 @@ namespace Monster{
 
         IEnumerator StartSpawn(){ 
             level++;
-            Debug.Log(monsterList.Count);
             for(int i = 0; i < monsterList[level].Count; i++){
                 monsterList[level][i].SetActive(true);
                 yield return new WaitForSeconds(1f);

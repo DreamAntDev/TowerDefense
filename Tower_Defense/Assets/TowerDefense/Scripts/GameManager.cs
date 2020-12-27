@@ -1,18 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using TMPro;
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    [SerializeField] protected int coin;
+
+    [SerializeField] protected TextMeshProUGUI coinText;
+    
+
+    public void MonsterCoin(int c){
+       coin += c;
+       coinText.text =  "Coin : " + coin.ToString();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void GameLevel(){
+
     }
+
+    
+      
 }

@@ -7,6 +7,7 @@ TagManager:
   - Socket
   - Path
   - Monster
+  - GameManager
   layers:
   - Default
   - TransparentFX
@@ -39,7 +40,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - GameManger
   m_SortingLayers:
   - name: Default
     uniqueID: 0
