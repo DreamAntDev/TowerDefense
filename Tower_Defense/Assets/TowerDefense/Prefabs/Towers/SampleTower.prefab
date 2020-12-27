@@ -201,6 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a7f1bb9104fd17499a30dc9a12dfef0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetList: []
 --- !u!1 &7350945694656967960
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,7 +277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotPos: {fileID: 3196784830486608105}
   shotEffect: {fileID: 1252424093267096, guid: 08d458c51dadd9e4cb38728a5875c576, type: 3}
-  bullet: {fileID: 4839979009144920414, guid: 4d82fea38e16c83448182ec030cc8514, type: 3}
+  bullet: {fileID: 4847795148822127525, guid: 4d82fea38e16c83448182ec030cc8514, type: 3}
 --- !u!1 &9124925008745143449
 GameObject:
   m_ObjectHideFlags: 0
