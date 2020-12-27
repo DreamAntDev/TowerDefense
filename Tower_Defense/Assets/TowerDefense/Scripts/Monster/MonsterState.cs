@@ -29,7 +29,5 @@ public class MonsterState : MonoBehaviour, IDamagable
     public void Death(){
         Debug.Log("Death");
         typeMonster.GetCoin();
-    }
-
-    
+    }    
 }
