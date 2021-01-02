@@ -18,11 +18,13 @@ public class MonoShotter : Shotter
     public override void Shot(GameObject target)
     {
         //ShotEffect
-        GameObject effect = Instantiate(this.shotEffect, shotPos);
-        Destroy(effect, 3);
+        //GameObject effect = Instantiate(this.shotEffect, shotPos);
+        //Destroy(effect, 3);
 
         //CreateBullet
-        var bullet = Instantiate(this.bullet, shotPos.position, shotPos.rotation);
-        bullet.GetComponent<Bullet>().SetTarget(target);
+        var vfx = Instantiate(this.bullet, shotPos.position, Quaternion.identity);
+        vfx.GetComponent<ProjectileMoveScript>().SetTarget(target);
+        //var bullet = Instantiate(this.bullet, shotPos.position, shotPos.rotation);
+        //bullet.GetComponent<Bullet>().SetTarget(target);
     }
 }

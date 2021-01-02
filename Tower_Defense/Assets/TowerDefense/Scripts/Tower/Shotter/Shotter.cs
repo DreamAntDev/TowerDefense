@@ -6,7 +6,7 @@ public class Shotter : MonoBehaviour
 {
     public Transform shotPos;
     public GameObject shotEffect;
-    public Bullet bullet;
+    public GameObject bullet;
 
     // Start is called before the first frame update
     void Start()
@@ -21,8 +21,8 @@ public class Shotter : MonoBehaviour
     public virtual void Shot(GameObject target) // Default Hit-Scan
     {
         //ShotEffect
-        GameObject effect = Instantiate(this.shotEffect, shotPos);
-        Destroy(effect, 3);
+        //GameObject effect = Instantiate(this.shotEffect, shotPos);
+        //Destroy(effect, 3);
 
         //CreateBullet
         var col = target.GetComponent<BoxCollider>();
@@ -34,7 +34,9 @@ public class Shotter : MonoBehaviour
         {
             if (hit.transform.CompareTag("Monster") == true)
             {
-                Instantiate(this.bullet, hit.point, Quaternion.LookRotation((target.transform.position+center) - this.shotPos.transform.position));
+                var vfx = Instantiate(this.bullet, shotPos.position, Quaternion.identity);
+                vfx.GetComponent<ProjectileMoveScript>().SetTarget(target);
+                //Instantiate(this.bullet, hit.point, Quaternion.LookRotation((target.transform.position+center) - this.shotPos.transform.position));
                 break;
             }
         }

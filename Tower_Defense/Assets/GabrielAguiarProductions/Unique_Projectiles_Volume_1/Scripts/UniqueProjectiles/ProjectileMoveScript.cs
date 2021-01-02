@@ -73,13 +73,22 @@ public class ProjectileMoveScript : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
+        if (rb == null)
+            return;
+
         if (target != null)
-            rotateToMouse.RotateToMouse (gameObject, target.transform.position);
-        if (speed != 0 && rb != null)
-			rb.position += (transform.forward + offset) * (speed * Time.deltaTime);        
+        {
+            rb.position += (target.transform.position-transform.position/* + offset*/) * (speed * Time.deltaTime);
+            //rotateToMouse.RotateToMouse(gameObject, target.transform.position);
+        }
     }
 
 	void OnCollisionEnter (Collision co) {
+        if (co.gameObject.CompareTag("Monster") == false)
+            return;
+
+        co.gameObject.GetComponent<MonsterState>().TakeDamage(1);
+
         if (!bounce)
         {
             if (co.gameObject.tag != "Bullet" && !collided)
@@ -165,5 +174,10 @@ public class ProjectileMoveScript : MonoBehaviour {
     {
         target = trg;
         rotateToMouse = rotateTo;
+    }
+
+    public void SetTarget(GameObject trg)
+    {
+        target = trg;
     }
 }
