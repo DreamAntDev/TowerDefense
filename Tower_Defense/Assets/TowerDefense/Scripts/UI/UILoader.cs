@@ -49,4 +49,23 @@ public sealed class UILoader
         GameObject.Destroy(removePair.Value);
         this.UIObjectDictionary.Remove(removePair.Key);
     }
+    public void Unload(string path)
+    {
+        GameObject obj;
+        if (this.UIObjectDictionary.TryGetValue(path, out obj) == false)
+        {
+            return;
+        }
+        GameObject.Destroy(obj);
+        this.UIObjectDictionary.Remove(path);
+    }
+    public GameObject GetUI(string path)
+    {
+        GameObject ret;
+        if(this.UIObjectDictionary.TryGetValue(path, out ret) == false)
+        {
+
+        }
+        return ret;
+    }
 }

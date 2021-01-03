@@ -11,11 +11,20 @@ public class TowerListPopup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for(int i=0;i<10;i++)
+        List<TowerData> list = new List<TowerData>();
+        list.Add(TowerData.GetData(1));
+        list.Add(TowerData.GetData(2));
+        foreach(var data in list)
         {
             var item = Instantiate<GameObject>(TowerListItem);
+            var towerListItem = item.GetComponent<TowerListItem>();
+            if(towerListItem != null)
+            {
+                towerListItem.SetData(data);
+            }
             item.transform.SetParent(scrollRect.content.transform);
         }
+        
         this.closeButton.onClick.AddListener(Close);
     }
 

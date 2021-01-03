@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerControlManager : MonoBehaviour
+public class PlayerControlManager : SingletonBehaviour<PlayerControlManager>
 {
-    public GameObject testPref;
+    [HideInInspector]
+    public string createObjectPrefabPath;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,9 +33,10 @@ public class PlayerControlManager : MonoBehaviour
             {
                 Vector3 spawnPos;
                 grid.GetClosetCellPosition(hit.point, out spawnPos);
-                if(testPref != null)
+                if (string.IsNullOrEmpty(createObjectPrefabPath) == false)
                 {
-                    Instantiate(testPref, spawnPos, new Quaternion());
+                    GameObject.Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>(createObjectPrefabPath), spawnPos, new Quaternion());
+                    GameManager.Instance.SetVisibleGrid(false);
                 }
             }
         }

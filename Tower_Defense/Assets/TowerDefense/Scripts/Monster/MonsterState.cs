@@ -12,14 +12,11 @@ public class MonsterState : MonoBehaviour, IDamagable
 
     private MonsterAnimationManager monsterAnimationManager;
 
-    private GameManager gameManager;
-
     private PathFollower pf;
     private bool isDeath = false;
     public float health { get ; set ; }
 
     private void Start() {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         typeMonster = GetComponent<TypeMonster>();
         monsterAnimationManager = GetComponent<MonsterAnimationManager>();
         pf = GetComponent<PathFollower>();
@@ -45,7 +42,7 @@ public class MonsterState : MonoBehaviour, IDamagable
     public void Death(){
         Debug.Log("Death");
         monsterAnimationManager.Death();
-        gameManager.MonsterCoin(typeMonster.GetCoin());
+        GameManager.Instance.MonsterCoin(typeMonster.GetCoin());
         StartCoroutine(MonsterDeath());
     }   
 
