@@ -18,7 +18,7 @@ public class TowerListItem : MonoBehaviour
     }
     private void SelectItem(string path)
     {
-        UILoader.Instance.Unload("Assets/TowerDefense/Prefabs/UI/TowerListPopup.prefab");
+        UILoader.instance.Unload("Assets/TowerDefense/Prefabs/UI/TowerListPopup.prefab");
         PlayerControlManager.Instance.createObjectPrefabPath = path;
         GameManager.Instance.SetVisibleGrid(true);
     }

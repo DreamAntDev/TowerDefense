@@ -36,6 +36,6 @@ public class TowerListPopup : MonoBehaviour
 
     void Close()
     {
-        UILoader.Instance.Unload(this.gameObject);
+        UILoader.instance.Unload(this.gameObject);
     }
 }

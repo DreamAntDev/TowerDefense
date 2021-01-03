@@ -2,21 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Util;
 
-public sealed class UILoader
+public sealed class UILoader : Singleton<UILoader>
 {
-    private static UILoader instance;
-    public static UILoader Instance
-    {
-        get
-        {
-            if(instance == null)
-            {
-                instance = new UILoader();
-            }
-            return instance;
-        }
-    }
     private Dictionary<string, GameObject> UIObjectDictionary = new Dictionary<string, GameObject>();
     public GameObject Load(string path)
     {
