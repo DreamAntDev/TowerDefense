@@ -39,7 +39,6 @@ public class MonsterAnimationManager : MonoBehaviour
 
     public void Death(){
         anim.SetBool("isDead", true);
-        
     }
 
     //Skill이 발생 시 데이터화를 받아서 여기서 정리해서 발생하는 것으로
@@ -54,7 +53,7 @@ public class MonsterAnimationManager : MonoBehaviour
     IEnumerator SetupSkill(){
     
         anim.SetBool(skillName, true);
-        pf.speed = 1.2f;
+        pf.speed = pf.speed * 1.5f;
         yield return new WaitForSeconds(skillHoldingTime);
         anim.SetBool(skillName , false);
         pf.speed = 0f;

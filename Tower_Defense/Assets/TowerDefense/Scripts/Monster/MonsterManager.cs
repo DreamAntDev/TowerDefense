@@ -92,24 +92,14 @@ namespace Monster{
             }
         }
 
-        public void Spawn(){
-            Debug.Log("Game Start ReSpawn");
-            StartCoroutine(StartSpawn());
+        public void MonsterSpawn(int level){
+            StartCoroutine(MonsterFoolReSpawn(level));
         }
 
-        IEnumerator StartSpawn(){ 
-            level++;
-            for(int i = 0; i < monsterList[level].Count; i++){
+        IEnumerator MonsterFoolReSpawn(int level){
+        for(int i = 0; i < monsterList[level].Count; i++){
                 monsterList[level][i].SetActive(true);
                 yield return new WaitForSeconds(1f);
-            }
-
-            yield return new WaitForSeconds(50f);
-            
-            if(monsterList.Count == level){
-                yield return null;
-            }else{
-                Spawn();
             }
         }
     }

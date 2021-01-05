@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Monster;
-
 using PathCreation;
 using PathCreation.Examples;
 
@@ -15,7 +14,9 @@ public class MonsterState : MonoBehaviour, IDamagable
     private PathFollower pf;
     private bool isDeath = false;
     public float health { get ; set ; }
-
+    
+    private GameObject gameUI;
+    
     private void Start() {
         typeMonster = GetComponent<TypeMonster>();
         monsterAnimationManager = GetComponent<MonsterAnimationManager>();
@@ -44,7 +45,7 @@ public class MonsterState : MonoBehaviour, IDamagable
         monsterAnimationManager.Death();
         GameManager.Instance.MonsterCoin(typeMonster.GetCoin());
         StartCoroutine(MonsterDeath());
-    }   
+    }
 
     IEnumerator MonsterDeath(){
         pf.speed = 0;
