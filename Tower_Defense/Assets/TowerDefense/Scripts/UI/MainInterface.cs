@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,13 +10,9 @@ public class MainInterface : MonoBehaviour
     void Start()
     {
         TowerListOpenButton.onClick.AddListener(this.ShowTowerList);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         
     }
+
 
     void ShowTowerList()
     {

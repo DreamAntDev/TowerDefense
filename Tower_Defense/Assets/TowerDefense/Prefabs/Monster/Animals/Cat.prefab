@@ -1964,13 +1964,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1904107386653458}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1424151a8048bb34f8c17d3fe4d082cf, type: 3}
+  m_Script: {fileID: 11500000, guid: d6606328e2ad00c40ab34cbd3d9d3756, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 95565761437417144}
-  skillName: isRunning
-  skillHoldingTime: 3
-  skillWaitTime: 1.5
+  skillName: isSkill
+  skillHoldingTime: 1
+  skillWaitTime: 1
   skillCooldown: 10
 --- !u!65 &5717127459338179274
 BoxCollider:
