@@ -25,7 +25,8 @@ public class GameManager : SingletonBehaviour<GameManager>
 
     private int level = 0;
 
-    private void Awake() {
+    private new void Awake() {
+        base.Awake();
         if(monsterManager == null){
             monsterManager = GameObject.Find("MonsterFool").GetComponent<MonsterManager>();
         }

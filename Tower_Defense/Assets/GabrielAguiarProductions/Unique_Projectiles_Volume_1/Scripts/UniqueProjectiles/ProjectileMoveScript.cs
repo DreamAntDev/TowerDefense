@@ -28,7 +28,7 @@ public class ProjectileMoveScript : MonoBehaviour {
 	private bool collided;
 	private Rigidbody rb;
     private RotateToMouseScript rotateToMouse;
-    private GameObject target;
+    [SerializeField] private GameObject target;
 
 	void Start () {
         startPos = transform.position;
@@ -72,18 +72,103 @@ public class ProjectileMoveScript : MonoBehaviour {
 		}
 	}
 
-	void FixedUpdate () {
+	void LateUpdate () {
         if (rb == null)
             return;
 
         if (target != null)
         {
-            rb.position += (target.transform.position-transform.position/* + offset*/) * (speed * Time.deltaTime);
+            this.transform.position += ((target.transform.position - this.transform.position).normalized * (speed * Time.deltaTime));
+            if (target.activeSelf == false)
+            {
+                SetTarget(null);
+                if (hitPrefab != null)
+                {
+                    var hitVFX = Instantiate(hitPrefab, this.transform.position, this.transform.rotation) as GameObject;
+
+                    var ps = hitVFX.GetComponent<ParticleSystem>();
+                    if (ps == null)
+                    {
+                        var psChild = hitVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
+                        Destroy(hitVFX, psChild.main.duration);
+                    }
+                    else
+                        Destroy(hitVFX, ps.main.duration);
+                }
+
+                StartCoroutine(DestroyParticle(0f));
+            }
             //rotateToMouse.RotateToMouse(gameObject, target.transform.position);
         }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        GameObject obj = other.gameObject;
+        if (obj.CompareTag("Monster") == false)
+            return;
 
-	void OnCollisionEnter (Collision co) {
+        obj.GetComponent<MonsterState>().TakeDamage(1);
+
+        if (!bounce)
+        {
+            if (obj.tag != "Bullet" && !collided)
+            {
+                collided = true;
+
+                if (shotSFX != null && GetComponent<AudioSource>())
+                {
+                    GetComponent<AudioSource>().PlayOneShot(hitSFX);
+                }
+
+                if (trails.Count > 0)
+                {
+                    for (int i = 0; i < trails.Count; i++)
+                    {
+                        trails[i].transform.parent = null;
+                        var ps = trails[i].GetComponent<ParticleSystem>();
+                        if (ps != null)
+                        {
+                            ps.Stop();
+                            Destroy(ps.gameObject, ps.main.duration + ps.main.startLifetime.constantMax);
+                        }
+                    }
+                }
+
+                speed = 0;
+                GetComponent<Rigidbody>().isKinematic = true;
+
+                Vector3 contact = other.ClosestPointOnBounds(this.transform.position);
+                Quaternion rot = this.transform.rotation;
+                Vector3 pos = contact;
+
+                if (hitPrefab != null)
+                {
+                    var hitVFX = Instantiate(hitPrefab, pos, rot) as GameObject;
+
+                    var ps = hitVFX.GetComponent<ParticleSystem>();
+                    if (ps == null)
+                    {
+                        var psChild = hitVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
+                        Destroy(hitVFX, psChild.main.duration);
+                    }
+                    else
+                        Destroy(hitVFX, ps.main.duration);
+                }
+
+                StartCoroutine(DestroyParticle(0f));
+            }
+        }
+        else
+        {
+            rb.useGravity = true;
+            rb.drag = 0.5f;
+            Vector3 contact = other.ClosestPointOnBounds(this.transform.position);
+            rb.AddForce(Vector3.Reflect((contact - startPos).normalized, contact.normalized) * bounceForce, ForceMode.Impulse);
+            Destroy(this);
+        }
+    }
+    void OnCollisionEnter(Collision co)
+    {
         if (co.gameObject.CompareTag("Monster") == false)
             return;
 
@@ -143,10 +228,10 @@ public class ProjectileMoveScript : MonoBehaviour {
             rb.useGravity = true;
             rb.drag = 0.5f;
             ContactPoint contact = co.contacts[0];
-            rb.AddForce (Vector3.Reflect((contact.point - startPos).normalized, contact.normal) * bounceForce, ForceMode.Impulse);
-            Destroy ( this );
+            rb.AddForce(Vector3.Reflect((contact.point - startPos).normalized, contact.normal) * bounceForce, ForceMode.Impulse);
+            Destroy(this);
         }
-	}
+    }
 
 	public IEnumerator DestroyParticle (float waitTime) {
 

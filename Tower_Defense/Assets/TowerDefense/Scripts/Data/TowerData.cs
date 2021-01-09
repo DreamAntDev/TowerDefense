@@ -36,9 +36,16 @@ public class TowerData
 
     public int index { get; private set; }
     public string prefabPath { get; private set; }
+    public bool baseTower { get; private set; }
+    private List<int> nextTower = new List<int>();
+    public IReadOnlyCollection<int> GetNextTowerList()
+    {
+        return nextTower.AsReadOnly();
+    }
 
     public static void Load()
     {
+        data.Clear();
         var list = CSVReader.Read("Tower");
         foreach(var line in list)
         {
@@ -46,10 +53,33 @@ public class TowerData
             int index = 0;
             if(int.TryParse(line["Index"].ToString(), out index) == false)
             {
-                
+                Debug.LogErrorFormat("[Tower.csv] Index Int Parsing Error\n index : {0}",line["index"]);
+                return;
             }
             towerData.index = index;
             towerData.prefabPath = (line["Prefab"].ToString());
+            bool isBase;
+            if (line.ContainsKey("BaseTower") == true)
+            {
+                if (bool.TryParse(line["BaseTower"].ToString(), out isBase) == false)
+                {
+                    Debug.LogErrorFormat("[Tower.csv] index({0}) BaseTower Must Use {1} or {2} or Empty", index,bool.TrueString,bool.FalseString);
+                    // error
+                }
+                towerData.baseTower = isBase;
+            }
+            else
+            {
+                towerData.baseTower = false; // 기본값
+            }
+            if (line.ContainsKey("NextTower") == true)
+            {
+                var nextTowerList = (line["NextTower"].ToString()).Split(',');
+                foreach (var str in nextTowerList)
+                {
+                    towerData.nextTower.Add(int.Parse(str));
+                }
+            }
             data.Add(index, towerData);
         }
     }

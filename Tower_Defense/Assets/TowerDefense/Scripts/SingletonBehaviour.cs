@@ -16,7 +16,7 @@ public class SingletonBehaviour<T> : MonoBehaviour where T : SingletonBehaviour<
             return instance;
         }
     }
-    void Awake()
+    protected void Awake()
     {
         if (instance != null && instance != this)
         {

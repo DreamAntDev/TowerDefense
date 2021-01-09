@@ -5,7 +5,7 @@ using UnityEngine;
 public class Shotter : MonoBehaviour
 {
     public Transform shotPos;
-    public GameObject shotEffect;
+    //public GameObject shotEffect;
     public GameObject bullet;
 
     // Start is called before the first frame update
