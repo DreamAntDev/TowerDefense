@@ -35,7 +35,7 @@ public class TowerData
     private static Dictionary<int, TowerData> data = new Dictionary<int, TowerData>();
 
     public int index { get; private set; }
-    public string prefabPath { get; private set; }
+    public string prefabCode { get; private set; }
     public bool baseTower { get; private set; }
     private List<int> nextTower = new List<int>();
     public IReadOnlyCollection<int> GetNextTowerList()
@@ -57,7 +57,7 @@ public class TowerData
                 return;
             }
             towerData.index = index;
-            towerData.prefabPath = (line["Prefab"].ToString());
+            towerData.prefabCode = (line["Prefab"].ToString());
             bool isBase;
             if (line.ContainsKey("BaseTower") == true)
             {

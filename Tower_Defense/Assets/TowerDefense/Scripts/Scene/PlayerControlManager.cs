@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerControlManager : SingletonBehaviour<PlayerControlManager>
 {
     [HideInInspector]
-    public string createObjectPrefabPath;
+    public string createTowerCode;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,10 +33,14 @@ public class PlayerControlManager : SingletonBehaviour<PlayerControlManager>
             {
                 Vector3 spawnPos;
                 grid.GetClosetCellPosition(hit.point, out spawnPos);
-                if (string.IsNullOrEmpty(createObjectPrefabPath) == false)
+                if (string.IsNullOrEmpty(createTowerCode) == false)
                 {
-                    GameObject.Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>(createObjectPrefabPath), spawnPos, new Quaternion());
-                    GameManager.Instance.SetVisibleGrid(false);
+                    GameObject prefab = TowerResource.Instance.GetTowerResource(createTowerCode);
+                    if (prefab != null)
+                    {
+                        GameObject.Instantiate(prefab, spawnPos, new Quaternion());
+                        GameManager.Instance.SetVisibleGrid(false);
+                    }
                 }
             }
         }

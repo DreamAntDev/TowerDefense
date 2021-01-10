@@ -16,6 +16,6 @@ public class MainInterface : MonoBehaviour
 
     void ShowTowerList()
     {
-        UILoader.instance.Load("Assets/TowerDefense/Prefabs/UI/TowerListPopup.prefab");
+        UILoader.Instance.Load("TowerListPopup");
     }
 }

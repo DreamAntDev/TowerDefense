@@ -8,18 +8,18 @@ public class TowerListItem : MonoBehaviour
     public Text TowerName;
     public Button SpawnButton;
 
-    private string prefabPath;
+    private string towerCode;
 
     public void SetData(TowerData data)
     {
-        this.TowerName.text = data.index.ToString() + ". " + data.prefabPath.Split('/')[data.prefabPath.Split('/').Length - 1];
-        prefabPath = data.prefabPath;
-        SpawnButton.onClick.AddListener(()=> { SelectItem(prefabPath); });
+        this.TowerName.text = data.index.ToString() + ". " + data.prefabCode.Split('/')[data.prefabCode.Split('/').Length - 1];
+        towerCode = data.prefabCode;
+        SpawnButton.onClick.AddListener(()=> { SelectItem(towerCode); });
     }
-    private void SelectItem(string path)
+    private void SelectItem(string code)
     {
-        UILoader.instance.Unload("Assets/TowerDefense/Prefabs/UI/TowerListPopup.prefab");
-        PlayerControlManager.Instance.createObjectPrefabPath = path;
+        UILoader.Instance.Unload("TowerListPopup");
+        PlayerControlManager.Instance.createTowerCode = code;
         GameManager.Instance.SetVisibleGrid(true);
     }
 }

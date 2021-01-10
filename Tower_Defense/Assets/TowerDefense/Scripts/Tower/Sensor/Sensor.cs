@@ -32,6 +32,19 @@ public class Sensor : MonoBehaviour
 
         this.targetList.Add(other.gameObject);
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Monster") == false)
+            return;
+
+        if (this.targetList.Contains(other.gameObject) == false)
+            return;
+
+        if(other.gameObject.activeSelf == false)
+            this.targetList.Remove(other.gameObject);
+    }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Monster") == false)

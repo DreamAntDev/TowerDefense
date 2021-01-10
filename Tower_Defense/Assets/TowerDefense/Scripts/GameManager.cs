@@ -37,7 +37,7 @@ public class GameManager : SingletonBehaviour<GameManager>
     }
 
     private void Start() {
-        mainUI = UILoader.instance.Load("Assets/TowerDefense/Prefabs/UI/MainUI.prefab");
+        mainUI = UILoader.Instance.Load("MainUI");
         if(mainUI != null){
             mainUIEvent = mainUI.GetComponent<MainUI>();
             mainUIEvent.OnStartClickListener(GameStart);
