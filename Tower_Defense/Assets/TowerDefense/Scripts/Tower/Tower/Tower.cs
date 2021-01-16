@@ -15,7 +15,7 @@ public class Tower : MonoBehaviour
     public Sensor sensor;
     public Shotter shotter;
     public int RPM; // 분당 발사 횟수
-
+    [HideInInspector] public int towerIndex;
     [SerializeField] private State state;
     private Dictionary<State, System.Action> StateUpdater;
 

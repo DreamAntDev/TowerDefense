@@ -38,10 +38,10 @@ public class CSVReader
                 {
                     finalvalue = n;
                 }
-                else if (float.TryParse(value, out f))
-                {
-                    finalvalue = f;
-                }
+                //else if (float.TryParse(value, out f))
+                //{
+                //    finalvalue = f;
+                //}
                 entry[header[j]] = finalvalue;
             }
             list.Add(entry);

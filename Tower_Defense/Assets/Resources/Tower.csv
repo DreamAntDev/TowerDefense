@@ -1,3 +1,4 @@
-Index,Prefab
-1,Cannon
-2,Cannon
+Index,Prefab,BaseTower,NextTower
+1,Cannon,True,"2,3"
+2,Cannon,,
+3,Cannon2,,

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TowerListPopup : MonoBehaviour
+public class TowerUpgradePopup : MonoBehaviour
 {
     public ScrollRect scrollRect;
     public GameObject TowerListItem;
@@ -11,25 +11,30 @@ public class TowerListPopup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        List<TowerData.Data> list = TowerData.GetBaseTowerList();
-        foreach(var data in list)
+        this.closeButton.onClick.AddListener(Close);
+    }
+
+    public void SetList(int towerIndex)
+    {
+        TowerData.Data data = TowerData.GetData(towerIndex);
+        var towerList = data.GetNextTowerList();
+        foreach (var idx in towerList)
         {
             var item = Instantiate<GameObject>(TowerListItem);
             var towerListItem = item.GetComponent<TowerListItem>();
-            if(towerListItem != null)
+            if (towerListItem != null)
             {
-                towerListItem.SetData(data);
+                var towerData = TowerData.GetData(idx);
+                towerListItem.SetData(towerData);
             }
             item.transform.SetParent(scrollRect.content.transform);
         }
-        
-        this.closeButton.onClick.AddListener(Close);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void Close()

@@ -48,3 +48,5 @@ MonoBehaviour:
     obj: {fileID: 3108533741564394812, guid: f00829e48f863e14ea2910202d249135, type: 3}
   - name: TowerListPopup
     obj: {fileID: 843464677251839884, guid: 7eba6084f8a0c6346ac45dfa74a42e62, type: 3}
+  - name: TowerUpgradePopup
+    obj: {fileID: 9179481400260902944, guid: a0cb52077d87b684083ed06b264d17d9, type: 3}

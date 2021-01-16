@@ -10,16 +10,16 @@ public class TowerListItem : MonoBehaviour
 
     private string towerCode;
 
-    public void SetData(TowerData data)
+    public void SetData(TowerData.Data data)
     {
         this.TowerName.text = data.index.ToString() + ". " + data.prefabCode.Split('/')[data.prefabCode.Split('/').Length - 1];
         towerCode = data.prefabCode;
-        SpawnButton.onClick.AddListener(()=> { SelectItem(towerCode); });
+        SpawnButton.onClick.AddListener(()=> { SelectItem(data.index); });
     }
-    private void SelectItem(string code)
+    private void SelectItem(int index)
     {
         UILoader.Instance.Unload("TowerListPopup");
-        PlayerControlManager.Instance.createTowerCode = code;
+        PlayerControlManager.Instance.createTowerIndex = index;
         GameManager.Instance.SetVisibleGrid(true);
     }
 }

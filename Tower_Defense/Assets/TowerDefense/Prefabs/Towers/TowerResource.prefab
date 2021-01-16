@@ -47,3 +47,6 @@ MonoBehaviour:
   - code: Cannon
     prefab: {fileID: 4700102863535865573, guid: 055c7c6e9fef49d4da0f8e2c6aac0a86,
       type: 3}
+  - code: Cannon2
+    prefab: {fileID: 6166206602179769027, guid: 1ff0c1b4271ede840a88b148a217b049,
+      type: 3}

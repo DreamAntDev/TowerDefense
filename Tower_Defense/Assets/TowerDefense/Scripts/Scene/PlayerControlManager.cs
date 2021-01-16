@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerControlManager : SingletonBehaviour<PlayerControlManager>
 {
     [HideInInspector]
-    public string createTowerCode;
+    public int createTowerIndex;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,15 +33,26 @@ public class PlayerControlManager : SingletonBehaviour<PlayerControlManager>
             {
                 Vector3 spawnPos;
                 grid.GetClosetCellPosition(hit.point, out spawnPos);
-                if (string.IsNullOrEmpty(createTowerCode) == false)
+                var data = TowerData.GetData(createTowerIndex);
+                GameObject prefab = TowerResource.Instance.GetTowerResource(data.prefabCode);
+                if (prefab != null)
                 {
-                    GameObject prefab = TowerResource.Instance.GetTowerResource(createTowerCode);
-                    if (prefab != null)
-                    {
-                        GameObject.Instantiate(prefab, spawnPos, new Quaternion());
-                        GameManager.Instance.SetVisibleGrid(false);
-                    }
+                    var obj = GameObject.Instantiate(prefab, spawnPos, new Quaternion());
+                    var towerObj = obj.GetComponent<Tower>();
+                    if (towerObj == null)
+                        Debug.LogError("ErrorSpawn!");
+                    else
+                        towerObj.towerIndex = createTowerIndex;
+
+                    GameManager.Instance.SetVisibleGrid(false);
                 }
+            }
+
+            var tower = hit.collider.gameObject.GetComponent<Tower>();
+            if(tower != null)
+            {
+                var go = UILoader.Instance.Load("TowerUpgradePopup");
+                go.GetComponent<TowerUpgradePopup>().SetList(tower.towerIndex);
             }
         }
     }
