@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Monster;
@@ -16,12 +16,13 @@ public class MonsterState : MonoBehaviour, IDamagable
     public float health { get ; set ; }
     
     private GameObject gameUI;
-    
+
     private void Start() {
         typeMonster = GetComponent<TypeMonster>();
         monsterAnimationManager = GetComponent<MonsterAnimationManager>();
         pf = GetComponent<PathFollower>();
         health = typeMonster.GetHP();
+        
     } 
 
     void IDamagable.Initialize()
@@ -32,7 +33,6 @@ public class MonsterState : MonoBehaviour, IDamagable
 
     public void TakeDamage(float damage){
         health -= damage;
-        Debug.Log(gameObject.name + " : " + health);
         
         if(health <= 0 && !isDeath){
             isDeath = true;

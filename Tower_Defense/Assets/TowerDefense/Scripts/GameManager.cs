@@ -11,6 +11,8 @@ public class GameManager : SingletonBehaviour<GameManager>
     
     [SerializeField] protected AudioManager audioManager;
 
+    [SerializeField] protected MapManager mapManager;
+
     [SerializeField] protected int coin;
 
     [SerializeField] protected TextMeshProUGUI coinText;
@@ -78,6 +80,7 @@ public class GameManager : SingletonBehaviour<GameManager>
             
             int currentTime = 0;
             isSkip = false;
+            
             for(;;){
                 currentTime++;
                 yield return new WaitForSeconds(0.1f);
@@ -85,6 +88,7 @@ public class GameManager : SingletonBehaviour<GameManager>
                     break;
                 }
             }
+            mapManager.AddMap(level);
         }
     }
       
