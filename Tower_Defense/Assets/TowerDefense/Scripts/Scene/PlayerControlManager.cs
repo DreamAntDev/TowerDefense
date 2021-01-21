@@ -4,8 +4,20 @@ using UnityEngine;
 
 public class PlayerControlManager : SingletonBehaviour<PlayerControlManager>
 {
-    [HideInInspector]
-    public int createTowerIndex;
+    public enum State
+    {
+        None,
+        Play,
+        CreateTower,
+        UpgradeTower,
+    }
+    public PlayerControlState.IPlayerControlState state { private set; get; }
+
+    private new void Awake()
+    {
+        base.Awake();
+        state = new PlayerControlState.Play();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -15,45 +27,30 @@ public class PlayerControlManager : SingletonBehaviour<PlayerControlManager>
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Clicked();
-        }
+        state.Update();
     }
-    void Clicked()
+
+    public void SetState(State state)
     {
-        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        RaycastHit hit = new RaycastHit();
-
-        if (Physics.Raycast(ray, out hit))
+        this.state.End();
+        switch (state)
         {
-            var grid = hit.collider.gameObject.GetComponent<LocationGrid>();
-            if (grid != null)
-            {
-                Vector3 spawnPos;
-                grid.GetClosetCellPosition(hit.point, out spawnPos);
-                var data = TowerData.GetData(createTowerIndex);
-                GameObject prefab = TowerResource.Instance.GetTowerResource(data.prefabCode);
-                if (prefab != null)
-                {
-                    var obj = GameObject.Instantiate(prefab, spawnPos, new Quaternion());
-                    var towerObj = obj.GetComponent<Tower>();
-                    if (towerObj == null)
-                        Debug.LogError("ErrorSpawn!");
-                    else
-                        towerObj.towerIndex = createTowerIndex;
-
-                    GameManager.Instance.SetVisibleGrid(false);
-                }
-            }
-
-            var tower = hit.collider.gameObject.GetComponent<Tower>();
-            if(tower != null)
-            {
-                var go = UILoader.Instance.Load("TowerUpgradePopup");
-                go.GetComponent<TowerUpgradePopup>().SetList(tower.towerIndex);
-            }
+            case State.None:
+                this.state = new PlayerControlState.None();
+                break;
+            case State.Play:
+                this.state = new PlayerControlState.Play();
+                break;
+            case State.CreateTower:
+                this.state = new PlayerControlState.CreateTower();
+                break;
+            case State.UpgradeTower:
+                this.state = new PlayerControlState.UpgradeTower();
+                break;
+            default:
+                this.state = new PlayerControlState.None();
+                break;
         }
+        this.state.Start();
     }
 }

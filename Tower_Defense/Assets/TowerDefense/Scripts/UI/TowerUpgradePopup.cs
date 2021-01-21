@@ -21,11 +21,11 @@ public class TowerUpgradePopup : MonoBehaviour
         foreach (var idx in towerList)
         {
             var item = Instantiate<GameObject>(TowerListItem);
-            var towerListItem = item.GetComponent<TowerListItem>();
-            if (towerListItem != null)
+            var towerUpgradeItem = item.GetComponent<TowerUpgradeItem>();
+            if (towerUpgradeItem != null)
             {
                 var towerData = TowerData.GetData(idx);
-                towerListItem.SetData(towerData);
+                towerUpgradeItem.SetData(towerData);
             }
             item.transform.SetParent(scrollRect.content.transform);
         }

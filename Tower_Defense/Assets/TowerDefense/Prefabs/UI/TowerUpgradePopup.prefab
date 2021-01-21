@@ -1127,6 +1127,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollRect: {fileID: 7570840834655303792}
-  TowerListItem: {fileID: 6983808112507983150, guid: 0391a74cd962aa04d8b91cfe43f82810,
+  TowerListItem: {fileID: 3332154653740612895, guid: 5905185057315d247afd771cf33c40bb,
     type: 3}
   closeButton: {fileID: 5943762862675341300}

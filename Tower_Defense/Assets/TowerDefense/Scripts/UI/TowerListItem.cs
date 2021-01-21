@@ -19,7 +19,8 @@ public class TowerListItem : MonoBehaviour
     private void SelectItem(int index)
     {
         UILoader.Instance.Unload("TowerListPopup");
-        PlayerControlManager.Instance.createTowerIndex = index;
-        GameManager.Instance.SetVisibleGrid(true);
+        PlayerControlManager.Instance.SetState(PlayerControlManager.State.CreateTower);
+        var state = PlayerControlManager.Instance.state as PlayerControlState.CreateTower;
+        state.SetCreateTowerIndex(index);
     }
 }
