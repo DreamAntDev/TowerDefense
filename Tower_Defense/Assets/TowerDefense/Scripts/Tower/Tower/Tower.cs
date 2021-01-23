@@ -12,6 +12,7 @@ public class Tower : MonoBehaviour
     }
 
     public GameObject Head;
+    public Animator animator;
     public Sensor sensor;
     public Shotter shotter;
     public int RPM; // 분당 발사 횟수
@@ -55,7 +56,10 @@ public class Tower : MonoBehaviour
         var targetList = this.sensor.GetTarget();
         if (targetList == null || targetList.Count == 0)
         {
-            this.Head.transform.Rotate(Vector3.up, 0.5f);
+            if (this.Head != null)
+            {
+                this.Head.transform.Rotate(Vector3.up, 0.5f);
+            }
         }
         else
         {
@@ -68,9 +72,16 @@ public class Tower : MonoBehaviour
         if (targetList.Count > 0)
         {
             this.lastAttackTime = Time.time;
-            foreach (var target in targetList)
+            if (this.animator != null) // 애니 사용 타워는 애니에서 OnAttack 호출
             {
-                shotter.Shot(target);
+                this.animator.SetTrigger("Attack");
+            }
+            else
+            {
+                foreach (var target in targetList)
+                {
+                    shotter.Shot(target);
+                }
             }
         }
 
@@ -95,6 +106,24 @@ public class Tower : MonoBehaviour
         else
         {
             this.state = State.Idle;
+            this.animator.ResetTrigger("Attack");
+            this.animator.SetTrigger("Idle");
+        }
+    }
+    public void OnAttack()
+    {
+        var targetList = sensor.GetTarget();
+        if (targetList.Count > 0)
+        {
+            foreach (var target in targetList)
+            {
+                shotter.Shot(target);
+            }
+        }
+        else
+        {
+            this.animator.ResetTrigger("Attack");
+            this.animator.SetTrigger("Idle");
         }
     }
 }

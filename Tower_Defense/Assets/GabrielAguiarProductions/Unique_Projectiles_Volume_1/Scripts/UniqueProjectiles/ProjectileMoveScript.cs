@@ -8,53 +8,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileMoveScript : MonoBehaviour {
-
-    public bool bounce = false;
-    public float bounceForce = 10;
+public class ProjectileMoveScript : MonoBehaviour
+{
     public float speed;
-	[Tooltip("From 0% to 100%")]
-	public float accuracy;
+	//[Tooltip("From 0% to 100%")]
+	//public float accuracy;
 	public float fireRate;
 	public GameObject muzzlePrefab;
 	public GameObject hitPrefab;
 	public AudioClip shotSFX;
 	public AudioClip hitSFX;
 	public List<GameObject> trails;
+    public float forceMagnitude;
 
     private Vector3 startPos;
-	private float speedRandomness;
 	private Vector3 offset;
 	private bool collided;
 	private Rigidbody rb;
-    private RotateToMouseScript rotateToMouse;
-    [SerializeField] private GameObject target;
+    private GameObject target;
 
-	void Start () {
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
+    void Start () {
         startPos = transform.position;
-        rb = GetComponent <Rigidbody> ();
 
-		//used to create a radius for the accuracy and have a very unique randomness
-		if (accuracy != 100) {
-			accuracy = 1 - (accuracy / 100);
-
-			for (int i = 0; i < 2; i++) {
-				var val = 1 * Random.Range (-accuracy, accuracy);
-				var index = Random.Range (0, 2);
-				if (i == 0) {
-					if (index == 0)
-						offset = new Vector3 (0, -val, 0);
-					else
-						offset = new Vector3 (0, val, 0);
-				} else {
-					if (index == 0)
-						offset = new Vector3 (0, offset.y, -val);
-					else
-						offset = new Vector3 (0, offset.y, val);
-				}
-			}
-		}
-			
 		if (muzzlePrefab != null) {
 			var muzzleVFX = Instantiate (muzzlePrefab, transform.position, Quaternion.identity);
 			muzzleVFX.transform.forward = gameObject.transform.forward + offset;
@@ -73,8 +53,6 @@ public class ProjectileMoveScript : MonoBehaviour {
 	}
 
 	void LateUpdate () {
-        if (rb == null)
-            return;
 
         if (target != null)
         {
@@ -109,62 +87,51 @@ public class ProjectileMoveScript : MonoBehaviour {
 
         obj.GetComponent<MonsterState>().TakeDamage(1);
 
-        if (!bounce)
+        if (obj.tag != "Bullet" && !collided)
         {
-            if (obj.tag != "Bullet" && !collided)
+            collided = true;
+
+            if (shotSFX != null && GetComponent<AudioSource>())
             {
-                collided = true;
-
-                if (shotSFX != null && GetComponent<AudioSource>())
-                {
-                    GetComponent<AudioSource>().PlayOneShot(hitSFX);
-                }
-
-                if (trails.Count > 0)
-                {
-                    for (int i = 0; i < trails.Count; i++)
-                    {
-                        trails[i].transform.parent = null;
-                        var ps = trails[i].GetComponent<ParticleSystem>();
-                        if (ps != null)
-                        {
-                            ps.Stop();
-                            Destroy(ps.gameObject, ps.main.duration + ps.main.startLifetime.constantMax);
-                        }
-                    }
-                }
-
-                speed = 0;
-                GetComponent<Rigidbody>().isKinematic = true;
-
-                Vector3 contact = other.ClosestPointOnBounds(this.transform.position);
-                Quaternion rot = this.transform.rotation;
-                Vector3 pos = contact;
-
-                if (hitPrefab != null)
-                {
-                    var hitVFX = Instantiate(hitPrefab, pos, rot) as GameObject;
-
-                    var ps = hitVFX.GetComponent<ParticleSystem>();
-                    if (ps == null)
-                    {
-                        var psChild = hitVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
-                        Destroy(hitVFX, psChild.main.duration);
-                    }
-                    else
-                        Destroy(hitVFX, ps.main.duration);
-                }
-
-                StartCoroutine(DestroyParticle(0f));
+                GetComponent<AudioSource>().PlayOneShot(hitSFX);
             }
-        }
-        else
-        {
-            rb.useGravity = true;
-            rb.drag = 0.5f;
+
+            if (trails.Count > 0)
+            {
+                for (int i = 0; i < trails.Count; i++)
+                {
+                    trails[i].transform.parent = null;
+                    var ps = trails[i].GetComponent<ParticleSystem>();
+                    if (ps != null)
+                    {
+                        ps.Stop();
+                        Destroy(ps.gameObject, ps.main.duration + ps.main.startLifetime.constantMax);
+                    }
+                }
+            }
+
+            speed = 0;
+            GetComponent<Rigidbody>().isKinematic = true;
+
             Vector3 contact = other.ClosestPointOnBounds(this.transform.position);
-            rb.AddForce(Vector3.Reflect((contact - startPos).normalized, contact.normalized) * bounceForce, ForceMode.Impulse);
-            Destroy(this);
+            Quaternion rot = this.transform.rotation;
+            Vector3 pos = contact;
+
+            if (hitPrefab != null)
+            {
+                var hitVFX = Instantiate(hitPrefab, pos, rot) as GameObject;
+
+                var ps = hitVFX.GetComponent<ParticleSystem>();
+                if (ps == null)
+                {
+                    var psChild = hitVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
+                    Destroy(hitVFX, psChild.main.duration);
+                }
+                else
+                    Destroy(hitVFX, ps.main.duration);
+            }
+
+            StartCoroutine(DestroyParticle(0f));
         }
     }
     void OnCollisionEnter(Collision co)
@@ -174,62 +141,51 @@ public class ProjectileMoveScript : MonoBehaviour {
 
         co.gameObject.GetComponent<MonsterState>().TakeDamage(1);
 
-        if (!bounce)
+        if (co.gameObject.tag != "Bullet" && !collided)
         {
-            if (co.gameObject.tag != "Bullet" && !collided)
+            collided = true;
+
+            if (shotSFX != null && GetComponent<AudioSource>())
             {
-                collided = true;
-
-                if (shotSFX != null && GetComponent<AudioSource>())
-                {
-                    GetComponent<AudioSource>().PlayOneShot(hitSFX);
-                }
-
-                if (trails.Count > 0)
-                {
-                    for (int i = 0; i < trails.Count; i++)
-                    {
-                        trails[i].transform.parent = null;
-                        var ps = trails[i].GetComponent<ParticleSystem>();
-                        if (ps != null)
-                        {
-                            ps.Stop();
-                            Destroy(ps.gameObject, ps.main.duration + ps.main.startLifetime.constantMax);
-                        }
-                    }
-                }
-
-                speed = 0;
-                GetComponent<Rigidbody>().isKinematic = true;
-
-                ContactPoint contact = co.contacts[0];
-                Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
-                Vector3 pos = contact.point;
-
-                if (hitPrefab != null)
-                {
-                    var hitVFX = Instantiate(hitPrefab, pos, rot) as GameObject;
-
-                    var ps = hitVFX.GetComponent<ParticleSystem>();
-                    if (ps == null)
-                    {
-                        var psChild = hitVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
-                        Destroy(hitVFX, psChild.main.duration);
-                    }
-                    else
-                        Destroy(hitVFX, ps.main.duration);
-                }
-
-                StartCoroutine(DestroyParticle(0f));
+                GetComponent<AudioSource>().PlayOneShot(hitSFX);
             }
-        }
-        else
-        {
-            rb.useGravity = true;
-            rb.drag = 0.5f;
+
+            if (trails.Count > 0)
+            {
+                for (int i = 0; i < trails.Count; i++)
+                {
+                    trails[i].transform.parent = null;
+                    var ps = trails[i].GetComponent<ParticleSystem>();
+                    if (ps != null)
+                    {
+                        ps.Stop();
+                        Destroy(ps.gameObject, ps.main.duration + ps.main.startLifetime.constantMax);
+                    }
+                }
+            }
+
+            speed = 0;
+            GetComponent<Rigidbody>().isKinematic = true;
+
             ContactPoint contact = co.contacts[0];
-            rb.AddForce(Vector3.Reflect((contact.point - startPos).normalized, contact.normal) * bounceForce, ForceMode.Impulse);
-            Destroy(this);
+            Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
+            Vector3 pos = contact.point;
+
+            if (hitPrefab != null)
+            {
+                var hitVFX = Instantiate(hitPrefab, pos, rot) as GameObject;
+
+                var ps = hitVFX.GetComponent<ParticleSystem>();
+                if (ps == null)
+                {
+                    var psChild = hitVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
+                    Destroy(hitVFX, psChild.main.duration);
+                }
+                else
+                    Destroy(hitVFX, ps.main.duration);
+            }
+
+            StartCoroutine(DestroyParticle(0f));
         }
     }
 
@@ -258,7 +214,6 @@ public class ProjectileMoveScript : MonoBehaviour {
     public void SetTarget (GameObject trg, RotateToMouseScript rotateTo)
     {
         target = trg;
-        rotateToMouse = rotateTo;
     }
 
     public void SetTarget(GameObject trg)

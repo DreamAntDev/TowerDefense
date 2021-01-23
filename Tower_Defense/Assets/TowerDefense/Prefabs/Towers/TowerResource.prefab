@@ -50,3 +50,6 @@ MonoBehaviour:
   - code: Cannon2
     prefab: {fileID: 6166206602179769027, guid: 1ff0c1b4271ede840a88b148a217b049,
       type: 3}
+  - code: Human
+    prefab: {fileID: 7501924262423952262, guid: 61df35be18baeea469c584bc02f00072,
+      type: 3}
