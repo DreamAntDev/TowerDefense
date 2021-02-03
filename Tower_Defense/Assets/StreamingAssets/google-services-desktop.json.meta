@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: bfb3251060c1d6e4f92b0f7e23019854
+=======
+guid: cd84085b648a5c14ca8e44ea05d367d3
+>>>>>>> googleAuth
 TextScriptImporter:
   externalObjects: {}
   userData: 
