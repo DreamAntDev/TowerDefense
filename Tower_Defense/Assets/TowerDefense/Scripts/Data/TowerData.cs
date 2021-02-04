@@ -53,12 +53,13 @@ public static class TowerData
 
     public class Data
     {
-        public Data(int index,string prefabCode,bool isBaseTower, List<int> nextTower)
+        public Data(int index,string prefabCode,bool isBaseTower, List<int> nextTower, int cost)
         {
             this.index = index;
             this.prefabCode = prefabCode;
             this.isBaseTower = isBaseTower;
             this.nextTower = nextTower;
+            this.cost = cost;
         }
         public int index { get; private set; }
         public string prefabCode { get; private set; }
@@ -68,6 +69,7 @@ public static class TowerData
         {
             return nextTower.AsReadOnly();
         }
+        public int cost { get; private set; }
     }
 
     public static void Load()
@@ -111,7 +113,15 @@ public static class TowerData
                 }
             }
 
-            Data towerData = new Data(index, prefabCode, isBase, nextTower);
+            int cost = 0;
+            if (line.ContainsKey("Cost") == true)
+            {
+                if (string.IsNullOrEmpty(line["Cost"].ToString()) == false)
+                {
+                    cost = int.Parse(line["Cost"].ToString());
+                }
+            }
+            Data towerData = new Data(index, prefabCode, isBase, nextTower,cost);
             data.Add(index, towerData);
         }
     }
