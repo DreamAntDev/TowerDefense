@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class CameraController : MonoBehaviour
 {
@@ -34,5 +35,12 @@ public class CameraController : MonoBehaviour
         cam.transform.position = Camera.main.ScreenToWorldPoint(mousePosition);
     }
 
+
+    void OnSceneGUI()
+    {
+        var mousePosition = Event.current.mousePosition * EditorGUIUtility.pixelsPerPoint;
+        mousePosition.y = Camera.current.pixelHeight - mousePosition.y;
+        Ray ray = Camera.current.ScreenPointToRay(mousePosition);
+    }
     
 }

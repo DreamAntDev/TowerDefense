@@ -1,6 +1,7 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class PlayerControlManager : SingletonBehaviour<PlayerControlManager>
 {
@@ -11,7 +12,19 @@ public class PlayerControlManager : SingletonBehaviour<PlayerControlManager>
         CreateTower,
         UpgradeTower,
     }
+    
     public PlayerControlState.IPlayerControlState state { private set; get; }
+
+
+    private Vector3[] mapVector = {new Vector3(4.3f, 22f, -16.5f), new Vector3(24.3f, 22f, -16.5f),
+                                    new Vector3(24.3f, 22f, -37f), new Vector3(4.3f, 22f, -37f)};
+
+    private Vector2 touchDownPosition = Vector2.zero;
+    private Vector2 touchUpPosition = Vector2.zero;
+    private float dragX = 0f;
+    private float dragY = 0f;
+
+    private int mapIdx = 0;
 
     private new void Awake()
     {
@@ -28,6 +41,7 @@ public class PlayerControlManager : SingletonBehaviour<PlayerControlManager>
     void Update()
     {
         state.Update();
+        OnCameraPoistion();
     }
 
     public void SetState(State state)
@@ -52,5 +66,119 @@ public class PlayerControlManager : SingletonBehaviour<PlayerControlManager>
                 break;
         }
         this.state.Start();
+    }
+
+    public void OnCameraPoistion(){
+        int gameLevel = GameManager.Instance.GetLevel();
+
+        //추가 맵 전까지 변경 불가 
+        /*if(gameLevel <= 5){
+            return;
+        }*/
+        
+
+    #if UNITY_EDITOR
+        if(Input.GetMouseButtonDown(0)){
+            touchDownPosition = Input.mousePosition;
+
+            Debug.Log("DOWN ] = " + touchDownPosition.x + " : " + touchDownPosition.y);    
+        }
+        if(Input.GetMouseButtonUp(0)){
+            touchUpPosition = Input.mousePosition;
+
+            Debug.Log("UP ] = " + touchUpPosition.x + " : " + touchUpPosition.y);
+
+           // dragPosition = new Vector2(touchUpPosition.x - touchDownPosition.x, touchUpPosition.y - touchDownPosition.y);
+            dragX = touchUpPosition.x - touchDownPosition.x;
+            dragY = touchUpPosition.y - touchDownPosition.y;
+            Debug.Log("DRAG ] = " + dragX + " : " + dragY);
+
+            OnDragMap(dragX, dragY);
+            
+        }
+    #else
+        if(Input.touchCount > 0){
+            touchDownPosition = Input.GetTouchDown(0).position;
+        }
+        if(Input.touchCount > 0){
+            touchUpPosition = Input.GetTouchUp(0).position;
+            
+            Debug.Log("UP ] = " + touchUpPosition.x + " : " + touchUpPosition.y);
+
+            dragX = touchUpPosition.x - touchDownPosition.x;
+            dragZ = touchUpPosition.y - touchDownPosition.y;
+            Debug.Log("DRAG ] = " + dragX + " : " + dragY);
+
+             OnDragMap(dragX, dragY);
+        }
+    #endif
+        
+    }
+
+    public void OnDragMap(float dragX, float dragY){
+        bool isDragX = Mathf.Abs(dragX) > 300;
+        bool isDragY = Mathf.Abs(dragY) > 200;
+
+        if(isDragX){
+            if(isDragY){
+                return;
+            }else{
+                //X축 이동
+                if(dragX > 0){
+                    //<----
+                     switch(mapIdx){
+                        case 1:
+                            MoveCamera(0);
+                            break;
+                        case 2:
+                            MoveCamera(3);
+                            break;
+                    }
+                    
+                }else{
+                    //--->
+                   switch(mapIdx){
+                        case 0:
+                            MoveCamera(1);
+                            break;
+                        case 3:
+                            MoveCamera(2);
+                            break;
+                    }
+                }
+            }
+        }else{
+            if(isDragY){
+                //Y축 이동
+                if(dragY > 0){
+                    //
+                    switch(mapIdx){
+                        case 0:
+                            MoveCamera(3);
+                            break;
+                        case 1:
+                            MoveCamera(2);
+                            break;
+                    }
+                }else{
+                    switch(mapIdx){
+                        case 2:
+                            MoveCamera(1);
+                            break;
+                        case 3:
+                            MoveCamera(0);
+                            break;
+                    }
+                }
+            }else{
+                //드래그 미달
+                return;
+            }
+        }
+    }
+
+    private void MoveCamera(int idx){
+        this.transform.position = mapVector[idx];
+        mapIdx = idx;
     }
 }

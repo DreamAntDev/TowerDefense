@@ -69,6 +69,10 @@ public class GameManager : SingletonBehaviour<GameManager>
         isSkip = true;
     }
 
+    public int GetLevel(){
+        return level;
+    }
+
     IEnumerator StartSpawn(){ 
         for(;;){
             level++;
