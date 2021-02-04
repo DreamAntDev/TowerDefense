@@ -53,3 +53,6 @@ MonoBehaviour:
   - code: Human
     prefab: {fileID: 7501924262423952262, guid: 61df35be18baeea469c584bc02f00072,
       type: 3}
+  - code: test
+    prefab: {fileID: 7501924262423952262, guid: 61df35be18baeea469c584bc02f00072,
+      type: 3}
