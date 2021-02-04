@@ -1769,10 +1769,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3108533741564394808}
     m_Modifications:
+    - target: {fileID: 8993923049451682236, guid: 9219016cedcc7924aa42e7fc91ae50f3,
+        type: 3}
+      propertyPath: m_Text
+      value: "\uB300\uAE30\uC0C1\uD0DC"
+      objectReference: {fileID: 0}
     - target: {fileID: 9026575801991431218, guid: 9219016cedcc7924aa42e7fc91ae50f3,
         type: 3}
       propertyPath: m_Name
       value: LevelTitle
+      objectReference: {fileID: 0}
+    - target: {fileID: 9026575801991431218, guid: 9219016cedcc7924aa42e7fc91ae50f3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9104099645786034558, guid: 9219016cedcc7924aa42e7fc91ae50f3,
         type: 3}

@@ -27,6 +27,8 @@ public class GameManager : SingletonBehaviour<GameManager>
 
     private int level = 0;
 
+    private bool isStart = false;
+
     private new void Awake() {
         base.Awake();
         if(monsterManager == null){
@@ -62,7 +64,10 @@ public class GameManager : SingletonBehaviour<GameManager>
     }
 
     public void GameStart(){
-        StartCoroutine(StartSpawn());
+        if(!isStart){
+            isStart = true;
+            StartCoroutine(StartSpawn());
+        }
     }
 
     public void ReadySkip(){
@@ -94,7 +99,9 @@ public class GameManager : SingletonBehaviour<GameManager>
                 }
             }
 
-            if(level % 5 == 1){
+            if(level > 5 && level % 5 == 1){
+                Debug.Log("Add Map");
+                mainUIEvent.ViewTitle("새로운 환경이 추가됩니다.");
                 mapManager.AddMap(level);
             }
         }

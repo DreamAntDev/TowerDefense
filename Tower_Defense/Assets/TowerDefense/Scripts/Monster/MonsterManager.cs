@@ -86,6 +86,7 @@ namespace Monster{
                 PathFollower pf = monsterObject.AddComponent<PathFollower>();
                 pf.endOfPathInstruction = EndOfPathInstruction.Stop;
                 pf.pathCreator = pathCreator;
+                pf.speed = speed;
 
                 TypeMonster monsterData = monsterObject.AddComponent<TypeMonster>();
                 monsterData.SetMonsterInfo(mf);

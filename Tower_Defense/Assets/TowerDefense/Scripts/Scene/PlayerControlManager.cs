@@ -69,8 +69,6 @@ public class PlayerControlManager : SingletonBehaviour<PlayerControlManager>
     }
 
     public void OnCameraPoistion(){
-        int gameLevel = GameManager.Instance.GetLevel();
-
         //추가 맵 전까지 변경 불가 
         /*if(gameLevel <= 5){
             return;
@@ -109,6 +107,7 @@ public class PlayerControlManager : SingletonBehaviour<PlayerControlManager>
     }
 
     public void OnDragMap(float dragX, float dragY){
+        int gameLevel = GameManager.Instance.GetLevel();
         bool isDragX = Mathf.Abs(dragX) > 300;
         bool isDragY = Mathf.Abs(dragY) > 200;
 
@@ -124,7 +123,9 @@ public class PlayerControlManager : SingletonBehaviour<PlayerControlManager>
                             MoveCamera(0);
                             break;
                         case 2:
-                            MoveCamera(3);
+                            if(gameLevel > 15){
+                                MoveCamera(3);
+                            }
                             break;
                     }
                     
@@ -132,7 +133,9 @@ public class PlayerControlManager : SingletonBehaviour<PlayerControlManager>
                     //--->
                    switch(mapIdx){
                         case 0:
-                            MoveCamera(1);
+                        if(gameLevel > 5){
+                                MoveCamera(1);
+                            }
                             break;
                         case 3:
                             MoveCamera(2);
@@ -147,10 +150,14 @@ public class PlayerControlManager : SingletonBehaviour<PlayerControlManager>
                     //
                     switch(mapIdx){
                         case 0:
-                            MoveCamera(3);
+                            if(gameLevel > 20){
+                                MoveCamera(3);
+                            }
                             break;
                         case 1:
-                            MoveCamera(2);
+                            if(gameLevel > 10){
+                                MoveCamera(2);
+                            }
                             break;
                     }
                 }else{

@@ -37,7 +37,10 @@ public class MainUI : MonoBehaviour
     public void SetTitleText(string text){
         levelTitleText.text = text;
     }
-
+     public void ViewTitle(string s){
+        levelText.text = s;
+        ViewTitle();
+    }
     public void ViewTitle(){
         if(!levelTitle.activeSelf){
             levelTitle.SetActive(true);
@@ -51,6 +54,6 @@ public class MainUI : MonoBehaviour
     }
 
     public void OnSkipClickListener(UnityAction call){
-        startButton.onClick.AddListener(call);
+        skipButton.onClick.AddListener(call);
     }
 }
