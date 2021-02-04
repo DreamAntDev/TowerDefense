@@ -1,13 +1,15 @@
-namespace TowerDefenseAuth
-{
+
     using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.Networking;
     using System.Text;
     using UnityEngine.SceneManagement;
+    
+    namespace TowerDefenseAuth
+{
     public class auth : MonoBehaviour{
-
+/*
         public int GameID;
         public string PlatformID;
         public string email;
@@ -64,7 +66,7 @@ namespace TowerDefenseAuth
                 Debug.Log(webRequest.downloadHandler.text);
                 Debug.Log("login complete! ");
             }
-        }
+        }*/
     }
 
 }

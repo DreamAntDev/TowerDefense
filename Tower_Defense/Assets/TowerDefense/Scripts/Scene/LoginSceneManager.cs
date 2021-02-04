@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 using TowerDefenseAuth;
 using UnityEngine.Networking;
 using System.Text;
+
 public class LoginSceneManager : MonoBehaviour
-{
+{/*
         public int GameID;
         public string PlatformID;
         public string email;
@@ -80,5 +81,5 @@ public class LoginSceneManager : MonoBehaviour
                 Debug.Log(webRequest.downloadHandler.text);
                 Debug.Log("login complete! ");
             }
-        }
+        }*/
 }
