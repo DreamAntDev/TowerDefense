@@ -80,15 +80,10 @@ public class PlayerControlManager : SingletonBehaviour<PlayerControlManager>
     #if UNITY_EDITOR
         if(Input.GetMouseButtonDown(0)){
             touchDownPosition = Input.mousePosition;
-
-            Debug.Log("DOWN ] = " + touchDownPosition.x + " : " + touchDownPosition.y);    
         }
         if(Input.GetMouseButtonUp(0)){
             touchUpPosition = Input.mousePosition;
 
-            Debug.Log("UP ] = " + touchUpPosition.x + " : " + touchUpPosition.y);
-
-           // dragPosition = new Vector2(touchUpPosition.x - touchDownPosition.x, touchUpPosition.y - touchDownPosition.y);
             dragX = touchUpPosition.x - touchDownPosition.x;
             dragY = touchUpPosition.y - touchDownPosition.y;
             Debug.Log("DRAG ] = " + dragX + " : " + dragY);
@@ -102,8 +97,6 @@ public class PlayerControlManager : SingletonBehaviour<PlayerControlManager>
         }
         if(Input.touchCount > 0){
             touchUpPosition = Input.GetTouchUp(0).position;
-            
-            Debug.Log("UP ] = " + touchUpPosition.x + " : " + touchUpPosition.y);
 
             dragX = touchUpPosition.x - touchDownPosition.x;
             dragZ = touchUpPosition.y - touchDownPosition.y;
