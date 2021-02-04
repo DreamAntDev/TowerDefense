@@ -39,6 +39,9 @@ public class MainUI : MonoBehaviour
     }
 
     public void ViewTitle(){
+        if(!levelTitle.activeSelf){
+            levelTitle.SetActive(true);
+        }
         levelTitleAnimation.SetTrigger("New");
         levelTitleAnimation.SetTrigger("Event");
     }

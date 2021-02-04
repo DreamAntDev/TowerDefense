@@ -76,6 +76,7 @@ public class GameManager : SingletonBehaviour<GameManager>
     IEnumerator StartSpawn(){ 
         for(;;){
             level++;
+            
             mainUIEvent.SetLevelText(level.ToString());
             mainUIEvent.SetTitleText("LEVEL : " + level.ToString());
             monsterManager.MonsterSpawn(level);
@@ -92,7 +93,10 @@ public class GameManager : SingletonBehaviour<GameManager>
                     break;
                 }
             }
-            mapManager.AddMap(level);
+
+            if(level % 5 == 1){
+                mapManager.AddMap(level);
+            }
         }
     }
       

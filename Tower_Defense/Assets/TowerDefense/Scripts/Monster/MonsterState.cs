@@ -15,6 +15,7 @@ public class MonsterState : MonoBehaviour, IDamagable
     private bool isDeath = false;
     public float health { get ; set ; }
     
+    public bool isBoss = false;
     private GameObject gameUI;
 
     private void Start() {
@@ -37,6 +38,10 @@ public class MonsterState : MonoBehaviour, IDamagable
         if(health <= 0 && !isDeath){
             isDeath = true;
             Death();
+        }
+
+        if(isBoss && health <= health / 2){
+            monsterAnimationManager.Skill();
         }
     }
 
