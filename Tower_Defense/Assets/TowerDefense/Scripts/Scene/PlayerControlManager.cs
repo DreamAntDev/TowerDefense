@@ -44,7 +44,7 @@ public class PlayerControlManager : SingletonBehaviour<PlayerControlManager>
         OnCameraPoistion();
     }
 
-    public void SetState(State state)
+    public PlayerControlState.IPlayerControlState SetState(State state)
     {
         this.state.End();
         switch (state)
@@ -66,6 +66,7 @@ public class PlayerControlManager : SingletonBehaviour<PlayerControlManager>
                 break;
         }
         this.state.Start();
+        return this.state;
     }
 
     public void OnCameraPoistion(){

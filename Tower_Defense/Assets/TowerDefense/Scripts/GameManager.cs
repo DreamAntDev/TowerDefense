@@ -106,5 +106,27 @@ public class GameManager : SingletonBehaviour<GameManager>
             }
         }
     }
-      
+    
+    public void CreateTower(int index, Vector3 pos)
+    {
+        var data = TowerData.GetData(index);
+        GameObject prefab = TowerResource.Instance.GetTowerResource(data.prefabCode);
+        if (prefab != null)
+        {
+            var obj = GameObject.Instantiate(prefab, pos, new Quaternion());
+            var towerObj = obj.GetComponent<Tower>();
+            if (towerObj == null)
+                Debug.LogError("ErrorSpawn!");
+            else
+            {
+                towerObj.towerIndex = index;
+            }
+        }
+    }
+    public void UpgradeTower(GameObject beforeObj,int upgradeIndex)
+    {
+        GameManager.Instance.CreateTower(upgradeIndex, beforeObj.transform.position);
+        GameObject.Destroy(beforeObj);
+        PlayerControlManager.Instance.SetState(PlayerControlManager.State.Play);
+    }
 }

@@ -6,7 +6,6 @@ namespace PlayerControlState
 {
     public class Play : IPlayerControlState
     {
-        public GameObject towerObject { get; private set; }
         public void End()
         {
 
@@ -58,7 +57,8 @@ namespace PlayerControlState
                 var tower = hit.collider.gameObject.GetComponent<Tower>();
                 if (tower != null)
                 {
-                    this.towerObject = hit.collider.gameObject;
+                    PlayerControlState.UpgradeTower state = PlayerControlManager.Instance.SetState(PlayerControlManager.State.UpgradeTower) as PlayerControlState.UpgradeTower;
+                    state.towerObject = hit.collider.gameObject;
                     var go = UILoader.Instance.Load("TowerUpgradePopup");
                     go.GetComponent<TowerUpgradePopup>().SetList(tower.towerIndex);
                 }

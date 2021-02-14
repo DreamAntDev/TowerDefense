@@ -85,10 +85,13 @@ public class ProjectileMoveScript : MonoBehaviour
         if (obj.CompareTag("Monster") == false)
             return;
 
-        obj.GetComponent<MonsterState>().TakeDamage(1);
-
         if (obj.tag != "Bullet" && !collided)
         {
+            var damager = this.gameObject.GetComponent<IDamager>();
+            if(damager != null)
+            {
+                damager.OnHit(obj);
+            }
             collided = true;
 
             if (shotSFX != null && GetComponent<AudioSource>())
@@ -134,60 +137,60 @@ public class ProjectileMoveScript : MonoBehaviour
             StartCoroutine(DestroyParticle(0f));
         }
     }
-    void OnCollisionEnter(Collision co)
-    {
-        if (co.gameObject.CompareTag("Monster") == false)
-            return;
+    //void OnCollisionEnter(Collision co)
+    //{
+    //    if (co.gameObject.CompareTag("Monster") == false)
+    //        return;
 
-        co.gameObject.GetComponent<MonsterState>().TakeDamage(1);
+    //    co.gameObject.GetComponent<MonsterState>().TakeDamage(1);
 
-        if (co.gameObject.tag != "Bullet" && !collided)
-        {
-            collided = true;
+    //    if (co.gameObject.tag != "Bullet" && !collided)
+    //    {
+    //        collided = true;
 
-            if (shotSFX != null && GetComponent<AudioSource>())
-            {
-                GetComponent<AudioSource>().PlayOneShot(hitSFX);
-            }
+    //        if (shotSFX != null && GetComponent<AudioSource>())
+    //        {
+    //            GetComponent<AudioSource>().PlayOneShot(hitSFX);
+    //        }
 
-            if (trails.Count > 0)
-            {
-                for (int i = 0; i < trails.Count; i++)
-                {
-                    trails[i].transform.parent = null;
-                    var ps = trails[i].GetComponent<ParticleSystem>();
-                    if (ps != null)
-                    {
-                        ps.Stop();
-                        Destroy(ps.gameObject, ps.main.duration + ps.main.startLifetime.constantMax);
-                    }
-                }
-            }
+    //        if (trails.Count > 0)
+    //        {
+    //            for (int i = 0; i < trails.Count; i++)
+    //            {
+    //                trails[i].transform.parent = null;
+    //                var ps = trails[i].GetComponent<ParticleSystem>();
+    //                if (ps != null)
+    //                {
+    //                    ps.Stop();
+    //                    Destroy(ps.gameObject, ps.main.duration + ps.main.startLifetime.constantMax);
+    //                }
+    //            }
+    //        }
 
-            speed = 0;
-            GetComponent<Rigidbody>().isKinematic = true;
+    //        speed = 0;
+    //        GetComponent<Rigidbody>().isKinematic = true;
 
-            ContactPoint contact = co.contacts[0];
-            Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
-            Vector3 pos = contact.point;
+    //        ContactPoint contact = co.contacts[0];
+    //        Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
+    //        Vector3 pos = contact.point;
 
-            if (hitPrefab != null)
-            {
-                var hitVFX = Instantiate(hitPrefab, pos, rot) as GameObject;
+    //        if (hitPrefab != null)
+    //        {
+    //            var hitVFX = Instantiate(hitPrefab, pos, rot) as GameObject;
 
-                var ps = hitVFX.GetComponent<ParticleSystem>();
-                if (ps == null)
-                {
-                    var psChild = hitVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
-                    Destroy(hitVFX, psChild.main.duration);
-                }
-                else
-                    Destroy(hitVFX, ps.main.duration);
-            }
+    //            var ps = hitVFX.GetComponent<ParticleSystem>();
+    //            if (ps == null)
+    //            {
+    //                var psChild = hitVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
+    //                Destroy(hitVFX, psChild.main.duration);
+    //            }
+    //            else
+    //                Destroy(hitVFX, ps.main.duration);
+    //        }
 
-            StartCoroutine(DestroyParticle(0f));
-        }
-    }
+    //        StartCoroutine(DestroyParticle(0f));
+    //    }
+    //}
 
 	public IEnumerator DestroyParticle (float waitTime) {
 

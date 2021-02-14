@@ -38,21 +38,10 @@ namespace PlayerControlState
                 {
                     Vector3 spawnPos;
                     grid.GetClosetCellPosition(hit.point, out spawnPos);
-                    var data = TowerData.GetData(createTowerIndex);
-                    GameObject prefab = TowerResource.Instance.GetTowerResource(data.prefabCode);
-                    if (prefab != null)
-                    {
-                        var obj = GameObject.Instantiate(prefab, spawnPos, new Quaternion());
-                        var towerObj = obj.GetComponent<Tower>();
-                        if (towerObj == null)
-                            Debug.LogError("ErrorSpawn!");
-                        else
-                            towerObj.towerIndex = createTowerIndex;
-
-                        GameManager.Instance.SetVisibleGrid(false);
-                        PlayerControlManager.Instance.SetState(PlayerControlManager.State.Play);
-                    }
+                    GameManager.Instance.CreateTower(createTowerIndex, spawnPos);
                 }
+                GameManager.Instance.SetVisibleGrid(false);
+                PlayerControlManager.Instance.SetState(PlayerControlManager.State.Play);
             }
         }
 

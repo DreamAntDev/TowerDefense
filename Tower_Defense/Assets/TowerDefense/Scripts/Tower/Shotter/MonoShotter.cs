@@ -19,6 +19,7 @@ public class MonoShotter : Shotter
     {
         //CreateBullet
         var vfx = Instantiate(this.bullet, shotPos.position, Quaternion.identity);
+        vfx.AddComponent<DirectAttack>();
         vfx.GetComponent<ProjectileMoveScript>().SetTarget(target);
     }
 }

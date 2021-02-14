@@ -18,16 +18,9 @@ public class TowerUpgradeItem : MonoBehaviour
     }
     private void SelectItem(int index)
     {
+        var state = PlayerControlManager.Instance.state as PlayerControlState.UpgradeTower;
+        GameManager.Instance.UpgradeTower(state.towerObject, index);
+        PlayerControlManager.Instance.SetState(PlayerControlManager.State.Play);
         UILoader.Instance.Unload("TowerUpgradePopup");
-        var state = PlayerControlManager.Instance.state as PlayerControlState.Play;
-        GameObject selectedTowerObject = state.towerObject;
-        Vector3 pos = selectedTowerObject.transform.position;
-        if (selectedTowerObject != null)
-        {
-            GameObject.Destroy(selectedTowerObject);
-            PlayerControlManager.Instance.SetState(PlayerControlManager.State.UpgradeTower);
-            var nextState = PlayerControlManager.Instance.state as PlayerControlState.UpgradeTower;
-            nextState.TowerUpgrade(index,pos);
-        }
     }
 }

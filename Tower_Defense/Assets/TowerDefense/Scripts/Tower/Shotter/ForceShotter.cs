@@ -20,6 +20,7 @@ public class ForceShotter : Shotter
     {
         //CreateBullet
         var vfx = Instantiate(this.bullet, shotPos.position, Quaternion.identity);
+        vfx.AddComponent<DirectAttack>();
         vfx.GetComponent<Rigidbody>().AddForce((target.transform.position - this.shotPos.transform.position).normalized * this.forceValue, ForceMode.Impulse);
     }
 
