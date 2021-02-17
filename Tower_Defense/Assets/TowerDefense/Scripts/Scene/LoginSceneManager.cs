@@ -24,26 +24,36 @@ public class LoginSceneManager : MonoBehaviour
     void Start()
     {       
          firbaseAuth = Firebase.Auth.FirebaseAuth.DefaultInstance;
-    }
+         // TODO GameID를 이미 가지고 있는 경우 수행하지 않도록
+         login(0);
+    } 
+    // 플랫폼별 로그인
     public void login (int type) {
-        GameObject ObjectEmailInputField = GameObject.Find("EmailInputField");
-        InputField EmailInputField = ObjectEmailInputField.GetComponent<InputField>();
-        GameObject ObjectPasswordInputField = GameObject.Find("PasswordInputField");
-        InputField PasswordInputField = ObjectPasswordInputField.GetComponent<InputField>();
-        email = EmailInputField.text;
-        password = PasswordInputField.text;
         switch (type) {
             case 0:
-                SignUp(email, password);
+            // guest
+                StartCoroutine(GameServerLogin(SystemInfo.deviceUniqueIdentifier, "guest"));
                 break;
             case 1:
-                StartCoroutine(GameServerLogin());
-                if(GameID != 0) {
-                    // gameserver login sucess go to game or menu
-                    SceneManager.LoadSceneAsync("GameScene");   
-                } else {
-                    Debug.Log("do not have gameid");
-                }
+            // Google
+            // TODO guest -> google 연동으로 user 정보 변환 api 
+                GameObject ObjectEmailInputField = GameObject.Find("EmailInputField");
+                InputField EmailInputField = ObjectEmailInputField.GetComponent<InputField>();
+                GameObject ObjectPasswordInputField = GameObject.Find("PasswordInputField");
+                InputField PasswordInputField = ObjectPasswordInputField.GetComponent<InputField>();
+                email = EmailInputField.text;
+                password = PasswordInputField.text;
+                SignUp(email, password);
+                break;
+        }
+    }
+    public void ChangeScene(int type) {
+        if(GameID == 0) {
+            Debug.LogError("Do not have gameId");
+        }
+        switch(type) {
+            case 0:
+                SceneManager.LoadSceneAsync("GameScene");   
                 break;
         }
     }
@@ -82,12 +92,11 @@ public class LoginSceneManager : MonoBehaviour
             });
         }
         
-    IEnumerator GameServerLogin() {
+    IEnumerator GameServerLogin(string platform_id, string platform) {
             Debug.Log("call get GameId");
-            Debug.Log(FirebaseUser.UserId);
             User user = new User();
-            user.platform_id = FirebaseUser.UserId;
-            user.platform = "google";
+            user.platform_id = platform_id;
+            user.platform = platform;
             user.device_id = SystemInfo.deviceUniqueIdentifier;
             string data = JsonUtility.ToJson(user);
             Debug.Log(data);
@@ -103,5 +112,6 @@ public class LoginSceneManager : MonoBehaviour
             user = JsonUtility.FromJson<User>(webRequest.downloadHandler.text);
             GameID = user.id;
             Debug.Log(GameID);
+            // TODO 획득한 GameID 를 앱에 저장
         }
 }
