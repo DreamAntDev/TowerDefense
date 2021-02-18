@@ -41,6 +41,7 @@ public class PlayerControlManager : SingletonBehaviour<PlayerControlManager>
     void Update()
     {
         state.Update();
+        
         OnCameraPoistion();
     }
 

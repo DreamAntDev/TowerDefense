@@ -47,6 +47,8 @@ public class GameManager : SingletonBehaviour<GameManager>
             mainUIEvent.OnStartClickListener(GameStart);
             mainUIEvent.OnSkipClickListener(ReadySkip);
         }
+
+
     }
 
     public void MonsterCoin(int c){

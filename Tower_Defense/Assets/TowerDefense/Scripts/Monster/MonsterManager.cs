@@ -32,7 +32,6 @@ namespace Monster{
         private void Start() {
             //List Add Fool
             MonsterFoolReady();
-            
         }
 
         public void MonsterFoolReady(){
