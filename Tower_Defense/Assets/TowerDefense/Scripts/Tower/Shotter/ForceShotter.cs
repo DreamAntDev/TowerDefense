@@ -18,9 +18,8 @@ public class ForceShotter : Shotter
     }
     public override void Shot(GameObject target)
     {
-        //CreateBullet
-        var vfx = Instantiate(this.bullet, shotPos.position, Quaternion.identity);
-        vfx.AddComponent<DirectAttack>();
+        var parent = this.GetComponentInParent<Tower>();
+        var vfx = Common.CreateProjectile(this.bullet, shotPos.position, parent.towerIndex);
         vfx.GetComponent<Rigidbody>().AddForce((target.transform.position - this.shotPos.transform.position).normalized * this.forceValue, ForceMode.Impulse);
     }
 

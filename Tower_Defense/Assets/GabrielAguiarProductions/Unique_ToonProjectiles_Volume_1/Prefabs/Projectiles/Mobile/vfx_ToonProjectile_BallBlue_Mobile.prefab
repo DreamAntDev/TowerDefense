@@ -19118,7 +19118,7 @@ GameObject:
   - component: {fileID: 54189310121592036}
   m_Layer: 0
   m_Name: vfx_ToonProjectile_BallBlue_Mobile
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19165,7 +19165,6 @@ MonoBehaviour:
   - {fileID: 1890649862769804}
   - {fileID: 1210068337201960}
   - {fileID: 1615150988019640}
-  mode: 1
   forceMagnitude: 0.5
 --- !u!65 &65132404271668706
 BoxCollider:

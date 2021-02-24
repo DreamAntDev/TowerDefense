@@ -1,4 +1,4 @@
-Index,Prefab,BaseTower,NextTower,Cost
-1,Human,True,"2,3",1
-2,Cannon,,,2
-3,Cannon2,,,2
+Index,Prefab,BaseTower,NextTower,Cost,Damage,ProjectileType,Range
+1,Human,True,"2,3",1,1,Splash,5.0
+2,Cannon,,,2,2,Direct,
+3,Cannon2,,,2,3,Splash,50.0

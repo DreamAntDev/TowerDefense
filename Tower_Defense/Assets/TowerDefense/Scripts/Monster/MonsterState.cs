@@ -34,7 +34,7 @@ public class MonsterState : MonoBehaviour, IDamagable
 
     public void TakeDamage(float damage){
         health -= damage;
-        
+        Debug.Log(string.Format("{0}, {1}", this.health, damage));
         if(health <= 0 && !isDeath){
             isDeath = true;
             Death();

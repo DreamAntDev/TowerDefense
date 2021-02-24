@@ -30,11 +30,12 @@ public class Shotter : MonoBehaviour
         Ray ray = new Ray(this.shotPos.transform.position, (target.transform.position + center) - this.shotPos.transform.position);
         Debug.DrawRay(this.shotPos.transform.position, (target.transform.position+center) - this.shotPos.transform.position,Color.red,1.0f);
         RaycastHit[] hits = Physics.RaycastAll(ray);
-        foreach(var hit in hits)
+        var parent = this.GetComponentInParent<Tower>();
+        foreach (var hit in hits)
         {
             if (hit.transform.CompareTag("Monster") == true)
             {
-                var vfx = Instantiate(this.bullet, shotPos.position, Quaternion.identity);
+                var vfx = Common.CreateProjectile(this.bullet, shotPos.position, parent.towerIndex);
                 vfx.GetComponent<ProjectileMoveScript>().SetTarget(target);
                 //Instantiate(this.bullet, hit.point, Quaternion.LookRotation((target.transform.position+center) - this.shotPos.transform.position));
                 break;

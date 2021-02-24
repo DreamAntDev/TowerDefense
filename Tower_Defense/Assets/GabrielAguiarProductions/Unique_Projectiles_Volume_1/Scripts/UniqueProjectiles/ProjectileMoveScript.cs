@@ -82,60 +82,60 @@ public class ProjectileMoveScript : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         GameObject obj = other.gameObject;
-        if (obj.CompareTag("Monster") == false)
+        if (obj.CompareTag("Monster") == false &&
+            obj.CompareTag("Bullet") == false &&
+            obj.CompareTag("BulletCollideObject") == false &&
+            collided == false)
             return;
 
-        if (obj.tag != "Bullet" && !collided)
+        collided = true;
+
+        if (shotSFX != null && GetComponent<AudioSource>())
         {
-            var damager = this.gameObject.GetComponent<IDamager>();
-            if(damager != null)
-            {
-                damager.OnHit(obj);
-            }
-            collided = true;
-
-            if (shotSFX != null && GetComponent<AudioSource>())
-            {
-                GetComponent<AudioSource>().PlayOneShot(hitSFX);
-            }
-
-            if (trails.Count > 0)
-            {
-                for (int i = 0; i < trails.Count; i++)
-                {
-                    trails[i].transform.parent = null;
-                    var ps = trails[i].GetComponent<ParticleSystem>();
-                    if (ps != null)
-                    {
-                        ps.Stop();
-                        Destroy(ps.gameObject, ps.main.duration + ps.main.startLifetime.constantMax);
-                    }
-                }
-            }
-
-            speed = 0;
-            GetComponent<Rigidbody>().isKinematic = true;
-
-            Vector3 contact = other.ClosestPointOnBounds(this.transform.position);
-            Quaternion rot = this.transform.rotation;
-            Vector3 pos = contact;
-
-            if (hitPrefab != null)
-            {
-                var hitVFX = Instantiate(hitPrefab, pos, rot) as GameObject;
-
-                var ps = hitVFX.GetComponent<ParticleSystem>();
-                if (ps == null)
-                {
-                    var psChild = hitVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
-                    Destroy(hitVFX, psChild.main.duration);
-                }
-                else
-                    Destroy(hitVFX, ps.main.duration);
-            }
-
-            StartCoroutine(DestroyParticle(0f));
+            GetComponent<AudioSource>().PlayOneShot(hitSFX);
         }
+
+        if (trails.Count > 0)
+        {
+            for (int i = 0; i < trails.Count; i++)
+            {
+                trails[i].transform.parent = null;
+                var ps = trails[i].GetComponent<ParticleSystem>();
+                if (ps != null)
+                {
+                    ps.Stop();
+                    Destroy(ps.gameObject, ps.main.duration + ps.main.startLifetime.constantMax);
+                }
+            }
+        }
+
+        speed = 0;
+        GetComponent<Rigidbody>().isKinematic = true;
+
+        Vector3 contact = other.ClosestPointOnBounds(this.transform.position);
+        Quaternion rot = this.transform.rotation;
+        Vector3 pos = contact;
+        var damager = this.gameObject.GetComponent<IDamager>();
+        if (damager != null)
+        {
+            Debug.Log(this.gameObject.name);
+            damager.OnHit(obj,pos);
+        }
+        if (hitPrefab != null)
+        {
+            var hitVFX = Instantiate(hitPrefab, pos, rot) as GameObject;
+
+            var ps = hitVFX.GetComponent<ParticleSystem>();
+            if (ps == null)
+            {
+                var psChild = hitVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
+                Destroy(hitVFX, psChild.main.duration);
+            }
+            else
+                Destroy(hitVFX, ps.main.duration);
+        }
+
+        StartCoroutine(DestroyParticle(0f));
     }
     //void OnCollisionEnter(Collision co)
     //{

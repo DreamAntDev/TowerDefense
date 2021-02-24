@@ -53,13 +53,59 @@ public static class TowerData
 
     public class Data
     {
-        public Data(int index,string prefabCode,bool isBaseTower, List<int> nextTower, int cost)
+        public Data(Dictionary<string,object> line)
         {
-            this.index = index;
-            this.prefabCode = prefabCode;
-            this.isBaseTower = isBaseTower;
-            this.nextTower = nextTower;
-            this.cost = cost;
+            this.index = int.Parse(line["Index"].ToString());
+            this.prefabCode = (line["Prefab"].ToString());
+
+            if (string.IsNullOrEmpty(line["BaseTower"].ToString()) == true)
+            {
+                this.isBaseTower = false; // 기본값
+            }
+            else
+            {
+                this.isBaseTower = bool.Parse(line["BaseTower"].ToString());
+            }
+            
+            this.nextTower = new List<int>();
+            if (string.IsNullOrEmpty(line["NextTower"].ToString()) == false)
+            {
+                var nextTowerList = (line["NextTower"].ToString()).Split(',');
+                foreach (var str in nextTowerList)
+                {
+                    nextTower.Add(int.Parse(str));
+                }
+            }
+
+            this.cost = 0;
+            if (string.IsNullOrEmpty(line["Cost"].ToString()) == false)
+            {
+                this.cost = int.Parse(line["Cost"].ToString());
+            }
+
+            this.damage = 0;
+            if(string.IsNullOrEmpty(line["Damage"].ToString())==false)
+            {
+                this.damage = int.Parse(line["Damage"].ToString());
+            }
+
+            this.projectileType = ProjectileType.None;
+            switch (line["ProjectileType"].ToString())
+            {
+                case "Direct":
+                    this.projectileType = ProjectileType.Direct;
+                    break;
+                case "Splash":
+                    this.projectileType = ProjectileType.Splash;
+                    break;
+                default:
+                    this.projectileType = ProjectileType.None;
+                    break;
+            }
+            if (string.IsNullOrEmpty(line["Range"].ToString()) == false)
+            {
+                this.range = float.Parse(line["Range"].ToString());
+            }
         }
         public int index { get; private set; }
         public string prefabCode { get; private set; }
@@ -70,6 +116,9 @@ public static class TowerData
             return nextTower.AsReadOnly();
         }
         public int cost { get; private set; }
+        public int damage { get; private set; }
+        public ProjectileType projectileType { get; private set; }
+        public float range { get; private set; }
     }
 
     public static void Load()
@@ -78,51 +127,8 @@ public static class TowerData
         var list = CSVReader.Read("Tower");
         foreach(var line in list)
         {
-            int index = 0;
-            if(int.TryParse(line["Index"].ToString(), out index) == false)
-            {
-                Debug.LogErrorFormat("[Tower.csv] Index Int Parsing Error\n index : {0}",line["index"]);
-                return;
-            }
-
-            string prefabCode = (line["Prefab"].ToString());
-            bool isBase = false;
-            if (line.ContainsKey("BaseTower") == true)
-            {
-                if(string.IsNullOrEmpty(line["BaseTower"].ToString()) == true)
-                {
-                    isBase = false; // 기본값
-                }
-                else if (bool.TryParse(line["BaseTower"].ToString(), out isBase) == false)
-                {
-                    Debug.LogErrorFormat("[Tower.csv] index({0}) BaseTower Must Use {1} or {2} or Empty", index,bool.TrueString,bool.FalseString);
-                    // error
-                }
-            }
-
-            List<int> nextTower = new List<int>();
-            if (line.ContainsKey("NextTower") == true)
-            {
-                if (string.IsNullOrEmpty(line["NextTower"].ToString()) == false)
-                {
-                    var nextTowerList = (line["NextTower"].ToString()).Split(',');
-                    foreach (var str in nextTowerList)
-                    {
-                        nextTower.Add(int.Parse(str));
-                    }
-                }
-            }
-
-            int cost = 0;
-            if (line.ContainsKey("Cost") == true)
-            {
-                if (string.IsNullOrEmpty(line["Cost"].ToString()) == false)
-                {
-                    cost = int.Parse(line["Cost"].ToString());
-                }
-            }
-            Data towerData = new Data(index, prefabCode, isBase, nextTower,cost);
-            data.Add(index, towerData);
+            Data towerData = new Data(line);
+            data.Add(towerData.index, towerData);
         }
     }
 }

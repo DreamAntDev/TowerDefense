@@ -106,8 +106,11 @@ public class Tower : MonoBehaviour
         else
         {
             this.state = State.Idle;
-            this.animator.ResetTrigger("Attack");
-            this.animator.SetTrigger("Idle");
+            if (this.animator != null)
+            {
+                this.animator.ResetTrigger("Attack");
+                this.animator.SetTrigger("Idle");
+            }
         }
     }
     public void OnAttack()
