@@ -61,11 +61,17 @@ public class GameManager : SingletonBehaviour<GameManager>
         mainUIEvent.SetLevelText(level.ToString());
     }
 
-    public void LifeBar(){
+    public void LifeBar(bool isBoss){
         
-        if(isStart)
-            mainUIEvent.SetLifeText("Life : " + (--life));
-
+        if(isStart){
+            if(isBoss){
+                life = 0;
+                mainUIEvent.SetLifeText("Life : " + life);
+            }else{
+                mainUIEvent.SetLifeText("Life : " + (--life));
+            }
+            
+        }
         if(life <= 0){
             GameEnd();
             isStart = false;

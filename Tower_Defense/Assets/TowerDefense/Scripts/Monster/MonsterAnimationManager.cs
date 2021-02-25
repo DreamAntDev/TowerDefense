@@ -19,17 +19,22 @@ public class MonsterAnimationManager : MonoBehaviour
 
     private PathFollower pf;
 
+    private float oriSpeed;
+
     void Start()
     {
         if(anim == null){
             anim = GetComponent<Animator>();
         }
         pf = GetComponent<PathFollower>();
+        oriSpeed = pf.speed;
         Walk();
+
+       
     }
 
     public void Walk(){
-        pf.speed = 1;
+        pf.SetSpeed(oriSpeed);
         anim.SetTrigger("isWalking");
     }
 
@@ -44,6 +49,7 @@ public class MonsterAnimationManager : MonoBehaviour
     //Skill이 발생 시 데이터화를 받아서 여기서 정리해서 발생하는 것으로
     public void Skill(){
         if(!isColldown){
+            Debug.Log("SKill");
             isColldown = true;
             anim.SetTrigger("isSkill");
             StartCoroutine(SetupSkill());
@@ -53,10 +59,10 @@ public class MonsterAnimationManager : MonoBehaviour
     IEnumerator SetupSkill(){
     
         anim.SetBool(skillName, true);
-        pf.speed = pf.speed * 1.5f;
+        pf.SetSpeed(pf.speed * 1.5f);
         yield return new WaitForSeconds(skillHoldingTime);
         anim.SetBool(skillName , false);
-        pf.speed = 0f;
+        pf.SetSpeed(0f);
         yield return new WaitForSeconds(skillWaitTime);
         Walk();
         yield return new WaitForSeconds(skillCooldown);

@@ -39,6 +39,10 @@ namespace PathCreation.Examples
             distanceTravelled = pathCreator.path.GetClosestDistanceAlongPath(transform.position);
         }
 
+        public void SetSpeed(float s){
+            speed = s;
+        }
+
         IEnumerator EndPath(){
             for(;;){
                 yield return new WaitForSeconds(0.5f);

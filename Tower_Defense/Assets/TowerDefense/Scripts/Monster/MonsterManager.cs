@@ -26,7 +26,7 @@ namespace Monster{
             dataList = CSVReader.Read("Data_Monster");
             monsterList = new List<List<GameObject>>();
             monsterList.Add(new List<GameObject>());
-            Read();
+           // Read();
         }
 
         private void Start() {
@@ -37,7 +37,7 @@ namespace Monster{
         public void MonsterFoolReady(){
             for(int i = 1; i <= maxLevel; i++){
                 if(i % bossIndex == 0){
-                    MonsterFoolSpawn(i, 2);
+                    MonsterFoolSpawn(i, 1);
                 }else{
                     MonsterFoolSpawn(i, monsterCount);
                 }
@@ -55,7 +55,7 @@ namespace Monster{
         private void MonsterFoolSpawn(int monsterId, int cnt){
             monsterList.Add(new List<GameObject>());
             
-            for(int i = 1; i < cnt; i++){
+            for(int i = 1; i <= cnt; i++){
                 //MonsterObject 인스턴스 생성
                 
                 //생성
@@ -85,7 +85,7 @@ namespace Monster{
                 PathFollower pf = monsterObject.AddComponent<PathFollower>();
                 pf.endOfPathInstruction = EndOfPathInstruction.Stop;
                 pf.pathCreator = pathCreator;
-                pf.speed = speed;
+                pf.SetSpeed(speed);
 
                 TypeMonster monsterData = monsterObject.AddComponent<TypeMonster>();
                 monsterData.SetMonsterInfo(mf);

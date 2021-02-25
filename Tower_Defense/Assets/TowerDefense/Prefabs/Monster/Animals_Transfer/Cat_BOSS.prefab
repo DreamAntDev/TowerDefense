@@ -1997,7 +1997,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3521fe8b0fe833742b25c2993de5a210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBoss: 0
+  health: 0
+  isBoss: 1
 --- !u!143 &5628742200210384953
 CharacterController:
   m_ObjectHideFlags: 0

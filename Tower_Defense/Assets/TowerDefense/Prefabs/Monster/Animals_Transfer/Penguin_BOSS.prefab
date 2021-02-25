@@ -1282,7 +1282,7 @@ GameObject:
   - component: {fileID: 5917052612503167555}
   - component: {fileID: 5499321041844156400}
   m_Layer: 0
-  m_Name: Penguin 1
+  m_Name: Penguin_BOSS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1484,7 +1484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3521fe8b0fe833742b25c2993de5a210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBoss: 0
+  isBoss: 1
 --- !u!1 &1949016027340758
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ using Monster;
 using PathCreation;
 using PathCreation.Examples;
 
-public class MonsterState : MonoBehaviour, IDamagable
+public class MonsterState : MonoBehaviour
 {
     private TypeMonster typeMonster;
 
@@ -13,7 +13,7 @@ public class MonsterState : MonoBehaviour, IDamagable
 
     private PathFollower pf;
     private bool isDeath = false;
-    public float health { get ; set ; }
+    public float health;
     
     public bool isBoss = false;
     private GameObject gameUI;
@@ -26,27 +26,19 @@ public class MonsterState : MonoBehaviour, IDamagable
         
     } 
 
-    void IDamagable.Initialize()
-    {
-        health = typeMonster.GetHP();
-        Debug.Log("Idamable");
-    }
-
     public void TakeDamage(float damage){
         health -= damage;
-        Debug.Log(string.Format("{0}, {1}", this.health, damage));
         if(health <= 0 && !isDeath){
             isDeath = true;
             Death();
         }
 
-        if(isBoss && health <= health / 2){
+        if(isBoss && health <= typeMonster.GetHP() / 2){
             monsterAnimationManager.Skill();
         }
     }
 
     public void Death(){
-        Debug.Log("Death");
         monsterAnimationManager.Death();
         GameManager.Instance.MonsterCoin(typeMonster.GetCoin());
         StartCoroutine(MonsterDeath());
@@ -60,8 +52,7 @@ public class MonsterState : MonoBehaviour, IDamagable
     }
 
     public void PathEndPoint(){
-        Debug.Log("EndPoint");
         gameObject.SetActive(false);
-        GameManager.Instance.LifeBar();
+        GameManager.Instance.LifeBar(isBoss);
     }
 }
