@@ -17,6 +17,8 @@ public class MainUI : MonoBehaviour
 
     [SerializeField] protected GameObject levelTitle;
 
+    [SerializeField] protected TextMeshProUGUI lifeText;
+
     private Animator levelTitleAnimation;
     private Text levelTitleText;
 
@@ -37,6 +39,11 @@ public class MainUI : MonoBehaviour
     public void SetTitleText(string text){
         levelTitleText.text = text;
     }
+
+    public void SetLifeText(string text){
+        lifeText.text = text;
+    }
+    
      public void ViewTitle(string s){
         levelText.text = s;
         ViewTitle();

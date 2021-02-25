@@ -208,6 +208,7 @@ namespace PathCreation {
         /// Gets point on path based on 'time' (where 0 is start, and 1 is end of path).
         public Vector3 GetPointAtTime (float t, EndOfPathInstruction endOfPathInstruction = EndOfPathInstruction.Loop) {
             var data = CalculatePercentOnPathData (t, endOfPathInstruction);
+            float prData = data.percentBetweenIndices;
             return Vector3.Lerp (GetPoint (data.previousIndex), GetPoint (data.nextIndex), data.percentBetweenIndices);
         }
 

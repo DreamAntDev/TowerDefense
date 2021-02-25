@@ -76,7 +76,7 @@ namespace Monster{
                 if(cnt == 2){
                     monsterObject.name = "Monster " + id + " Boss";
                 }else{
-                    monsterObject.name = "Monster " + id;
+                    monsterObject.name = "Monster " + id + "_" + i;
                 }
 
                 MonsterConfiguration mf = 

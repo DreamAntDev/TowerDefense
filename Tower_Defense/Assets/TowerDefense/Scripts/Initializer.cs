@@ -20,10 +20,4 @@ public class Initializer : SingletonBehaviour<Initializer>
     {
         
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

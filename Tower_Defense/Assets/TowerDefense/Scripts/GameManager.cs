@@ -29,6 +29,9 @@ public class GameManager : SingletonBehaviour<GameManager>
 
     private bool isStart = false;
 
+    private int life = 5;
+
+
     private new void Awake() {
         base.Awake();
         if(monsterManager == null){
@@ -47,8 +50,6 @@ public class GameManager : SingletonBehaviour<GameManager>
             mainUIEvent.OnStartClickListener(GameStart);
             mainUIEvent.OnSkipClickListener(ReadySkip);
         }
-
-
     }
 
     public void MonsterCoin(int c){
@@ -58,6 +59,17 @@ public class GameManager : SingletonBehaviour<GameManager>
 
     public void LevelTiTle(){
         mainUIEvent.SetLevelText(level.ToString());
+    }
+
+    public void LifeBar(){
+        
+        if(isStart)
+            mainUIEvent.SetLifeText("Life : " + (--life));
+
+        if(life <= 0){
+            GameEnd();
+            isStart = false;
+        }
     }
 
     public void SetVisibleGrid(bool visible)
@@ -70,6 +82,11 @@ public class GameManager : SingletonBehaviour<GameManager>
             isStart = true;
             StartCoroutine(StartSpawn());
         }
+    }
+
+    public void GameEnd(){
+        mainUIEvent.SetTitleText("END");
+        mainUIEvent.ViewTitle();
     }
 
     public void ReadySkip(){
@@ -105,6 +122,10 @@ public class GameManager : SingletonBehaviour<GameManager>
                 Debug.Log("Add Map");
                 mainUIEvent.ViewTitle("새로운 환경이 추가됩니다.");
                 mapManager.AddMap(level);
+            }
+
+            if(!isStart){
+                break;
             }
         }
     }

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 namespace PathCreation.Examples
 {
@@ -16,6 +17,7 @@ namespace PathCreation.Examples
             {
                 // Subscribed to the pathUpdated event so that we're notified if the path changes during the game
                 pathCreator.pathUpdated += OnPathChanged;
+                StartCoroutine(EndPath());
             }
            
         }
@@ -27,10 +29,7 @@ namespace PathCreation.Examples
                 distanceTravelled += speed * Time.deltaTime;
                 transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction);
                 transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction);
-                if(pathCreator.path.isEnd()){
-                    Debug.Log(this.gameObject.name + " End Point" );
-                    this.gameObject.SetActive(false);
-                }
+                
             }
         }
 
@@ -38,6 +37,16 @@ namespace PathCreation.Examples
         // is as close as possible to its position on the old path
         void OnPathChanged() {
             distanceTravelled = pathCreator.path.GetClosestDistanceAlongPath(transform.position);
+        }
+
+        IEnumerator EndPath(){
+            for(;;){
+                yield return new WaitForSeconds(0.5f);
+                if(pathCreator.path.GetClosestTimeOnPath(transform.position) == 1){
+                    SendMessage("PathEndPoint");
+                    break;
+                }
+            }
         }
     }
 }
