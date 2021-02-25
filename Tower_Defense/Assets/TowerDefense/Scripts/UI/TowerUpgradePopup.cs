@@ -37,8 +37,9 @@ public class TowerUpgradePopup : MonoBehaviour
 
     }
 
-    void Close()
+    public void Close()
     {
         UILoader.Instance.Unload(this.gameObject);
+        PlayerControlManager.Instance.SetState(PlayerControlManager.State.Play);
     }
 }

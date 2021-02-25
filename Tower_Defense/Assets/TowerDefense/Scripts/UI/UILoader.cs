@@ -92,7 +92,7 @@ public sealed class UILoader : SingletonBehaviour<UILoader>
     }
     public GameObject GetUI(string name)
     {
-        GameObject ret;
+        GameObject ret = null;
         if(this.LoadedUIObjectDictionary.TryGetValue(name, out ret) == false)
         {
 
