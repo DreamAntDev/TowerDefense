@@ -8,6 +8,8 @@ TagManager:
   - Path
   - Monster
   - GameManager
+  - Bullet
+  - BulletCollideObject
   layers:
   - Default
   - TransparentFX
