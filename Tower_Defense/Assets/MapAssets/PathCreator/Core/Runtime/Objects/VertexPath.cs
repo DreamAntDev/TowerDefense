@@ -32,6 +32,8 @@ namespace PathCreation {
         /// Equal to (0,0,-1) for 2D paths, and (0,1,0) for XZ paths
         public readonly Vector3 up;
 
+        private bool isEndPoint = false;
+
         // Default values and constants:    
         const int accuracy = 10; // A scalar for how many times bezier path is divided when determining vertex positions
         const float minVertexSpacing = .01f;
@@ -162,6 +164,11 @@ namespace PathCreation {
             }
         }
 
+        public bool isEnd(){
+            return isEndPoint;
+        }
+
+
         public Vector3 GetTangent (int index) {
             return MathUtility.TransformDirection (localTangents[index], transform, space);
         }
@@ -264,7 +271,7 @@ namespace PathCreation {
                     t = Mathf.PingPong (t, 1);
                     break;
                 case EndOfPathInstruction.Stop:
-                    t = Mathf.Clamp01 (t);
+                    t = Mathf.Clamp01 (t );
                     break;
             }
 
@@ -289,8 +296,13 @@ namespace PathCreation {
                     break;
                 }
             }
+            
+            
 
             float abPercent = Mathf.InverseLerp (times[prevIndex], times[nextIndex], t);
+            if(abPercent >= 1){
+                isEndPoint = true;
+            }
             return new TimeOnPathData (prevIndex, nextIndex, abPercent);
         }
 

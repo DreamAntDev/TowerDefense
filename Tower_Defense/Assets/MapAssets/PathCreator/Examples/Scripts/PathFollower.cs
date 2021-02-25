@@ -17,15 +17,20 @@ namespace PathCreation.Examples
                 // Subscribed to the pathUpdated event so that we're notified if the path changes during the game
                 pathCreator.pathUpdated += OnPathChanged;
             }
+           
         }
 
         void Update()
         {
-            if (pathCreator != null)
+            if (pathCreator != null && this.gameObject.activeSelf)
             {
                 distanceTravelled += speed * Time.deltaTime;
                 transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction);
                 transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction);
+                if(pathCreator.path.isEnd()){
+                    Debug.Log(this.gameObject.name + " End Point" );
+                    this.gameObject.SetActive(false);
+                }
             }
         }
 
