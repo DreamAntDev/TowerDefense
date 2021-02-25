@@ -15,7 +15,7 @@ public class User {
 }
 
 public class LoginSceneManager : MonoBehaviour
-{  /*
+{  
     public int GameID;
     public Firebase.Auth.FirebaseUser FirebaseUser;
     private string email;
@@ -27,16 +27,7 @@ public class LoginSceneManager : MonoBehaviour
          // TODO GameID를 이미 가지고 있는 경우 수행하지 않도록
          login(0);
     } 
-    // 플랫폼별 로그인
-  
-        public int GameID;
-        public string PlatformID;
-        public string email;
-        public string password;
-        public Firebase.Auth.FirebaseUser FirebaseUser;
-        // Update is called once per frame
-    
->>>>>>> Drag
+
     public void login (int type) {
         switch (type) {
             case 0:
@@ -122,5 +113,5 @@ public class LoginSceneManager : MonoBehaviour
             GameID = user.id;
             Debug.Log(GameID);
             // TODO 획득한 GameID 를 앱에 저장
-        }*/
+        }
 }
