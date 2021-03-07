@@ -15,47 +15,53 @@ public class User {
 }
 
 public class LoginSceneManager : MonoBehaviour
-{  
-    public int GameID;
+{
+    public static int UserID;
     public Firebase.Auth.FirebaseUser FirebaseUser;
     private string email;
     private string password;
     Firebase.Auth.FirebaseAuth firbaseAuth;
     void Start()
-    {       
+    {
          firbaseAuth = Firebase.Auth.FirebaseAuth.DefaultInstance;
-         // TODO GameID를 이미 가지고 있는 경우 수행하지 않도록
-         login(0);
-    } 
-
-    public void login (int type) {
-        switch (type) {
-            case 0:
-            // guest
-                StartCoroutine(GameServerLogin(SystemInfo.deviceUniqueIdentifier, "guest"));
-                break;
-            case 1:
-            // Google
-            // TODO guest -> google 연동으로 user 정보 변환 api 
-                GameObject ObjectEmailInputField = GameObject.Find("EmailInputField");
-                InputField EmailInputField = ObjectEmailInputField.GetComponent<InputField>();
-                GameObject ObjectPasswordInputField = GameObject.Find("PasswordInputField");
-                InputField PasswordInputField = ObjectPasswordInputField.GetComponent<InputField>();
-                email = EmailInputField.text;
-                password = PasswordInputField.text;
-                SignUp(email, password);
-                break;
+    }
+    public void StartGame() {
+      login();
+      // Goto DashBoard Scene
+      SceneManager.LoadSceneAsync("GameScene");
+    }
+    // social or Guest login
+    public void login() {
+        // social login or guest login
+        if(true) {
+          // Guest login
+          StartCoroutine(GameServerLogin(SystemInfo.deviceUniqueIdentifier, "guest"));
+        } else {
+          // Socal Login
+          StartCoroutine(GameServerLogin(SystemInfo.deviceUniqueIdentifier, "guest"));
         }
     }
-    public void ChangeScene(int type) {
-        if(GameID == 0) {
-            Debug.LogError("Do not have gameId");
-        }
-        switch(type) {
-            case 0:
-                SceneManager.LoadSceneAsync("GameScene");   
-                break;
-        }
+    public void ChangePlatform() {
+      GameObject ObjectEmailInputField = GameObject.Find("EmailInputField");
+      InputField EmailInputField = ObjectEmailInputField.GetComponent<InputField>();
+      GameObject ObjectPasswordInputField = GameObject.Find("PasswordInputField");
+      InputField PasswordInputField = ObjectPasswordInputField.GetComponent<InputField>();
+      email = EmailInputField.text;
+      password = PasswordInputField.text;
+      // google SignUp
+      SignUp(email, password);
+      // TODO get UserID
+    }
+    public void SocailLogin() {
+      GameObject ObjectEmailInputField = GameObject.Find("EmailInputField");
+      InputField EmailInputField = ObjectEmailInputField.GetComponent<InputField>();
+      GameObject ObjectPasswordInputField = GameObject.Find("PasswordInputField");
+      InputField PasswordInputField = ObjectPasswordInputField.GetComponent<InputField>();
+      email = EmailInputField.text;
+      password = PasswordInputField.text;
+      // google SignIn
+      SignIn(email, password);
+      // TODO get UserID
     }
     private void SignIn(string email, string password) {
             firbaseAuth.SignInWithEmailAndPasswordAsync(email, password).ContinueWith(task => {
@@ -83,7 +89,7 @@ public class LoginSceneManager : MonoBehaviour
             if (task.IsFaulted) {
                 SignIn(email, password);
                 // Debug.LogError("CreateUserWithEmailAndPasswordAsync encountered an error: " + task.Exception);
-                return; 
+                return;
             }
             // Firebase user has been created.
             FirebaseUser = task.Result;
@@ -91,7 +97,7 @@ public class LoginSceneManager : MonoBehaviour
                 FirebaseUser.DisplayName, FirebaseUser.UserId);
             });
         }
-        
+
     IEnumerator GameServerLogin(string platform_id, string platform) {
             Debug.Log("call get GameId");
             User user = new User();
@@ -110,8 +116,7 @@ public class LoginSceneManager : MonoBehaviour
             }
             yield return webRequest.SendWebRequest();
             user = JsonUtility.FromJson<User>(webRequest.downloadHandler.text);
-            GameID = user.id;
-            Debug.Log(GameID);
-            // TODO 획득한 GameID 를 앱에 저장
+            UserID = user.id;
+            Debug.Log(UserID);
         }
 }
