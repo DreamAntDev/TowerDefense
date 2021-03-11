@@ -7,7 +7,7 @@ using UnityEngine.Networking;
 using System.Text;
 using UnityEngine.UI;
 
-public class User {
+public struct User {
     public int id;
     public string platform_id;
     public string platform;
@@ -50,7 +50,6 @@ public class LoginSceneManager : MonoBehaviour
       password = PasswordInputField.text;
       // google SignUp
       SignUp(email, password);
-      // TODO get UserID
     }
     public void SocailLogin() {
       GameObject ObjectEmailInputField = GameObject.Find("EmailInputField");

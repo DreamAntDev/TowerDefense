@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Monster;
+using UnityEngine.Networking;
+using System.Text;
 
 public class GameManager : SingletonBehaviour<GameManager>
 {
     [SerializeField] protected MonsterManager monsterManager;
-    
+
     [SerializeField] protected AudioManager audioManager;
 
     [SerializeField] protected MapManager mapManager;
@@ -18,7 +20,7 @@ public class GameManager : SingletonBehaviour<GameManager>
     [SerializeField] protected TextMeshProUGUI coinText;
 
     [SerializeField] private GameObject Grid;
-    
+
     private GameObject mainUI;
 
     private MainUI mainUIEvent;
@@ -62,7 +64,7 @@ public class GameManager : SingletonBehaviour<GameManager>
     }
 
     public void LifeBar(bool isBoss){
-        
+
         if(isStart){
             if(isBoss){
                 life = 0;
@@ -70,7 +72,7 @@ public class GameManager : SingletonBehaviour<GameManager>
             }else{
                 mainUIEvent.SetLifeText("X " + (--life));
             }
-            
+
         }
         if(life <= 0){
             GameEnd();
@@ -103,10 +105,10 @@ public class GameManager : SingletonBehaviour<GameManager>
         return level;
     }
 
-    IEnumerator StartSpawn(){ 
+    IEnumerator StartSpawn(){
         for(;;){
             level++;
-            
+
             //추가 맵 체크
             if(level > 5 && level % 5 == 1){
                 Debug.Log("Add Map");
@@ -119,10 +121,10 @@ public class GameManager : SingletonBehaviour<GameManager>
             monsterManager.MonsterSpawn(level);
             mainUIEvent.ViewTitle();
             //yield return new WaitForSeconds(20f);
-            
+
             int currentTime = 0;
             isSkip = false;
-            
+
             for(;;){
                 currentTime++;
                 yield return new WaitForSeconds(0.1f);
@@ -136,7 +138,7 @@ public class GameManager : SingletonBehaviour<GameManager>
             }
         }
     }
-    
+
     public void CreateTower(int index, Vector3 pos)
     {
         var data = TowerData.GetData(index);
@@ -151,6 +153,7 @@ public class GameManager : SingletonBehaviour<GameManager>
             {
                 towerObj.towerIndex = index;
             }
+            StartCoroutine(IncrScore(LoginSceneManager.UserID, 1));
         }
     }
     public void UpgradeTower(GameObject beforeObj,int upgradeIndex)
@@ -158,5 +161,30 @@ public class GameManager : SingletonBehaviour<GameManager>
         GameManager.Instance.CreateTower(upgradeIndex, beforeObj.transform.position);
         GameObject.Destroy(beforeObj);
         PlayerControlManager.Instance.SetState(PlayerControlManager.State.Play);
+        StartCoroutine(IncrScore(LoginSceneManager.UserID, 1));
     }
+
+    public struct Rank {
+      public int id;
+      public int score;
+    }
+    IEnumerator IncrScore(int id, int score) {
+            Debug.Log("IncrScore");
+            Rank rank = new Rank();
+            rank.id = id;
+            rank.score = score;
+            string data = JsonUtility.ToJson(rank);
+            Debug.Log(data);
+            UnityWebRequest webRequest = UnityWebRequest.Post("http://3.36.40.68:8888/incrscore", data);
+            webRequest.uploadHandler = new UploadHandlerRaw(Encoding.UTF8.GetBytes(data));
+            webRequest.SetRequestHeader("Content-Type", "application/json");
+            if(webRequest.isNetworkError || webRequest.isHttpError) {
+                Debug.Log(webRequest.error);
+            } else {
+                Debug.Log("rank score incr");
+            }
+            yield return webRequest.SendWebRequest();
+            rank = JsonUtility.FromJson<Rank>(webRequest.downloadHandler.text);
+            Debug.Log(rank);
+        }
 }
