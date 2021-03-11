@@ -78,7 +78,6 @@ namespace PlayerControlState
 
                 dragX = touchUpPosition.x - touchDownPosition.x;
                 dragY = touchUpPosition.y - touchDownPosition.y;
-                Debug.Log("DRAG ] = " + dragX + " : " + dragY);
                 OnDragMap(dragX, dragY);
             }
 #else
@@ -90,8 +89,7 @@ namespace PlayerControlState
 
             dragX = touchUpPosition.x - touchDownPosition.x;
             dragZ = touchUpPosition.y - touchDownPosition.y;
-            Debug.Log("DRAG ] = " + dragX + " : " + dragY);
-
+          
              OnDragMap(dragX, dragY);
         }
 #endif

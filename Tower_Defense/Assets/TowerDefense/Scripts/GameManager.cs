@@ -66,9 +66,9 @@ public class GameManager : SingletonBehaviour<GameManager>
         if(isStart){
             if(isBoss){
                 life = 0;
-                mainUIEvent.SetLifeText("Life : " + life);
+                mainUIEvent.SetLifeText("X " + life);
             }else{
-                mainUIEvent.SetLifeText("Life : " + (--life));
+                mainUIEvent.SetLifeText("X " + (--life));
             }
             
         }
@@ -107,12 +107,19 @@ public class GameManager : SingletonBehaviour<GameManager>
         for(;;){
             level++;
             
+            //추가 맵 체크
+            if(level > 5 && level % 5 == 1){
+                Debug.Log("Add Map");
+                mainUIEvent.ViewTitle("새로운 환경이 추가됩니다.");
+                mapManager.AddMap((level-1) / 5);
+            }
+
             mainUIEvent.SetLevelText(level.ToString());
             mainUIEvent.SetTitleText("LEVEL : " + level.ToString());
             monsterManager.MonsterSpawn(level);
             mainUIEvent.ViewTitle();
-            yield return new WaitForSeconds(20f);
-            
+            //yield return new WaitForSeconds(20f);
+             Debug.Log("Map Level : " + level);
             int currentTime = 0;
             isSkip = false;
             
@@ -122,12 +129,6 @@ public class GameManager : SingletonBehaviour<GameManager>
                 if(currentTime >= 300 || isSkip){
                     break;
                 }
-            }
-
-            if(level > 5 && level % 5 == 1){
-                Debug.Log("Add Map");
-                mainUIEvent.ViewTitle("새로운 환경이 추가됩니다.");
-                mapManager.AddMap(level);
             }
 
             if(!isStart){

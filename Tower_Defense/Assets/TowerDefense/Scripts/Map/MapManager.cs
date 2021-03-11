@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,6 +18,7 @@ public class MapManager : MonoBehaviour
     }
 
     void SetPoistion(){
+        //각 맵 WayPoint 좌표
         Vector3[][] poisitons = {
             new Vector3[]{
                 new Vector3(-4.44f, -6.78f, -2.4f), new Vector3(-0.95f, -6.78f, -2.35f), new Vector3(1.5f, -6.68f, 4.9f), 
@@ -40,6 +41,7 @@ public class MapManager : MonoBehaviour
                 new Vector3(-0.24f, -6.22f, -26.16f), new Vector3(2.04f, -5.28f, -19.22f), new Vector3(1.67f, -5.38f, -13.28f)
                 }
         };
+        
         for(int i = 0 ; i < maps.Length; i++){
             wayPointpoisitions.Add(new List<Vector3>(poisitons[i]));
         }

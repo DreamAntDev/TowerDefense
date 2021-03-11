@@ -118,7 +118,6 @@ public class ProjectileMoveScript : MonoBehaviour
         var damager = this.gameObject.GetComponent<IDamager>();
         if (damager != null)
         {
-            Debug.Log(this.gameObject.name);
             damager.OnHit(obj,pos);
         }
         if (hitPrefab != null)
