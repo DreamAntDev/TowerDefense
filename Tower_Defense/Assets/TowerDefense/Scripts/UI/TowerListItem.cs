@@ -12,7 +12,8 @@ public class TowerListItem : MonoBehaviour
 
     public void SetData(TowerData.Data data)
     {
-        this.TowerName.text = data.index.ToString() + ". " + data.prefabCode.Split('/')[data.prefabCode.Split('/').Length - 1];
+        //this.TowerName.text = data.index.ToString() + ". " + data.prefabCode.Split('/')[data.prefabCode.Split('/').Length - 1];
+        this.TowerName.text = data.name;
         towerCode = data.prefabCode;
         SpawnButton.onClick.AddListener(()=> { SelectItem(data.index); });
     }

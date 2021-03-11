@@ -58,7 +58,16 @@ public class GameManager : SingletonBehaviour<GameManager>
        coin += c;
        mainUIEvent.SetCoinText(coin.ToString());
     }
-
+    public bool DecrementCoin(int c)
+    {
+        if(coin >= c)
+        {
+            coin -= c;
+            mainUIEvent.SetCoinText(coin.ToString());
+            return true;
+        }
+        return false;
+    }
     public void LevelTiTle(){
         mainUIEvent.SetLevelText(level.ToString());
     }
@@ -139,27 +148,35 @@ public class GameManager : SingletonBehaviour<GameManager>
         }
     }
 
-    public void CreateTower(int index, Vector3 pos)
+    public bool CreateTower(int index, Vector3 pos)
     {
         var data = TowerData.GetData(index);
+        if (DecrementCoin(data.cost) == false)
+            return false;
+
         GameObject prefab = TowerResource.Instance.GetTowerResource(data.prefabCode);
         if (prefab != null)
         {
             var obj = GameObject.Instantiate(prefab, pos, new Quaternion());
             var towerObj = obj.GetComponent<Tower>();
             if (towerObj == null)
-                Debug.LogError("ErrorSpawn!");
+                Debug.LogError("Spawn Fail");
             else
             {
-                towerObj.towerIndex = index;
+                towerObj.Initialize(index);
+                return true;
             }
             StartCoroutine(IncrScore(LoginSceneManager.UserID, 1));
         }
+        return false;
     }
     public void UpgradeTower(GameObject beforeObj,int upgradeIndex)
     {
-        GameManager.Instance.CreateTower(upgradeIndex, beforeObj.transform.position);
-        GameObject.Destroy(beforeObj);
+        bool success = GameManager.Instance.CreateTower(upgradeIndex, beforeObj.transform.position);
+        if (success)
+        {
+            GameObject.Destroy(beforeObj);
+        }
         PlayerControlManager.Instance.SetState(PlayerControlManager.State.Play);
         StartCoroutine(IncrScore(LoginSceneManager.UserID, 1));
     }

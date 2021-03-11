@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SplashAttack : MonoBehaviour, IDamager
 {
-    public int damage = 1;
+    public float damage = 1;
     public float range = 10.0f;
     public void OnHit(GameObject obj, Vector3 contactPos)
     {

@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Tower : MonoBehaviour
 {
     enum State
     {
+        WaitInitialize,
         Idle,
         Attack,
         AttackWait,
@@ -15,8 +17,9 @@ public class Tower : MonoBehaviour
     public Animator animator;
     public Sensor sensor;
     public Shotter shotter;
-    public int RPM; // 분당 발사 횟수
-    [HideInInspector] public int towerIndex;
+    public Text nameplateText;
+    //public int RPM; // 분당 발사 횟수
+    public int towerIndex { get; private set; }
     [SerializeField] private State state;
     private Dictionary<State, System.Action> StateUpdater;
 
@@ -25,16 +28,16 @@ public class Tower : MonoBehaviour
     private void Awake()
     {
         this.StateUpdater = new Dictionary<State, System.Action>();
+        this.StateUpdater.Add(State.WaitInitialize, this.UpdateWaitInitialize);
         this.StateUpdater.Add(State.Idle, this.UpdateIdleState);
         this.StateUpdater.Add(State.Attack, this.UpdateAttackState);
         this.StateUpdater.Add(State.AttackWait, this.UpdateAttackWaitState);
+        this.state = State.WaitInitialize;
     }
     // Start is called before the first frame update
     void Start()
     {
-        this.state = State.Idle;
-        lastAttackTime = Time.time;
-        waitTime = (float)60 / RPM;
+
     }
 
     // Update is called once per frame
@@ -42,15 +45,27 @@ public class Tower : MonoBehaviour
     {
         this.StateUpdater[this.state]();
 
-        if (Time.time - this.lastAttackTime < this.waitTime)
-            return;
+        //if (Time.time - this.lastAttackTime < this.waitTime)
+        //    return;
 
     }
     private void LateUpdate()
     {
         
     }
+    public void Initialize(int towerIndex)
+    {
+        this.towerIndex = towerIndex;
+        var data = TowerData.GetData(towerIndex);
+        waitTime = (float)60 / data.rpm;
+        lastAttackTime = Time.time;
+        this.state = State.Idle;
+        this.nameplateText.text = data.name;
+    }
+    private void UpdateWaitInitialize()
+    {
 
+    }
     private void UpdateIdleState()
     {
         var targetList = this.sensor.GetTarget();

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DirectAttack : MonoBehaviour, IDamager
 {
-    public int damage = 1;
+    public float damage = 1.0f;
     public void OnHit(GameObject obj, Vector3 contactPos)
     {
         var monsterState = obj.GetComponent<MonsterState>();
