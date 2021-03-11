@@ -38,9 +38,9 @@ public class CameraController : MonoBehaviour
 
     void OnSceneGUI()
     {
-        var mousePosition = Event.current.mousePosition * EditorGUIUtility.pixelsPerPoint;
-        mousePosition.y = Camera.current.pixelHeight - mousePosition.y;
-        Ray ray = Camera.current.ScreenPointToRay(mousePosition);
+        //var mousePosition = Event.current.mousePosition * EditorGUIUtility.pixelsPerPoint;
+        //mousePosition.y = Camera.current.pixelHeight - mousePosition.y;
+        //Ray ray = Camera.current.ScreenPointToRay(mousePosition);
     }
     
 }

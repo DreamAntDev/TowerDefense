@@ -42,7 +42,7 @@ public class PlayerControlManager : SingletonBehaviour<PlayerControlManager>
     {
         state.Update();
         
-        OnCameraPoistion();
+        //OnCameraPoistion();
     }
 
     public PlayerControlState.IPlayerControlState SetState(State state)
@@ -70,43 +70,52 @@ public class PlayerControlManager : SingletonBehaviour<PlayerControlManager>
         return this.state;
     }
 
-    public void OnCameraPoistion(){
-        //추가 맵 전까지 변경 불가 
-        /*if(gameLevel <= 5){
-            return;
-        }*/
+//    public void OnCameraPoistion(){
+//        //추가 맵 전까지 변경 불가 
+//        /*if(gameLevel <= 5){
+//            return;
+//        }*/
         
 
-    #if UNITY_EDITOR
-        if(Input.GetMouseButtonDown(0)){
-            touchDownPosition = Input.mousePosition;
-        }
-        if(Input.GetMouseButtonUp(0)){
-            touchUpPosition = Input.mousePosition;
+//    #if UNITY_EDITOR
+//        if(Input.GetMouseButtonDown(0)){
+//            touchDownPosition = Input.mousePosition;
+//        }
+//        if(Input.GetMouseButtonUp(0)){
+//            touchUpPosition = Input.mousePosition;
 
-            dragX = touchUpPosition.x - touchDownPosition.x;
-            dragY = touchUpPosition.y - touchDownPosition.y;
-            Debug.Log("DRAG ] = " + dragX + " : " + dragY);
+//            dragX = touchUpPosition.x - touchDownPosition.x;
+//            dragY = touchUpPosition.y - touchDownPosition.y;
+//            Debug.Log("DRAG ] = " + dragX + " : " + dragY);
 
-            OnDragMap(dragX, dragY);
+//            OnDragMap(dragX, dragY);
             
-        }
-    #else
-        if(Input.touchCount > 0){
-            touchDownPosition = Input.GetTouchDown(0).position;
-        }
-        if(Input.touchCount > 0){
-            touchUpPosition = Input.GetTouchUp(0).position;
+//        }
 
-            dragX = touchUpPosition.x - touchDownPosition.x;
-            dragZ = touchUpPosition.y - touchDownPosition.y;
-            Debug.Log("DRAG ] = " + dragX + " : " + dragY);
 
-             OnDragMap(dragX, dragY);
-        }
-    #endif
-        
-    }
+//#else
+//        if(Input.touchCount > 0){
+//            var touch = Input.GetTouch(0);
+//            if(touch.phase == TouchPhase.Began)
+//            {
+//                touchDownPosition = touch.position;
+//            }
+//        }
+//        if(Input.touchCount > 0){
+//            if (touch.phase == TouchPhase.Ended)
+//            {
+//                touchUpPosition = Input.GetTouchUp(0).position;
+
+//                dragX = touchUpPosition.x - touchDownPosition.x;
+//                dragZ = touchUpPosition.y - touchDownPosition.y;
+//                Debug.Log("DRAG ] = " + dragX + " : " + dragY);
+
+//                OnDragMap(dragX, dragY);
+//            }
+//        }
+//#endif
+
+//    }
 
     public void OnDragMap(float dragX, float dragY){
         int gameLevel = GameManager.Instance.GetLevel();

@@ -79,18 +79,25 @@ namespace PlayerControlState
                 dragY = touchUpPosition.y - touchDownPosition.y;
                 OnDragMap(dragX, dragY);
             }
-#else
-        if(Input.touchCount > 0){
-            touchDownPosition = Input.GetTouchDown(0).position;
-        }
-        if(Input.touchCount > 0){
-            touchUpPosition = Input.GetTouchUp(0).position;
 
-            dragX = touchUpPosition.x - touchDownPosition.x;
-            dragZ = touchUpPosition.y - touchDownPosition.y;
-          
-             OnDragMap(dragX, dragY);
-        }
+#else
+        if (Input.touchCount > 0)
+            {
+                var touch = Input.GetTouch(0);
+                if (touch.phase == TouchPhase.Began)
+                {
+                    touchDownPosition = touch.position;
+                }
+                else if (touch.phase == TouchPhase.Ended)
+                {
+                    touchUpPosition = touch.position;
+
+                    dragX = touchUpPosition.x - touchDownPosition.x;
+                    dragY = touchUpPosition.y - touchDownPosition.y;
+
+                    OnDragMap(dragX, dragY);
+                }
+            }
 #endif
 
         }
@@ -209,7 +216,7 @@ namespace PlayerControlState
             {
                 return;
             }
-            screenPos = Input.GetTouch(0).position
+            screenPos = Input.GetTouch(0).position;
 #endif
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
