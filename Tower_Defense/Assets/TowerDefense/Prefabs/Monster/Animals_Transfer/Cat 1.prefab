@@ -1799,7 +1799,7 @@ GameObject:
   - component: {fileID: 6371091720435249502}
   - component: {fileID: 5628742200210384953}
   m_Layer: 17
-  m_Name: Cat
+  m_Name: Cat 1
   m_TagString: Monster
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1997,6 +1997,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3521fe8b0fe833742b25c2993de5a210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  isBoss: 0
 --- !u!143 &5628742200210384953
 CharacterController:
   m_ObjectHideFlags: 0
