@@ -30,33 +30,32 @@ namespace PlayerControlState
 
         public void Update()
         {
-            if (Input.GetMouseButtonDown(0))
-            {
+
                 OnCameraPoistion();
                 OnClick();
-            }
-#if UNITY_EDITOR
+            
+//#if UNITY_EDITOR
 
-#elif UNITY_ANDROID
-            if (Input.touchCount > 0)
-            {
-                if (Input.GetTouch(0).phase == TouchPhase.Began)
-                {
-                    FirstPoint = Input.GetTouch(0).position;
-                    xAngleTemp = xAngle;
-                    yAngleTemp = yAngle;
-                }
-                if (Input.GetTouch(0).phase == TouchPhase.Moved)
-                {
-                    SecondPoint = Input.GetTouch(0).position;
-                    xAngle = xAngleTemp + (SecondPoint.x - FirstPoint.x) * 180 / Screen.width;
-                    yAngle = yAngleTemp - (SecondPoint.y - FirstPoint.y) * 90  / Screen.height;
+//#elif UNITY_ANDROID
+//            if (Input.touchCount > 0)
+//            {
+//                if (Input.GetTouch(0).phase == TouchPhase.Began)
+//                {
+//                    FirstPoint = Input.GetTouch(0).position;
+//                    xAngleTemp = xAngle;
+//                    yAngleTemp = yAngle;
+//                }
+//                if (Input.GetTouch(0).phase == TouchPhase.Moved)
+//                {
+//                    SecondPoint = Input.GetTouch(0).position;
+//                    xAngle = xAngleTemp + (SecondPoint.x - FirstPoint.x) * 180 / Screen.width;
+//                    yAngle = yAngleTemp - (SecondPoint.y - FirstPoint.y) * 90  / Screen.height;
     
     
-                    this.transform.localRotation = Quaternion.Euler(yAngle, xAngle, 0.0f);
-                }
-            }      
-#endif
+//                    this.transform.localRotation = Quaternion.Euler(yAngle, xAngle, 0.0f);
+//                }
+//            }      
+//#endif
         }
 
         public void OnCameraPoistion()
@@ -198,6 +197,20 @@ namespace PlayerControlState
         }
         void OnClick()
         {
+            Vector3 screenPos = Vector3.zero;
+#if UNITY_EDITOR
+            if (Input.GetMouseButtonDown(0) == false)
+            {
+                return;
+            }
+            screenPos = Input.mousePosition;
+#elif UNITY_ANDROID
+            if(Input.touchCount <= 0)
+            {
+                return;
+            }
+            screenPos = Input.GetTouch(0).position
+#endif
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             RaycastHit hit = new RaycastHit();
