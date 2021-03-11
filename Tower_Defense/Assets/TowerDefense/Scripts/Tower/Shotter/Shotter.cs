@@ -35,7 +35,7 @@ public class Shotter : MonoBehaviour
         {
             if (hit.transform.CompareTag("Monster") == true)
             {
-                var vfx = Common.CreateProjectile(this.bullet, shotPos.position, parent.towerIndex);
+                var vfx = CreateProjectile(this.bullet, shotPos.position, parent.towerIndex);
                 vfx.GetComponent<ProjectileMoveScript>().SetTarget(target);
                 //Instantiate(this.bullet, hit.point, Quaternion.LookRotation((target.transform.position+center) - this.shotPos.transform.position));
                 break;
@@ -43,4 +43,25 @@ public class Shotter : MonoBehaviour
         }
         //Debug.Log(damage);
     }
+
+    virtual internal GameObject CreateProjectile(GameObject obj, Vector3 pos, int towerIndex)
+    {
+        //CreateBullet
+        var vfx = MonoBehaviour.Instantiate(obj, pos, Quaternion.identity);
+        var towerData = TowerData.GetData(towerIndex);
+        if (towerData.projectileType == ProjectileType.Direct)
+        {
+            var attack = vfx.AddComponent<DirectAttack>();
+            attack.damage = towerData.damage;
+        }
+        else if (towerData.projectileType == ProjectileType.Splash)
+        {
+            var attack = vfx.AddComponent<SplashAttack>();
+            attack.damage = towerData.damage;
+            attack.range = towerData.range;
+        }
+
+        return vfx;
+    }
+
 }

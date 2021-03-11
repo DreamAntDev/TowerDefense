@@ -19,7 +19,7 @@ public class MonoShotter : Shotter
     {
         //CreateBullet
         var parent = this.GetComponentInParent<Tower>();
-        var vfx = Common.CreateProjectile(this.bullet, shotPos.position, parent.towerIndex);
+        var vfx = CreateProjectile(this.bullet, shotPos.position, parent.towerIndex);
         vfx.GetComponent<ProjectileMoveScript>().SetTarget(target);
     }
 }

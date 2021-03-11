@@ -86,7 +86,7 @@ public static class TowerData
             this.damage = 0;
             if(string.IsNullOrEmpty(line["Damage"].ToString())==false)
             {
-                this.damage = int.Parse(line["Damage"].ToString());
+                this.damage = float.Parse(line["Damage"].ToString());
             }
 
             this.projectileType = ProjectileType.None;
@@ -106,6 +106,14 @@ public static class TowerData
             {
                 this.range = float.Parse(line["Range"].ToString());
             }
+            if (string.IsNullOrEmpty(line["RPM"].ToString()) == false)
+            {
+                this.rpm = int.Parse(line["RPM"].ToString());
+            }
+            if (string.IsNullOrEmpty(line["Name"].ToString()) == false)
+            {
+                this.name = line["Name"].ToString();
+            }
         }
         public int index { get; private set; }
         public string prefabCode { get; private set; }
@@ -116,9 +124,11 @@ public static class TowerData
             return nextTower.AsReadOnly();
         }
         public int cost { get; private set; }
-        public int damage { get; private set; }
+        public float damage { get; private set; }
         public ProjectileType projectileType { get; private set; }
         public float range { get; private set; }
+        public int rpm { get; private set; }
+        public string name { get; private set; }
     }
 
     public static void Load()
