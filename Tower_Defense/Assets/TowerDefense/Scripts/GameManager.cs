@@ -119,7 +119,7 @@ public class GameManager : SingletonBehaviour<GameManager>
             monsterManager.MonsterSpawn(level);
             mainUIEvent.ViewTitle();
             //yield return new WaitForSeconds(20f);
-             Debug.Log("Map Level : " + level);
+            
             int currentTime = 0;
             isSkip = false;
             
