@@ -32,8 +32,7 @@ public class GameManager : SingletonBehaviour<GameManager>
     private bool isStart = false;
 
     private int life = 5;
-
-
+    private RewardManager Reward = new RewardManager();
     private new void Awake() {
         base.Awake();
         if(monsterManager == null){
@@ -43,6 +42,7 @@ public class GameManager : SingletonBehaviour<GameManager>
         if(audioManager == null){
             audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         }
+
     }
 
     private void Start() {
@@ -164,9 +164,9 @@ public class GameManager : SingletonBehaviour<GameManager>
             else
             {
                 towerObj.Initialize(index);
+                StartCoroutine(Reward.IncrScore(LoginSceneManager.UserID, 10, "CreateTower"));
                 return true;
             }
-            StartCoroutine(IncrScore(LoginSceneManager.UserID, 1));
         }
         return false;
     }
@@ -178,30 +178,6 @@ public class GameManager : SingletonBehaviour<GameManager>
             GameObject.Destroy(beforeObj);
         }
         PlayerControlManager.Instance.SetState(PlayerControlManager.State.Play);
-        StartCoroutine(IncrScore(LoginSceneManager.UserID, 1));
+        StartCoroutine(Reward.IncrScore(LoginSceneManager.UserID, 10, "UpgradeTower"));
     }
-
-    public struct Rank {
-      public int id;
-      public int score;
-    }
-    IEnumerator IncrScore(int id, int score) {
-            Debug.Log("IncrScore");
-            Rank rank = new Rank();
-            rank.id = id;
-            rank.score = score;
-            string data = JsonUtility.ToJson(rank);
-            Debug.Log(data);
-            UnityWebRequest webRequest = UnityWebRequest.Post("http://3.36.40.68:8888/incrscore", data);
-            webRequest.uploadHandler = new UploadHandlerRaw(Encoding.UTF8.GetBytes(data));
-            webRequest.SetRequestHeader("Content-Type", "application/json");
-            if(webRequest.isNetworkError || webRequest.isHttpError) {
-                Debug.Log(webRequest.error);
-            } else {
-                Debug.Log("rank score incr");
-            }
-            yield return webRequest.SendWebRequest();
-            rank = JsonUtility.FromJson<Rank>(webRequest.downloadHandler.text);
-            Debug.Log(rank);
-        }
 }
