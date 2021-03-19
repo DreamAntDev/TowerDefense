@@ -14,10 +14,9 @@ namespace PlayerControlState
 
         public void Update()
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                OnClick();
-            }
+
+            OnClick();
+
         }
 
         public void End()
@@ -27,7 +26,28 @@ namespace PlayerControlState
 
         void OnClick()
         {
-            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Vector2 screenPos;
+#if UNITY_ANDROID && !UNITY_EDITOR
+            if (Input.touchCount <= 0)
+            {
+                return;
+            }
+            var touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Ended)
+            {
+                screenPos = touch.position;
+            }
+            else
+            {
+                return;
+            }
+#else
+            if (Input.GetMouseButtonUp(0) == false)
+                return;
+
+            screenPos = Input.mousePosition;
+#endif
+            var ray = Camera.main.ScreenPointToRay(screenPos);
 
             RaycastHit hit = new RaycastHit();
 

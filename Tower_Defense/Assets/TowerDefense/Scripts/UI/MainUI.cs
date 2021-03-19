@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using TMPro;
 
-public class MainUI : MonoBehaviour
+public class MainUI : CanvasBehaviour
 {
     [SerializeField] protected TextMeshProUGUI coinText;
 

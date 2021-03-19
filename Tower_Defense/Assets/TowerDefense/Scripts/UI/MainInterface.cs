@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MainInterface : MonoBehaviour
+public class MainInterface : CanvasBehaviour
 {
     public Button TowerListOpenButton;
     // Start is called before the first frame update
@@ -12,7 +12,6 @@ public class MainInterface : MonoBehaviour
         TowerListOpenButton.onClick.AddListener(this.ShowTowerList);
         
     }
-
 
     void ShowTowerList()
     {

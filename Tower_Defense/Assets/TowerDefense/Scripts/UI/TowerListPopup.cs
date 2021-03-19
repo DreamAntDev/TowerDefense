@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TowerListPopup : MonoBehaviour
+public class TowerListPopup : CanvasBehaviour
 {
     public ScrollRect scrollRect;
     public GameObject TowerListItem;

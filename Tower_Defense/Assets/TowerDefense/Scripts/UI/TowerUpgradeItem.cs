@@ -19,7 +19,7 @@ public class TowerUpgradeItem : MonoBehaviour
     }
     private void SelectItem(int index)
     {
-        var state = PlayerControlManager.Instance.state as PlayerControlState.UpgradeTower;
+        var state = PlayerControlManager.Instance.state as PlayerControlState.Block;
         GameManager.Instance.UpgradeTower(state.towerObject, index);
         PlayerControlManager.Instance.SetState(PlayerControlManager.State.Play);
         var ui = UILoader.Instance.GetUI("TowerUpgradePopup");

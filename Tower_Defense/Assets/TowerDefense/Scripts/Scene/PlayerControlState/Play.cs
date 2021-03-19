@@ -30,32 +30,8 @@ namespace PlayerControlState
 
         public void Update()
         {
-
-                OnCameraPoistion();
-                OnClick();
-            
-//#if UNITY_EDITOR
-
-//#elif UNITY_ANDROID
-//            if (Input.touchCount > 0)
-//            {
-//                if (Input.GetTouch(0).phase == TouchPhase.Began)
-//                {
-//                    FirstPoint = Input.GetTouch(0).position;
-//                    xAngleTemp = xAngle;
-//                    yAngleTemp = yAngle;
-//                }
-//                if (Input.GetTouch(0).phase == TouchPhase.Moved)
-//                {
-//                    SecondPoint = Input.GetTouch(0).position;
-//                    xAngle = xAngleTemp + (SecondPoint.x - FirstPoint.x) * 180 / Screen.width;
-//                    yAngle = yAngleTemp - (SecondPoint.y - FirstPoint.y) * 90  / Screen.height;
-    
-    
-//                    this.transform.localRotation = Quaternion.Euler(yAngle, xAngle, 0.0f);
-//                }
-//            }      
-//#endif
+            OnCameraPoistion();
+            OnClick();
         }
 
         public void OnCameraPoistion()
@@ -64,42 +40,39 @@ namespace PlayerControlState
             /*if(gameLevel <= 5){
                 return;
             }*/
+#if UNITY_ANDROID && !UNITY_EDITOR
+            if (Input.touchCount <= 0)
+                return;
+            
+            var touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Began)
+            {
+                touchDownPosition = touch.position;
+            }
+            else if (touch.phase == TouchPhase.Ended)
+            {
+                touchUpPosition = touch.position;
 
+                dragX = touchUpPosition.x - touchDownPosition.x;
+                dragY = touchUpPosition.y - touchDownPosition.y;
 
-#if UNITY_EDITOR
-            if (Input.GetMouseButtonDown(0))
+                OnDragMap(dragX, dragY);
+            }
+#else
+            if (true == Input.GetMouseButtonDown(0))
             {
                 touchDownPosition = Input.mousePosition;
             }
-            if (Input.GetMouseButtonUp(0))
+            else if (true == Input.GetMouseButtonUp(0))
             {
                 touchUpPosition = Input.mousePosition;
 
                 dragX = touchUpPosition.x - touchDownPosition.x;
                 dragY = touchUpPosition.y - touchDownPosition.y;
+
                 OnDragMap(dragX, dragY);
             }
-
-#else
-        if (Input.touchCount > 0)
-            {
-                var touch = Input.GetTouch(0);
-                if (touch.phase == TouchPhase.Began)
-                {
-                    touchDownPosition = touch.position;
-                }
-                else if (touch.phase == TouchPhase.Ended)
-                {
-                    touchUpPosition = touch.position;
-
-                    dragX = touchUpPosition.x - touchDownPosition.x;
-                    dragY = touchUpPosition.y - touchDownPosition.y;
-
-                    OnDragMap(dragX, dragY);
-                }
-            }
 #endif
-
         }
 
         public void OnDragMap(float dragX, float dragY)
@@ -205,20 +178,28 @@ namespace PlayerControlState
         void OnClick()
         {
             Vector3 screenPos = Vector3.zero;
-#if UNITY_EDITOR
-            if (Input.GetMouseButtonDown(0) == false)
-            {
-                return;
-            }
-            screenPos = Input.mousePosition;
-#elif UNITY_ANDROID
+#if UNITY_ANDROID && !UNITY_EDITOR
             if(Input.touchCount <= 0)
             {
                 return;
             }
-            screenPos = Input.GetTouch(0).position;
+            var touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Ended)
+            {
+                screenPos = touch.position;
+            }
+            else
+            {
+                return;
+            }
+#else
+            if (Input.GetMouseButtonUp(0) == false)
+                return;
+
+            screenPos = Input.mousePosition;
 #endif
-            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            var ray = Camera.main.ScreenPointToRay(screenPos);
 
             RaycastHit hit = new RaycastHit();
 
@@ -227,7 +208,7 @@ namespace PlayerControlState
                 var tower = hit.collider.gameObject.GetComponent<Tower>();
                 if (tower != null)
                 {
-                    PlayerControlState.UpgradeTower state = PlayerControlManager.Instance.SetState(PlayerControlManager.State.UpgradeTower) as PlayerControlState.UpgradeTower;
+                    PlayerControlState.Block state = PlayerControlManager.Instance.SetState(PlayerControlManager.State.Block) as PlayerControlState.Block;
                     state.towerObject = hit.collider.gameObject;
                     var go = UILoader.Instance.Load("TowerUpgradePopup");
                     go.GetComponent<TowerUpgradePopup>().SetList(tower.towerIndex);
