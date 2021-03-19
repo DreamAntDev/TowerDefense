@@ -63,3 +63,6 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+#Firebase
+Tower_Defense/Assets/Firebase/Plugins/x86_64/FirebaseCppApp-7_0_2.so
+Tower_Defense/Assets/Firebase/Plugins/x86_64/FirebaseCppApp-7_0_2.so.meta
