@@ -59,9 +59,10 @@ namespace PlayerControlState
                     Vector3 spawnPos;
                     grid.GetClosetCellPosition(hit.point, out spawnPos);
                     GameManager.Instance.CreateTower(createTowerIndex, spawnPos);
+
+                    GameManager.Instance.SetVisibleGrid(false);
+                    PlayerControlManager.Instance.SetState(PlayerControlManager.State.Play);
                 }
-                GameManager.Instance.SetVisibleGrid(false);
-                PlayerControlManager.Instance.SetState(PlayerControlManager.State.Play);
             }
         }
 
