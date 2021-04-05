@@ -28,7 +28,7 @@ public class LoginSceneManager : MonoBehaviour
     public void StartGame() {
       login();
       // Goto DashBoard Scene
-      SceneManager.LoadSceneAsync("GameScene");
+      SceneManager.LoadSceneAsync("MenuScene");
     }
     // social or Guest login
     public void login() {
