@@ -11,6 +11,8 @@ public class MonsterState : MonoBehaviour
 
     private MonsterAnimationManager monsterAnimationManager;
 
+    private MonsterHealthBar healthBarManager;
+
     private PathFollower pf;
     private bool isDeath = false;
     public float health;
@@ -21,13 +23,15 @@ public class MonsterState : MonoBehaviour
     private void Start() {
         typeMonster = GetComponent<TypeMonster>();
         monsterAnimationManager = GetComponent<MonsterAnimationManager>();
+        healthBarManager = GetComponentInChildren<MonsterHealthBar>();
         pf = GetComponent<PathFollower>();
         health = typeMonster.GetHP();
-        
+        healthBarManager.SetMaxHealth((int)health);
     } 
 
     public void TakeDamage(float damage){
         health -= damage;
+        healthBarManager.SetHealth((int)health);
         if(health <= 0 && !isDeath){
             isDeath = true;
             Death();

@@ -6,6 +6,7 @@ using TMPro;
 using Monster;
 using UnityEngine.Networking;
 using System.Text;
+using UnityEngine.SceneManagement;
 
 public class GameManager : SingletonBehaviour<GameManager>
 {
@@ -32,7 +33,10 @@ public class GameManager : SingletonBehaviour<GameManager>
     private bool isStart = false;
 
     private int life = 5;
+
+    private int maxCoin = 0;
     private RewardManager Reward = new RewardManager();
+
     private new void Awake() {
         base.Awake();
         if(monsterManager == null){
@@ -56,8 +60,10 @@ public class GameManager : SingletonBehaviour<GameManager>
 
     public void MonsterCoin(int c){
        coin += c;
+       maxCoin += c;
        mainUIEvent.SetCoinText(coin.ToString());
     }
+
     public bool DecrementCoin(int c)
     {
         if(coin >= c)
@@ -68,6 +74,7 @@ public class GameManager : SingletonBehaviour<GameManager>
         }
         return false;
     }
+    
     public void LevelTiTle(){
         mainUIEvent.SetLevelText(level.ToString());
     }
@@ -104,6 +111,16 @@ public class GameManager : SingletonBehaviour<GameManager>
     public void GameEnd(){
         mainUIEvent.SetTitleText("END");
         mainUIEvent.ViewTitle();
+
+        if(level >= PlayerPrefs.GetInt("LEVEL", 0 )){
+            PlayerPrefs.SetInt("LEVEL", level);
+
+            if(maxCoin > PlayerPrefs.GetInt("SCORE", 0)){
+                PlayerPrefs.SetInt("SCORE", coin);
+            }
+        }
+
+        SceneManager.LoadSceneAsync("MenuScene");
     }
 
     public void ReadySkip(){
@@ -170,6 +187,7 @@ public class GameManager : SingletonBehaviour<GameManager>
         }
         return false;
     }
+
     public void UpgradeTower(GameObject beforeObj,int upgradeIndex)
     {
         bool success = GameManager.Instance.CreateTower(upgradeIndex, beforeObj.transform.position);
