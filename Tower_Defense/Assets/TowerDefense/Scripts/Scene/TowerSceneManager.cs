@@ -59,7 +59,6 @@ public class TowerSceneManager : MonoBehaviour
                 SceneManager.LoadSceneAsync("GameScene");
                 break;
        }
-
    }
    
 }

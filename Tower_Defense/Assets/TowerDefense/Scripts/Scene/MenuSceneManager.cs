@@ -23,6 +23,7 @@ public class MenuSceneManager : MonoBehaviour
 
 
     public void LoadSceneGame(){
+        Debug.Log("Game Load Scene Go");
         StartCoroutine(LoadScene());
     }
 
@@ -31,9 +32,11 @@ public class MenuSceneManager : MonoBehaviour
     }
 
     IEnumerator LoadScene(){
+        asyncOperation.allowSceneActivation = true;
         while(!asyncOperation.isDone){
+            Debug.Log("Game Scene Loding.. : " + asyncOperation.progress);
             yield return null;
         }
-        asyncOperation.allowSceneActivation = true;
+        yield return null;
     }
 }
