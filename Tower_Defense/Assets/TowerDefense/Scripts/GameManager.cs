@@ -198,4 +198,9 @@ public class GameManager : SingletonBehaviour<GameManager>
         PlayerControlManager.Instance.SetState(PlayerControlManager.State.Play);
         StartCoroutine(Reward.IncrScore(LoginSceneManager.UserID, 10, "UpgradeTower"));
     }
+
+    public int GetCoin()
+    {
+        return this.coin;
+    }
 }
