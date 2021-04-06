@@ -25,7 +25,7 @@ namespace PlayerControlState
 
         public void Start()
         {
-
+            camera = Camera.main;
         }
 
         public void Update()

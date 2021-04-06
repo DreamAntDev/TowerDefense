@@ -30,6 +30,7 @@ public class RewardManager : SingletonBehaviour<RewardManager>
             Debug.Log("rank score incr");
         }
         yield return webRequest.SendWebRequest();
+        Debug.Log(webRequest.downloadHandler.text);
         rank = JsonUtility.FromJson<Rank>(webRequest.downloadHandler.text);
         Debug.Log(rank);
     }
