@@ -35,7 +35,6 @@ public class GameManager : SingletonBehaviour<GameManager>
     private int life = 5;
 
     private int maxCoin = 0;
-    private RewardManager Reward = new RewardManager();
 
     private new void Awake() {
         base.Awake();
@@ -181,7 +180,7 @@ public class GameManager : SingletonBehaviour<GameManager>
             else
             {
                 towerObj.Initialize(index);
-                StartCoroutine(Reward.IncrScore(LoginSceneManager.UserID, 10, "CreateTower"));
+                StartCoroutine(RewardManager.Instance.IncrScore(LoginSceneManager.UserID, 10, "CreateTower"));
                 return true;
             }
         }
@@ -196,7 +195,7 @@ public class GameManager : SingletonBehaviour<GameManager>
             GameObject.Destroy(beforeObj);
         }
         PlayerControlManager.Instance.SetState(PlayerControlManager.State.Play);
-        StartCoroutine(Reward.IncrScore(LoginSceneManager.UserID, 10, "UpgradeTower"));
+        StartCoroutine(RewardManager.Instance.IncrScore(LoginSceneManager.UserID, 10, "UpgradeTower"));
     }
 
     public int GetCoin()
