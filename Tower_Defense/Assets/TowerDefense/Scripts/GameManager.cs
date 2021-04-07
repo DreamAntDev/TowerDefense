@@ -118,7 +118,8 @@ public class GameManager : SingletonBehaviour<GameManager>
                 PlayerPrefs.SetInt("SCORE", coin);
             }
         }
-
+        // 결과 스코어 랭킹 등록
+        StartCoroutine(RewardManager.Instance.IncrScore(LoginSceneManager.UserID, maxCoin, "GameEnd"));
         SceneManager.LoadSceneAsync("MenuScene");
     }
 
@@ -180,7 +181,6 @@ public class GameManager : SingletonBehaviour<GameManager>
             else
             {
                 towerObj.Initialize(index);
-                StartCoroutine(RewardManager.Instance.IncrScore(LoginSceneManager.UserID, 10, "CreateTower"));
                 return true;
             }
         }
@@ -195,7 +195,6 @@ public class GameManager : SingletonBehaviour<GameManager>
             GameObject.Destroy(beforeObj);
         }
         PlayerControlManager.Instance.SetState(PlayerControlManager.State.Play);
-        StartCoroutine(RewardManager.Instance.IncrScore(LoginSceneManager.UserID, 10, "UpgradeTower"));
     }
 
     public int GetCoin()

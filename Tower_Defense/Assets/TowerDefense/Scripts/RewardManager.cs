@@ -14,8 +14,7 @@ public class RewardManager : SingletonBehaviour<RewardManager>
         public int score;
     }
     public IEnumerator IncrScore(int id, int score, string reason) {
-        Debug.Log("IncrScore");
-        Debug.Log("Reward Reason:" + reason);
+        Debug.Log("IncrScore Reason:" + reason);
         Rank rank = new Rank();
         rank.id = id;
         rank.score = score;
@@ -32,6 +31,5 @@ public class RewardManager : SingletonBehaviour<RewardManager>
         yield return webRequest.SendWebRequest();
         Debug.Log(webRequest.downloadHandler.text);
         rank = JsonUtility.FromJson<Rank>(webRequest.downloadHandler.text);
-        Debug.Log(rank);
     }
 }
