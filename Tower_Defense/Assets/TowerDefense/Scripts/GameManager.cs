@@ -20,7 +20,7 @@ public class GameManager : SingletonBehaviour<GameManager>
 
     [SerializeField] protected TextMeshProUGUI coinText;
 
-    [SerializeField] private GameObject Grid;
+    [SerializeField] private GameObject[] grids;
 
     private GameObject mainUI;
 
@@ -97,7 +97,9 @@ public class GameManager : SingletonBehaviour<GameManager>
 
     public void SetVisibleGrid(bool visible)
     {
-        this.Grid.SetActive(visible);
+        for(int i = 0 ; i < grids.Length; i++){
+            grids[i].SetActive(visible);
+        }
     }
 
     public void GameStart(){

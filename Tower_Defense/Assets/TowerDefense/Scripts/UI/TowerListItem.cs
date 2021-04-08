@@ -10,6 +10,7 @@ public class TowerListItem : MonoBehaviour
     public Button SpawnButton;
 
     private TowerData.Data towerData;
+    
 
     public void SetData(TowerData.Data data)
     {
