@@ -19,6 +19,9 @@ public class MainUI : CanvasBehaviour
 
     [SerializeField] protected TextMeshProUGUI lifeText;
 
+    [SerializeField] protected Button TowerListOpenButton;
+    [SerializeField] protected Button TowerCreateCancleButton;
+
     private Animator levelTitleAnimation;
     private Text levelTitleText;
 
@@ -26,7 +29,10 @@ public class MainUI : CanvasBehaviour
         if(levelTitle != null){
             levelTitleAnimation = levelTitle.GetComponent<Animator>();
             levelTitleText = levelTitle.GetComponentInChildren<Text>();
-        }    
+        }
+        
+        this.TowerListOpenButton.onClick.AddListener(this.ShowTowerList);
+        this.TowerCreateCancleButton.onClick.AddListener(this.TowerCreateCancle);
     }
 
     public void SetCoinText(string text){
@@ -62,5 +68,19 @@ public class MainUI : CanvasBehaviour
 
     public void OnSkipClickListener(UnityAction call){
         skipButton.onClick.AddListener(call);
+    }
+    void ShowTowerList()
+    {
+        UILoader.Instance.Load("TowerListPopup");
+    }
+    void TowerCreateCancle()
+    {
+        PlayerControlManager.Instance.SetState(PlayerControlManager.State.Play);
+    }
+
+    public void SetTowerCreateMode(bool createMode)
+    {
+        this.TowerListOpenButton.gameObject.SetActive(!createMode);
+        this.TowerCreateCancleButton.gameObject.SetActive(createMode);
     }
 }

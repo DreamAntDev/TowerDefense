@@ -10,6 +10,11 @@ namespace PlayerControlState
         public void Start()
         {
             GameManager.Instance.SetVisibleGrid(true);
+            var mainUI = UILoader.Instance.GetUI("MainUI");
+            if(mainUI!=null)
+            {
+                mainUI.GetComponent<MainUI>().SetTowerCreateMode(true);
+            }
         }
 
         public void Update()
@@ -21,7 +26,12 @@ namespace PlayerControlState
 
         public void End()
         {
-
+            var mainUI = UILoader.Instance.GetUI("MainUI");
+            if (mainUI != null)
+            {
+                mainUI.GetComponent<MainUI>().SetTowerCreateMode(false);
+            }
+            GameManager.Instance.SetVisibleGrid(false);
         }
 
         void OnClick()
@@ -54,13 +64,15 @@ namespace PlayerControlState
             if (Physics.Raycast(ray, out hit))
             {
                 var grid = hit.collider.gameObject.GetComponent<LocationGrid>();
-                if (grid != null)
+                if (grid != null && grid.tower == null)
                 {
                     Vector3 spawnPos;
                     grid.GetClosetCellPosition(hit.point, out spawnPos);
-                    GameManager.Instance.CreateTower(createTowerIndex, spawnPos);
-
-                    GameManager.Instance.SetVisibleGrid(false);
+                    var createdTower = GameManager.Instance.CreateTower(createTowerIndex, spawnPos, grid);
+                    //if(createdTower!=null)
+                    //{
+                    //    createdTower.grid = grid;
+                    //}
                     PlayerControlManager.Instance.SetState(PlayerControlManager.State.Play);
                 }
             }

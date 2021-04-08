@@ -20,6 +20,7 @@ public class Tower : MonoBehaviour
     public Text nameplateText;
     //public int RPM; // 분당 발사 횟수
     public int towerIndex { get; private set; }
+    public LocationGrid grid { get; set; }
     [SerializeField] private State state;
     private Dictionary<State, System.Action> StateUpdater;
 

@@ -165,11 +165,11 @@ public class GameManager : SingletonBehaviour<GameManager>
         }
     }
 
-    public bool CreateTower(int index, Vector3 pos)
+    public Tower CreateTower(int index, Vector3 pos, LocationGrid targetGrid)
     {
         var data = TowerData.GetData(index);
         if (DecrementCoin(data.cost) == false)
-            return false;
+            return null;
 
         GameObject prefab = TowerResource.Instance.GetTowerResource(data.prefabCode);
         if (prefab != null)
@@ -181,16 +181,18 @@ public class GameManager : SingletonBehaviour<GameManager>
             else
             {
                 towerObj.Initialize(index);
-                return true;
+                towerObj.grid = targetGrid;
+                targetGrid.tower = towerObj;
+                return towerObj;
             }
         }
-        return false;
+        return null;
     }
 
-    public void UpgradeTower(GameObject beforeObj,int upgradeIndex)
+    public void UpgradeTower(Tower beforeObj,int upgradeIndex)
     {
-        bool success = GameManager.Instance.CreateTower(upgradeIndex, beforeObj.transform.position);
-        if (success)
+        var newTower = GameManager.Instance.CreateTower(upgradeIndex, beforeObj.transform.position,beforeObj.grid);
+        if (newTower != null)
         {
             GameObject.Destroy(beforeObj);
         }

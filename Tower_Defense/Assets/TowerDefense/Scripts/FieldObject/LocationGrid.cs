@@ -9,7 +9,7 @@ public class LocationGrid : MonoBehaviour
     const int cellSize = 1;
     public int row = 2; // 가로라인
     public int column = 3; // 세로라인
-
+    public Tower tower { get; set; }
     private Vector3[,] cellGrid;
     private void Awake()
     {
@@ -23,7 +23,7 @@ public class LocationGrid : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        tower = null;
     }
 
     // Update is called once per frame

@@ -26,6 +26,11 @@ namespace PlayerControlState
         public void Start()
         {
             camera = Camera.main;
+            var mainUI = UILoader.Instance.GetUI("MainUI");
+            if (mainUI != null)
+            {
+                mainUI.GetComponent<MainUI>().SetTowerCreateMode(false);
+            }
         }
 
         public void Update()
@@ -209,7 +214,7 @@ namespace PlayerControlState
                 if (tower != null)
                 {
                     PlayerControlState.Block state = PlayerControlManager.Instance.SetState(PlayerControlManager.State.Block) as PlayerControlState.Block;
-                    state.towerObject = hit.collider.gameObject;
+                    state.towerObject = tower;
                     var go = UILoader.Instance.Load("TowerUpgradePopup");
                     go.GetComponent<TowerUpgradePopup>().SetList(tower.towerIndex);
                 }

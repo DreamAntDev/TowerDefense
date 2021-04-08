@@ -363,6 +363,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetList: []
   buffer: []
+--- !u!114 &8780827393493902822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9196399499035585956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f0658b115e72c2469f573256d940d08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
 --- !u!1 &1244031175219035974
 GameObject:
   m_ObjectHideFlags: 0
@@ -3069,6 +3082,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f983163aac44884dbbd4284024a2b24, type: 3}
+--- !u!1 &9196399499035585956 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8024334719665385659, guid: 5f983163aac44884dbbd4284024a2b24,
+    type: 3}
+  m_PrefabInstance: {fileID: 1223859207479336223}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &7367082340637487421 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8557163837921799202, guid: 5f983163aac44884dbbd4284024a2b24,

@@ -18,7 +18,8 @@ public class PlayerControlManager : SingletonBehaviour<PlayerControlManager>
     private new void Awake()
     {
         base.Awake();
-        state = new PlayerControlState.Play();
+        this.state= new PlayerControlState.None();
+        SetState(State.Play);
     }
     // Start is called before the first frame update
     void Start()

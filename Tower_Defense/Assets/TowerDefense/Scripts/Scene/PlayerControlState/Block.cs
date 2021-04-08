@@ -6,7 +6,7 @@ namespace PlayerControlState
 {
     public class Block : IPlayerControlState
     {
-        public GameObject towerObject { get; set; }
+        public Tower towerObject { get; set; }
         public void End()
         {
             
