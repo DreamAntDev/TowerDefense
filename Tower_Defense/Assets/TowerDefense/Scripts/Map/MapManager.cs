@@ -37,11 +37,10 @@ public class MapManager : MonoBehaviour
                 },
             new Vector3[]{
                 new Vector3(12.7f, -4.76f, -16.53f), new Vector3(8.11f, -5f, -18.47f), new Vector3(8.61f, -5.65f, -23.36f), 
-                new Vector3(7.54f, -5.16f, -26.66f), new Vector3(5.29f, -5.48f, -27.1f), new Vector3(1.16f, -6.4wf, -25.74f),
+                new Vector3(7.54f, -5.16f, -26.66f), new Vector3(5.29f, -5.48f, -27.1f), new Vector3(1.16f, -6.4f, -25.74f),
                 new Vector3(0f, -5.35f, -22.22f), new Vector3(2.04f, -5.28f, -19.22f), new Vector3(1.67f, -5.38f, -13.28f)
                 }
         };
-        qwqw
         for(int i = 0 ; i < maps.Length; i++){
             wayPointpoisitions.Add(new List<Vector3>(poisitons[i]));
         }
