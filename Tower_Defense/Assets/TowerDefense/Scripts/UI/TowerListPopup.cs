@@ -20,7 +20,7 @@ public class TowerListPopup : CanvasBehaviour
             {
                 towerListItem.SetData(data);
             }
-            item.transform.SetParent(scrollRect.content.transform);
+            item.transform.SetParent(scrollRect.content.transform,false);
         }
         
         this.closeButton.onClick.AddListener(Close);

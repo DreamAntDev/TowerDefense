@@ -27,7 +27,7 @@ public class TowerUpgradePopup : CanvasBehaviour
                 var towerData = TowerData.GetData(idx);
                 towerUpgradeItem.SetData(towerData);
             }
-            item.transform.SetParent(scrollRect.content.transform);
+            item.transform.SetParent(scrollRect.content.transform,false);
         }
     }
 
