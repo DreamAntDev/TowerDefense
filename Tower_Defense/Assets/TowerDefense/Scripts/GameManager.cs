@@ -196,7 +196,7 @@ public class GameManager : SingletonBehaviour<GameManager>
         var newTower = GameManager.Instance.CreateTower(upgradeIndex, beforeObj.transform.position,beforeObj.grid);
         if (newTower != null)
         {
-            GameObject.Destroy(beforeObj);
+            GameObject.Destroy(beforeObj.gameObject);
         }
         PlayerControlManager.Instance.SetState(PlayerControlManager.State.Play);
     }

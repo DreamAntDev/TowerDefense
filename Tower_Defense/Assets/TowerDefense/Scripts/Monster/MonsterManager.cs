@@ -20,8 +20,6 @@ namespace Monster{
 
         private List<Dictionary<string, object>> dataList;
 
-        private int level = 0;
-
         private void Awake() {
             dataList = CSVReader.Read("Data_Monster");
             monsterList = new List<List<GameObject>>();

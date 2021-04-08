@@ -23,7 +23,7 @@
             return _id;
         }
 
-        public int GetType(){
+        new public int GetType(){
             return _Type;
             
         }

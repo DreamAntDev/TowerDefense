@@ -22,7 +22,7 @@ public class ProjectileMoveScript : MonoBehaviour
     public float forceMagnitude;
 
     private Vector3 startPos;
-	private Vector3 offset;
+	//private Vector3 offset;
 	private bool collided;
 	private Rigidbody rb;
     private GameObject target;
@@ -37,7 +37,7 @@ public class ProjectileMoveScript : MonoBehaviour
 
 		if (muzzlePrefab != null) {
 			var muzzleVFX = Instantiate (muzzlePrefab, transform.position, Quaternion.identity);
-			muzzleVFX.transform.forward = gameObject.transform.forward + offset;
+			muzzleVFX.transform.forward = gameObject.transform.forward /*+ offset*/;
 			var ps = muzzleVFX.GetComponent<ParticleSystem>();
 			if (ps != null)
 				Destroy (muzzleVFX, ps.main.duration);
