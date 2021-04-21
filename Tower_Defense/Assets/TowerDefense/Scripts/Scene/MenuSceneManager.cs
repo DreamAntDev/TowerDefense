@@ -44,7 +44,7 @@ public class MenuSceneManager : MonoBehaviour
     public void ShowUrl()
     {
         GpmWebView.ShowUrl(
-            "http://gameplatform.toast.com/",
+            "http://dev-hojin.shop:8888/leaderboard",
             new GpmWebViewRequest.Configuration()
             {
                 style = GpmWebViewStyle.FULLSCREEN,

@@ -105,7 +105,7 @@ public class LoginSceneManager : MonoBehaviour
             user.device_id = SystemInfo.deviceUniqueIdentifier;
             string data = JsonUtility.ToJson(user);
             Debug.Log(data);
-            UnityWebRequest webRequest = UnityWebRequest.Post("http://3.36.40.68:8888/login", data);
+            UnityWebRequest webRequest = UnityWebRequest.Post("http://dev-hojin.shop:8888/login", data);
             webRequest.uploadHandler = new UploadHandlerRaw(Encoding.UTF8.GetBytes(data));
             webRequest.SetRequestHeader("Content-Type", "application/json");
             if(webRequest.isNetworkError || webRequest.isHttpError) {
