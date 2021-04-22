@@ -54,7 +54,7 @@ public class GameManager : SingletonBehaviour<GameManager>
     private void LoadUI(){
 
         mainUI = UILoader.Instance.Load("MainUI");
-        GameObject mainMoveButton = UILoader.Instance.GetUI("MapMove");
+        GameObject mainMoveButton = UILoader.Instance.Load("MapMove");
         if(mainUI != null){
             mainUIEvent = mainUI.GetComponent<MainUI>();
             mainUIEvent.OnStartClickListener(GameStart);

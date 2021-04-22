@@ -35,7 +35,6 @@ namespace PlayerControlState
             {
                 mainUI.GetComponent<MainUI>().SetTowerCreateMode(false);
             }
-            OnLoadButton();
         }
 
         public void Update()
@@ -48,6 +47,7 @@ namespace PlayerControlState
             //나중에 수정 필요 맵 추가할 때마다 버튼 추가 이벤트
             if(GameManager.Instance.GetLevel() > 5 && GameManager.Instance.GetLevel() % 5 == 1 
             && GameManager.Instance.GetLevel() < 16){
+                OnLoadButton();
                 bme.MapEnableButton(mapIdx);
             }
         }
