@@ -35,7 +35,7 @@ public class MonsterAnimationManager : MonoBehaviour
 
     public void Walk(){
         pf.SetSpeed(oriSpeed);
-        anim.SetTrigger("isWalking");
+        anim.SetBool("isWalking",true);
     }
 
     public void Run(){
@@ -43,6 +43,7 @@ public class MonsterAnimationManager : MonoBehaviour
     }
 
     public void Death(){
+        anim.SetBool("isWalking",false);
         anim.SetBool("isDead", true);
     }
 
