@@ -50,3 +50,5 @@ MonoBehaviour:
     obj: {fileID: 843464677251839884, guid: 7eba6084f8a0c6346ac45dfa74a42e62, type: 3}
   - name: TowerUpgradePopup
     obj: {fileID: 9179481400260902944, guid: a0cb52077d87b684083ed06b264d17d9, type: 3}
+  - name: MapMove
+    obj: {fileID: 3359502593159778425, guid: 136477563612e794ea4d521a2a461ed0, type: 3}

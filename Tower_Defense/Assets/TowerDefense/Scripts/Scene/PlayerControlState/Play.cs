@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace PlayerControlState
 {
@@ -13,11 +14,14 @@ namespace PlayerControlState
 
         private Vector2 touchDownPosition = Vector2.zero;
         private Vector2 touchUpPosition = Vector2.zero;
+
+        private ButtonMapMoveEvent bme = null;
         private float dragX = 0f;
         private float dragY = 0f;
 
         private int mapIdx = 0;
 
+        private int gameLevel = 0;
         public void End()
         {
 
@@ -31,13 +35,34 @@ namespace PlayerControlState
             {
                 mainUI.GetComponent<MainUI>().SetTowerCreateMode(false);
             }
+            OnLoadButton();
         }
 
         public void Update()
         {
-            OnCameraPoistion();
+            if(GameManager.Instance.GetLevel() > 5){
+                OnCameraPoistion();
+            }
             OnClick();
+
+            //나중에 수정 필요 맵 추가할 때마다 버튼 추가 이벤트
+            if(GameManager.Instance.GetLevel() > 5 && GameManager.Instance.GetLevel() % 5 == 1 
+            && GameManager.Instance.GetLevel() < 16){
+                bme.MapEnableButton(mapIdx);
+            }
         }
+
+        private void OnLoadButton(){
+            GameObject mainMoveButton = UILoader.Instance.Load("MapMove");
+
+            if(mainMoveButton != null){
+                bme = mainMoveButton.GetComponent<ButtonMapMoveEvent>();
+                UnityAction[] actions = {delegate { OnDragMap(500,0);  }, delegate { OnDragMap(-500,0); }, delegate { OnDragMap(0,-500); }, delegate { OnDragMap(0,500); }};
+                bme.OnClickListeners(actions);
+                
+            }
+        }
+
 
         public void OnCameraPoistion()
         {
@@ -80,9 +105,11 @@ namespace PlayerControlState
 #endif
         }
 
+
         public void OnDragMap(float dragX, float dragY)
         {
-            int gameLevel = GameManager.Instance.GetLevel();
+            Debug.Log(dragX + ", " + dragY);
+            gameLevel = GameManager.Instance.GetLevel();
             bool isDragX = Mathf.Abs(dragX) > 300;
             bool isDragY = Mathf.Abs(dragY) > 200;
 
@@ -175,11 +202,14 @@ namespace PlayerControlState
             }
         }
 
-        private void MoveCamera(int idx)
+        public void MoveCamera(int idx)
         {
             camera.transform.position = mapVector[idx];
             mapIdx = idx;
+
+            bme.MapEnableButton(mapIdx);
         }
+
         void OnClick()
         {
             Vector3 screenPos = Vector3.zero;

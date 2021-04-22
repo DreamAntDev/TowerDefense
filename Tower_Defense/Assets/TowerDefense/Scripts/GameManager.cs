@@ -7,6 +7,7 @@ using Monster;
 using UnityEngine.Networking;
 using System.Text;
 using UnityEngine.SceneManagement;
+using PlayerControlState;
 
 public class GameManager : SingletonBehaviour<GameManager>
 {
@@ -45,18 +46,25 @@ public class GameManager : SingletonBehaviour<GameManager>
         if(audioManager == null){
             audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         }
-
+        
     }
 
     private void Start() {
+        LoadUI();
+    }
+ private void OnLoadButton(){
+            
+        }
+    private void LoadUI(){
+
         mainUI = UILoader.Instance.Load("MainUI");
+        
         if(mainUI != null){
             mainUIEvent = mainUI.GetComponent<MainUI>();
             mainUIEvent.OnStartClickListener(GameStart);
             mainUIEvent.OnSkipClickListener(ReadySkip);
         }
     }
-
     public void MonsterCoin(int c){
        coin += c;
        maxCoin += c;
