@@ -22,6 +22,7 @@ public class MainUI : CanvasBehaviour
     [SerializeField] protected Button TowerListOpenButton;
     [SerializeField] protected Button TowerCreateCancleButton;
 
+
     private Animator levelTitleAnimation;
     private Text levelTitleText;
 
