@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,6 +23,7 @@ public class ButtonMapMoveEvent : MonoBehaviour
             buttons[i].onClick.AddListener(calls[i]);
         }
     }
+    
 
     public void MapEnableButton(int idx){
         int gameLevel = GameManager.Instance.GetLevel();

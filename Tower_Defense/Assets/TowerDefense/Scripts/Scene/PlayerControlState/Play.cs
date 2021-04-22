@@ -53,7 +53,7 @@ namespace PlayerControlState
         }
 
         private void OnLoadButton(){
-            GameObject mainMoveButton = UILoader.Instance.Load("MapMove");
+            GameObject mainMoveButton = UILoader.Instance.GetUI("MapMove");
 
             if(mainMoveButton != null){
                 bme = mainMoveButton.GetComponent<ButtonMapMoveEvent>();

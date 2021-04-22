@@ -19,8 +19,6 @@ public class GameManager : SingletonBehaviour<GameManager>
 
     [SerializeField] protected int coin;
 
-    [SerializeField] protected TextMeshProUGUI coinText;
-
     [SerializeField] private GameObject[] grids;
 
     private GameObject mainUI;
@@ -52,13 +50,11 @@ public class GameManager : SingletonBehaviour<GameManager>
     private void Start() {
         LoadUI();
     }
- private void OnLoadButton(){
-            
-        }
+
     private void LoadUI(){
 
         mainUI = UILoader.Instance.Load("MainUI");
-        
+        GameObject mainMoveButton = UILoader.Instance.GetUI("MapMove");
         if(mainUI != null){
             mainUIEvent = mainUI.GetComponent<MainUI>();
             mainUIEvent.OnStartClickListener(GameStart);
