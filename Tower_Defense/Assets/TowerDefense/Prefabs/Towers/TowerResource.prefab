@@ -50,9 +50,18 @@ MonoBehaviour:
   - code: Cannon2
     prefab: {fileID: 6166206602179769027, guid: 1ff0c1b4271ede840a88b148a217b049,
       type: 3}
-  - code: Human
-    prefab: {fileID: 7501924262423952262, guid: 61df35be18baeea469c584bc02f00072,
+  - code: HandGun
+    prefab: {fileID: 4869219488348166884, guid: ff0deccee74a3024389d7ad6d1b3d840,
       type: 3}
-  - code: test
-    prefab: {fileID: 7501924262423952262, guid: 61df35be18baeea469c584bc02f00072,
+  - code: StoneThrow
+    prefab: {fileID: 6422703073266004784, guid: 5d4ac753e9ec6984eb57a7e9ed0f82e3,
+      type: 3}
+  - code: AssaultRifle
+    prefab: {fileID: 5384166046820514056, guid: eab0dec1b88fd564b9ea4d0c7d0f97ee,
+      type: 3}
+  - code: Grenade
+    prefab: {fileID: 7723560165020833651, guid: d61250127d62c824695cab79d64bde1a,
+      type: 3}
+  - code: Sniper
+    prefab: {fileID: 7496339320427527168, guid: f470ef1332c60f847a877032334b1d3a,
       type: 3}

@@ -14,12 +14,14 @@ public class Tower : MonoBehaviour
     }
 
     public GameObject Head;
-    public Animator animator;
+    private Animator animator;
     public Sensor sensor;
     public Shotter shotter;
     public Text nameplateText;
+    public float animWaitSecond;
     //public int RPM; // 분당 발사 횟수
     public int towerIndex { get; private set; }
+
     public LocationGrid grid { get; set; }
     [SerializeField] private State state;
     private Dictionary<State, System.Action> StateUpdater;
@@ -34,6 +36,10 @@ public class Tower : MonoBehaviour
         this.StateUpdater.Add(State.Attack, this.UpdateAttackState);
         this.StateUpdater.Add(State.AttackWait, this.UpdateAttackWaitState);
         this.state = State.WaitInitialize;
+
+        this.animator = this.GetComponent<Animator>();
+        if (this.Head == null)
+            this.Head = this.gameObject;
     }
     // Start is called before the first frame update
     void Start()
@@ -72,7 +78,7 @@ public class Tower : MonoBehaviour
         var targetList = this.sensor.GetTarget();
         if (targetList == null || targetList.Count == 0)
         {
-            if (this.Head != null)
+            if (this.animator == null) // 애니 없는경우 헤드 회전이 Idle애니처럼 사용
             {
                 this.Head.transform.Rotate(Vector3.up, 0.5f);
             }
@@ -84,23 +90,12 @@ public class Tower : MonoBehaviour
     }
     private void UpdateAttackState()
     {
-        var targetList = sensor.GetTarget();
-        if (targetList.Count > 0)
+        if (this.animator != null)
         {
-            this.lastAttackTime = Time.time;
-            if (this.animator != null) // 애니 사용 타워는 애니에서 OnAttack 호출
-            {
-                this.animator.SetTrigger("Attack");
-            }
-            else
-            {
-                foreach (var target in targetList)
-                {
-                    shotter.Shot(target);
-                }
-            }
+            this.animator.Play("Attack", -1, 0f);
         }
-
+        StartCoroutine(AttackCoroutine());
+        lastAttackTime = Time.time;
         this.state = State.AttackWait;
     }
     
@@ -124,13 +119,16 @@ public class Tower : MonoBehaviour
             this.state = State.Idle;
             if (this.animator != null)
             {
-                this.animator.ResetTrigger("Attack");
-                this.animator.SetTrigger("Idle");
+                this.animator.Play("Idle", -1, 0f);
             }
         }
     }
-    public void OnAttack()
+
+    IEnumerator AttackCoroutine()
     {
+        if(this.animWaitSecond > 0)
+            yield return new WaitForSeconds(this.animWaitSecond);
+
         var targetList = sensor.GetTarget();
         if (targetList.Count > 0)
         {
@@ -139,10 +137,24 @@ public class Tower : MonoBehaviour
                 shotter.Shot(target);
             }
         }
-        else
-        {
-            this.animator.ResetTrigger("Attack");
-            this.animator.SetTrigger("Idle");
-        }
+
+        yield return null;
+    }
+
+    public void OnAttack()
+    {
+        //var targetList = sensor.GetTarget();
+        //if (targetList.Count > 0)
+        //{
+        //    foreach (var target in targetList)
+        //    {
+        //        shotter.Shot(target);
+        //    }
+        //}
+        //else
+        //{
+        //    this.animator.ResetTrigger("Attack");
+        //    this.animator.SetTrigger("Idle");
+        //}
     }
 }

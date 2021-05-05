@@ -168,7 +168,7 @@ Transform:
   - {fileID: 4700102863536153291}
   - {fileID: 2920643587542312496}
   - {fileID: 7740277229613337754}
-  - {fileID: 609569748110182629}
+  - {fileID: 7965289888345111314}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -185,10 +185,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Head: {fileID: 4700102863535865577}
-  animator: {fileID: 0}
   sensor: {fileID: 7514364607609553680}
   shotter: {fileID: 4497287622448253675}
-  nameplateText: {fileID: 7243370078807671866}
+  nameplateText: {fileID: 8269681209646390922}
+  animWaitSecond: 0
   state: 0
 --- !u!65 &4581184923608224877
 BoxCollider:
@@ -448,6 +448,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4700102863536153285}
     m_Modifications:
+    - target: {fileID: 1170623278454742997, guid: 5f983163aac44884dbbd4284024a2b24,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1170623278454742997, guid: 5f983163aac44884dbbd4284024a2b24,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.715
+      objectReference: {fileID: 0}
     - target: {fileID: 8024334719665385659, guid: 5f983163aac44884dbbd4284024a2b24,
         type: 3}
       propertyPath: m_Name
@@ -560,15 +570,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f983163aac44884dbbd4284024a2b24, type: 3}
---- !u!224 &609569748110182629 stripped
+--- !u!224 &7965289888345111314 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8557163837921799202, guid: 5f983163aac44884dbbd4284024a2b24,
+  m_CorrespondingSourceObject: {fileID: 1170623278454742997, guid: 5f983163aac44884dbbd4284024a2b24,
     type: 3}
   m_PrefabInstance: {fileID: 9130071160670332103}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7243370078807671866 stripped
+--- !u!114 &8269681209646390922 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1887318226116632829, guid: 5f983163aac44884dbbd4284024a2b24,
+  m_CorrespondingSourceObject: {fileID: 898266254336932429, guid: 5f983163aac44884dbbd4284024a2b24,
     type: 3}
   m_PrefabInstance: {fileID: 9130071160670332103}
   m_PrefabAsset: {fileID: 0}
