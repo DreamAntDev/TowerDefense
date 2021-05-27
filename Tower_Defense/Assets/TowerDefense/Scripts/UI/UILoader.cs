@@ -66,7 +66,7 @@ public sealed class UILoader : SingletonBehaviour<UILoader>
         return obj;
     }
     public void Unload(GameObject obj)
-    {
+   {
         if (obj == null)
             return;
 

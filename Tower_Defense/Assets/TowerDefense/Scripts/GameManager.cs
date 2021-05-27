@@ -58,7 +58,7 @@ public class GameManager : SingletonBehaviour<GameManager>
         if(mainUI != null){
             mainUIEvent = mainUI.GetComponent<MainUI>();
             mainUIEvent.OnStartClickListener(GameStart);
-            mainUIEvent.OnSkipClickListener(ReadySkip);
+            mainUIEvent.OnSkipClickListener(Skip);
         }
     }
     public void MonsterCoin(int c){
@@ -129,7 +129,7 @@ public class GameManager : SingletonBehaviour<GameManager>
         SceneManager.LoadSceneAsync("MenuScene");
     }
 
-    public void ReadySkip(){
+    public void Skip(){
         isSkip = true;
     }
 
@@ -137,38 +137,65 @@ public class GameManager : SingletonBehaviour<GameManager>
         return level;
     }
 
+    private void NextLevelUI()
+    {
+        mainUIEvent.SetLevelText(level.ToString());
+        mainUIEvent.SetTitleText("LEVEL : " + level.ToString());
+        mainUIEvent.ViewTitle();
+    }
+
+    private void NextMap()
+    {
+        //추가 맵 체크
+        if (level > 5 && level % 5 == 1)
+        {
+            Debug.Log("Add Map");
+            mapManager.AddMap((level - 1) / 5);
+        }
+    }
+
+    IEnumerator NextLevel(){
+        monsterManager.MonsterSpawn(level);
+        yield return null;
+    }
+
     IEnumerator StartSpawn(){
         for(;;){
             level++;
 
-            //추가 맵 체크
-            if(level > 5 && level % 5 == 1){
-                Debug.Log("Add Map");
-                mainUIEvent.ViewTitle("새로운 환경이 추가됩니다.");
-                mapManager.AddMap((level-1) / 5);
-            }
+            NextMap();
+            NextLevelUI();
 
-            mainUIEvent.SetLevelText(level.ToString());
-            mainUIEvent.SetTitleText("LEVEL : " + level.ToString());
             monsterManager.MonsterSpawn(level);
-            mainUIEvent.ViewTitle();
-            //yield return new WaitForSeconds(20f);
 
-            int currentTime = 0;
-            isSkip = false;
-
-            for(;;){
-                currentTime++;
-                yield return new WaitForSeconds(0.1f);
-                if(currentTime >= 300 || isSkip){
-                    break;
-                }
-            }
+            yield return StartCoroutine(ReadySkip());
 
             if(!isStart){
                 break;
             }
         }
+    }
+
+    IEnumerator ReadySkip(){
+        //30초, Skip 대기
+        if (level % 5 != 0)
+        {
+            int currentTime = 0;
+            isSkip = false;
+            for (; ; )
+            {
+                currentTime++;
+                yield return new WaitForSeconds(0.1f);
+                if (currentTime >= 300 || isSkip)
+                {
+                    break;
+                }
+            }
+        }/*
+        else
+        {
+            yield return new WaitForSeconds(30f);
+        }*/
     }
 
     public Tower CreateTower(int index, Vector3 pos, LocationGrid targetGrid)

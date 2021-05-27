@@ -43,13 +43,13 @@ namespace PlayerControlState
                 OnCameraPoistion();
             }
             OnClick();
-
+            /*
             //나중에 수정 필요 맵 추가할 때마다 버튼 추가 이벤트
             if(GameManager.Instance.GetLevel() > 5 && GameManager.Instance.GetLevel() % 5 == 1 
             && GameManager.Instance.GetLevel() < 16){
                 OnLoadButton();
                 bme.MapEnableButton(mapIdx);
-            }
+            }*/
         }
 
         private void OnLoadButton(){
@@ -108,7 +108,6 @@ namespace PlayerControlState
 
         public void OnDragMap(float dragX, float dragY)
         {
-            Debug.Log(dragX + ", " + dragY);
             gameLevel = GameManager.Instance.GetLevel();
             bool isDragX = Mathf.Abs(dragX) > 300;
             bool isDragY = Mathf.Abs(dragY) > 200;

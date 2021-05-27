@@ -56,11 +56,12 @@ public class MainUI : CanvasBehaviour
         ViewTitle();
     }
     public void ViewTitle(){
-        if(!levelTitle.activeSelf){
+
+        // levelTitleAnimation.SetTrigger("New");
+        // levelTitleAnimation.SetTrigger("Event");
+        if (!levelTitle.activeSelf){
             levelTitle.SetActive(true);
         }
-        levelTitleAnimation.SetTrigger("New");
-        levelTitleAnimation.SetTrigger("Event");
     }
 
     public void OnStartClickListener(UnityAction call){
