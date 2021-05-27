@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MapManager : MonoBehaviour
 {
+    private int MAPCOUNT = 4;
     [SerializeField] protected GameObject[] maps;
 
     [SerializeField] protected WayPoint wayPoint;
@@ -77,11 +78,10 @@ public class MapManager : MonoBehaviour
 
     public void AddMap(int idx){
         SetMapUI();
-        if(idx >= 4) 
+        if(idx >= MAPCOUNT) 
         {
-            maps[idx - 4].GetComponent<MapRespone>().DropMapMove();
+            maps[idx - MAPCOUNT].GetComponent<MapRespone>().DropMapMove();
         }
-        Debug.Log("Map Idx : " + idx);
         maps[idx].GetComponent<MapRespone>().AddMapMove();
         
 

@@ -6,10 +6,10 @@ using DG.Tweening;
 public class MapRespone : MonoBehaviour
 {
     [SerializeField] protected Ease ease;
-
+  
     public void AddMapMove(){
         Debug.Log("MapMove ADD");
-        gameObject.transform.DOLocalMove(Vector3.zero, 2).SetEase(ease);
+        transform.DOLocalMove(Vector3.zero, 2).SetEase(ease);
     }
 
     public void DropMapMove() {

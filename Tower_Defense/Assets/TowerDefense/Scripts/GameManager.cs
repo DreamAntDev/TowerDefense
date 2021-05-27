@@ -144,14 +144,19 @@ public class GameManager : SingletonBehaviour<GameManager>
         mainUIEvent.ViewTitle();
     }
 
-    private void NextMap()
+    private void TextNextMap()
+    {
+        mapManager.AddMap(1);
+        mapManager.AddMap(2);
+    }
+
+    IEnumerator NextMap()
     {
         //추가 맵 체크
-        if (level > 5 && level % 5 == 1)
-        {
-            Debug.Log("Add Map");
-            mapManager.AddMap((level - 1) / 5);
-        }
+        mapManager.AddMap(level / 5);
+        Debug.Log("Map : " + level + " ADD");
+        yield return new WaitForSeconds(5f);
+        yield return StartCoroutine(StartSpawn());
     }
 
     IEnumerator NextLevel(){
@@ -160,12 +165,10 @@ public class GameManager : SingletonBehaviour<GameManager>
     }
 
     IEnumerator StartSpawn(){
-        for(;;){
+        for (int i = 0; i < 5; i++){
             level++;
 
-            NextMap();
             NextLevelUI();
-
             monsterManager.MonsterSpawn(level);
 
             yield return StartCoroutine(ReadySkip());
@@ -174,10 +177,13 @@ public class GameManager : SingletonBehaviour<GameManager>
                 break;
             }
         }
+        StartCoroutine(NextMap());
+        yield return null;
     }
 
     IEnumerator ReadySkip(){
         //30초, Skip 대기
+        yield return new WaitForSeconds(20f);
         if (level % 5 != 0)
         {
             int currentTime = 0;
@@ -191,11 +197,11 @@ public class GameManager : SingletonBehaviour<GameManager>
                     break;
                 }
             }
-        }/*
+        }
         else
         {
-            yield return new WaitForSeconds(30f);
-        }*/
+            yield return new WaitForSeconds(20f);
+        }
     }
 
     public Tower CreateTower(int index, Vector3 pos, LocationGrid targetGrid)

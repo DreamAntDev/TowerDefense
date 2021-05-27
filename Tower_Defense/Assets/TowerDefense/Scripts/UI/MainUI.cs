@@ -62,6 +62,7 @@ public class MainUI : CanvasBehaviour
         if (!levelTitle.activeSelf){
             levelTitle.SetActive(true);
         }
+
     }
 
     public void OnStartClickListener(UnityAction call){
