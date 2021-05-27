@@ -44,6 +44,7 @@ public class MonsterState : MonoBehaviour
 
     public void Death(){
         monsterAnimationManager.Death();
+        gameObject.tag = "Death";
         GameManager.Instance.MonsterCoin(typeMonster.GetCoin());
         StartCoroutine(MonsterDeath());
     }
