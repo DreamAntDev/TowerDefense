@@ -125,7 +125,7 @@ public class GameManager : SingletonBehaviour<GameManager>
             }
         }
         // 결과 스코어 랭킹 등록
-        StartCoroutine(RewardManager.Instance.IncrScore(LoginSceneManager.UserID, maxCoin, "GameEnd"));
+        //StartCoroutine(RewardManager.Instance.IncrScore(LoginSceneManager.UserID, maxCoin, "GameEnd"));
         SceneManager.LoadSceneAsync("MenuScene");
     }
 
@@ -154,7 +154,6 @@ public class GameManager : SingletonBehaviour<GameManager>
     {
         //추가 맵 체크
         mapManager.AddMap(level / 5);
-        Debug.Log("Map : " + level + " ADD");
         yield return new WaitForSeconds(5f);
         yield return StartCoroutine(StartSpawn());
     }

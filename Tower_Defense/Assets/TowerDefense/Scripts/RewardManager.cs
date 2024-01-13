@@ -20,7 +20,7 @@ public class RewardManager : SingletonBehaviour<RewardManager>
         rank.score = score;
         string data = JsonUtility.ToJson(rank);
         Debug.Log(data);
-        UnityWebRequest webRequest = UnityWebRequest.Post("http://dev-hojin.shop:8888/incrscore", data);
+        UnityWebRequest webRequest = UnityWebRequest.PostWwwForm("http://dev-hojin.shop:8888/incrscore", data);
         webRequest.uploadHandler = new UploadHandlerRaw(Encoding.UTF8.GetBytes(data));
         webRequest.SetRequestHeader("Content-Type", "application/json");
         if(webRequest.isNetworkError || webRequest.isHttpError) {

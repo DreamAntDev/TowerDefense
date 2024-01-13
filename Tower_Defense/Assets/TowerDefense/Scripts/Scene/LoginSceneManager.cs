@@ -16,7 +16,7 @@ public struct User {
 
 public class LoginSceneManager : MonoBehaviour
 {
-    public static int UserID;
+   /* public static int UserID;
     public Firebase.Auth.FirebaseUser FirebaseUser;
     private string email;
     private string password;
@@ -41,6 +41,7 @@ public class LoginSceneManager : MonoBehaviour
           StartCoroutine(GameServerLogin(SystemInfo.deviceUniqueIdentifier, "guest"));
         }
     }
+    
     public void ChangePlatform() {
       GameObject ObjectEmailInputField = GameObject.Find("EmailInputField");
       InputField EmailInputField = ObjectEmailInputField.GetComponent<InputField>();
@@ -61,7 +62,7 @@ public class LoginSceneManager : MonoBehaviour
       // google SignIn
       SignIn(email, password);
       // TODO get UserID
-    }
+    }*
     private void SignIn(string email, string password) {
             firbaseAuth.SignInWithEmailAndPasswordAsync(email, password).ContinueWith(task => {
             if (task.IsCanceled) {
@@ -105,7 +106,7 @@ public class LoginSceneManager : MonoBehaviour
             user.device_id = SystemInfo.deviceUniqueIdentifier;
             string data = JsonUtility.ToJson(user);
             Debug.Log(data);
-            UnityWebRequest webRequest = UnityWebRequest.Post("http://dev-hojin.shop:8888/login", data);
+            UnityWebRequest webRequest = UnityWebRequest.PostWwwForm("", data);
             webRequest.uploadHandler = new UploadHandlerRaw(Encoding.UTF8.GetBytes(data));
             webRequest.SetRequestHeader("Content-Type", "application/json");
             if(webRequest.isNetworkError || webRequest.isHttpError) {
@@ -117,5 +118,5 @@ public class LoginSceneManager : MonoBehaviour
             user = JsonUtility.FromJson<User>(webRequest.downloadHandler.text);
             UserID = user.id;
             Debug.Log(UserID);
-        }
+        }*/
 }
